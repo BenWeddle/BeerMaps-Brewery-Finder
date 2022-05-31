@@ -75,5 +75,23 @@ INSERT INTO users (username, password_hash, role)
 VALUES ('testBrewer', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_BREWER');
 
 
+INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) VALUES ('Bud Light', 'gross', 'image', 4.00, 'Beer', 5, true);
+INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) VALUES ('Corona', 'not gross', 'image', 6.00, 'Beer', 3, true);
+INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) VALUES ('Angry Orchard', 'cidery', 'image', 3.00, 'Cider', 2, true);
+
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) VALUES ('Brewery1', 'A brewery', true, true, true, true, 1);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) VALUES ('Brewery2', 'A 2nd brewery', true, false, true, false, 2);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) VALUES ('Brewery1', 'A 3rd brewery', false, true, false, true, 3);
+
+INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (1, 1);
+INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (1, 2);
+INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (1, 3);
+
+INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (2, 1);
+INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (2, 2);
+
+INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (3, 1);
+INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (3, 3);
+
 
 COMMIT TRANSACTION;
