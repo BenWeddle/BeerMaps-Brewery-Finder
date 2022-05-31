@@ -142,4 +142,8 @@ export default {
 .have-account-link {
   
   margin-left: 100px;
-}</style>
+
+
+}
+
+</style>
