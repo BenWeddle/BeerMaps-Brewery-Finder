@@ -43,7 +43,8 @@ export default({
           abv: '',
           ibu: '',
           type: '',
-          image: ''
+          image: '',
+          availabilty: false
         }
       }
     },
@@ -89,7 +90,7 @@ export default({
 <style scoped>
 
 #add-beer-div {
-  background-color: blue;
+  
 }
 
 

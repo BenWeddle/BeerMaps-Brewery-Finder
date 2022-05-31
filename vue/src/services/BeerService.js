@@ -11,7 +11,7 @@ export default {
     },
     
     addBeer(beer) {
-        return http.post('/beer', beer)
+        return http.post('/beverage/add', beer)
     },
 
     updateBeer(id) {
