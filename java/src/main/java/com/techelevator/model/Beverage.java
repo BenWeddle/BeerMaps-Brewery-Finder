@@ -11,13 +11,7 @@ public class Beverage {
     private String imageUrl;
     private boolean isAvailable;
 
-    public boolean isAvailable() {
-        return isAvailable;
-    }
 
-    public void setIsAvailable(boolean isAvailable) {
-        this.isAvailable = isAvailable;
-    }
 
 
 
@@ -32,6 +26,13 @@ public class Beverage {
         this.beverageType = beverageType;
         this.ibu = ibu;
         this.imageUrl = imageUrl;
+    }
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setIsAvailable(boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
     public int getBeverageId() {

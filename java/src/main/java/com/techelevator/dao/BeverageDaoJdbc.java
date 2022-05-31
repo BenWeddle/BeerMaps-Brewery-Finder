@@ -65,7 +65,7 @@ public class BeverageDaoJdbc implements BeverageDao{
         Beverage beverage = null;
         String sql = "SELECT * " +
                 "FROM beverage " +
-                "WHERE beverage_name = '%?%'";
+                "WHERE beverage_name = ? ";
          SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name);
          if (results.next()) {
              beverage = mapRowToBeverage(results);
@@ -75,17 +75,27 @@ public class BeverageDaoJdbc implements BeverageDao{
 
     @Override
     public boolean addABeverage(Beverage beverage) {
-        return false;
+        String sql = " INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) " +
+                "VALUES (?,?,?,?,?,?,?) " ;
+
+
+        return jdbcTemplate.update(sql, beverage.getBeverageName(), beverage.getDescription(), beverage.getImageUrl()
+        , beverage.getAbv(), beverage.getBeverageType(), beverage.getIbu(), beverage.isAvailable() ) == 0;
     }
 
     @Override
     public boolean deleteBeverage(int beverageId) {
-        return false;
+        String sql = "DELETE FROM beverage WHERE beverage_id = ?";
+
+        return jdbcTemplate.update(sql, beverageId) == 0;
     }
 
     @Override
     public boolean updateBeverage(Beverage beverage) {
-        return false;
+        String sql = " UPDATE beverage SET beverage_name = ?, description = ?, image_url = ?, abv = ?, beverage_type = ?, ibu = ?, availability = ? " +
+                "WHERE beverage_id = ?" ;
+        return jdbcTemplate.update(sql, beverage.getBeverageName(), beverage.getDescription(), beverage.getImageUrl()
+                , beverage.getAbv(), beverage.getBeverageType(), beverage.getIbu(), beverage.isAvailable(), beverage.getBeverageId() ) == 0;
     }
 
     public Beverage mapRowToBeverage(SqlRowSet rowSet){
