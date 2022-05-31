@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import java.security.Principal;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,5 +95,10 @@ public class JdbcUserDao implements UserDao {
         user.setAuthorities(rs.getString("role"));
         user.setActivated(true);
         return user;
+    }
+    @Override
+    public User currentUser(Principal principal) {
+        long currentUserId = findIdByUsername(principal.getName());
+        return getUserById(currentUserId);
     }
 }

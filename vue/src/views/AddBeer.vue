@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Add new Beer</h1>
+    <h1 id="add">Add new Beer</h1>
     <add-beer-form></add-beer-form>
   </div>
 </template>

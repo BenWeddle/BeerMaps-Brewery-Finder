@@ -14,7 +14,7 @@ public interface BreweryDao {
 
     boolean addBrewery(Brewery brewery);
 
-    boolean deleteBrewery(Brewery brewery);
+    boolean deleteBrewery(int breweryId);
 
     boolean updateBrewery(Brewery brewery);
 

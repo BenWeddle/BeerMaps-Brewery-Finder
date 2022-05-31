@@ -10,11 +10,12 @@ public class Brewery {
     private boolean isPetFriendly;
     private boolean hasFood;
     private String phoneNumber;
+    private String description;
 
     public Brewery(){
     }
 
-    public Brewery(int breweryId, String breweryName, int brewerId, int addressId, boolean hasOnSiteBrewing, boolean hasOutDoorSeating, boolean isPetFriendly, boolean hasFood, String phoneNumber) {
+    public Brewery(int breweryId, String breweryName, int brewerId, int addressId, boolean hasOnSiteBrewing, boolean hasOutDoorSeating, boolean isPetFriendly, boolean hasFood, String phoneNumber, String description) {
         this.breweryId = breweryId;
         this.breweryName = breweryName;
         this.brewerId = brewerId;
@@ -24,8 +25,15 @@ public class Brewery {
         this.isPetFriendly = isPetFriendly;
         this.hasFood = hasFood;
         this.phoneNumber = phoneNumber;
+        this.description = description;
+    }
+    public String getDescription() {
+        return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
     public int getBreweryId() {
         return breweryId;
     }
