@@ -105,4 +105,41 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.register-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  margin-top: 0%;
+  color: rgb(0, 0, 0);
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  
+}
+
+#register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-control-register {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+  padding-right: 0px;
+  margin-left: 70px;
+}
+
+.create-account-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 105px;
+}
+
+.have-account-link {
+  
+  margin-left: 100px;
+}</style>

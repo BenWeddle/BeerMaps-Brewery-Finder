@@ -79,6 +79,70 @@ export default {
 };
 </script>
 
+<style scoped>
+.form-control-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5px;
+  padding-right: 0px;
+  margin-left: 190px;
+}
+
+#login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  margin-top: 0%;
+  padding-bottom: 0px;
+  color: rgb(0, 0, 0);
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  
+}
+
+.login-quote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.login-header-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 20px;
+}
+
+label.sr-only {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.need-an-account {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#sign-in-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 255px;
+
+}
+</style>
+
 
 
 
