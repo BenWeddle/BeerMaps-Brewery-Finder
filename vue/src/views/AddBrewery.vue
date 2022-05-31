@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import NewBreweryForm from '../components/New-Brewery-Form.vue';
+import NewBreweryForm from '../components/New-Brewery-Form.vue'
 
 export default {
   name: "addBrewery",
@@ -16,3 +16,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+#breweryForm{
+    display: flex;
+    flex-direction: column;
+}
+</style>
