@@ -32,6 +32,11 @@
         v-model="user.confirmPassword"
         required
       />
+      <input
+      v-on:change="changeBrewerMethod"
+      type="checkbox"
+      id="brewerCheckbox"/>
+      <label for="brewerCheckbox">Are you a brewer?</label>
       <button class="create-account-button" type="submit">
         Create Account
       </button>
@@ -62,7 +67,8 @@ export default {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
-      } else {
+      } 
+      else {
         authService
           .register(this.user)
           .then((response) => {
@@ -82,6 +88,15 @@ export default {
           });
       }
     },
+
+    changeBrewerMethod() {
+      if (this.user.role === "user") {
+        this.user.role = "brewer"
+      } else if (this.user.role === "brewer") {
+        this.user.role = "user"
+      }
+    },
+
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
