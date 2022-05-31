@@ -1,12 +1,18 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <router-link to="/addBrewery">Add New Brewery</router-link>
+    <br />
+    <router-link to="/addBeer">Add New Beer</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: "home"
+  name: "home",
+  components: {
+
+
+  }
 };
 </script>
