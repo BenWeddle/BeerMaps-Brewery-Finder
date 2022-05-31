@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h1 class="register-header">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -9,7 +9,7 @@
       <input
         type="text"
         id="username"
-        class="form-control"
+        class="form-control-register"
         placeholder="Username"
         v-model="user.username"
         required
@@ -19,7 +19,7 @@
       <input
         type="password"
         id="password"
-        class="form-control"
+        class="form-control-register"
         placeholder="Password"
         v-model="user.password"
         required
@@ -27,15 +27,20 @@
       <input
         type="password"
         id="confirmPassword"
-        class="form-control"
+        class="form-control-register"
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <input
+      v-on:change="changeBrewerMethod"
+      type="checkbox"
+      id="brewerCheckbox"/>
+      <label for="brewerCheckbox">Are you a brewer?</label>
+      <button class="create-account-button" type="submit">
         Create Account
       </button>
+      <router-link class="have-account-link" :to="{ name: 'login' }">Have an account?</router-link>
     </form>
   </div>
 </template>
@@ -62,7 +67,8 @@ export default {
       if (this.user.password != this.user.confirmPassword) {
         this.registrationErrors = true;
         this.registrationErrorMsg = 'Password & Confirm Password do not match.';
-      } else {
+      } 
+      else {
         authService
           .register(this.user)
           .then((response) => {
@@ -82,6 +88,15 @@ export default {
           });
       }
     },
+
+    changeBrewerMethod() {
+      if (this.user.role === "user") {
+        this.user.role = "brewer"
+      } else if (this.user.role === "brewer") {
+        this.user.role = "user"
+      }
+    },
+
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
