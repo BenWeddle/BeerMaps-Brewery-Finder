@@ -1,25 +1,25 @@
 import axios from 'axios';
 
-const http = axios.create({
-    baseURL: 'http://localhost:8080'
-});
+// const http = axios.create({
+//     baseURL: 'http://localhost:8080'
+// });
 
 export default {
     //URL not active yet
     getbeverages() {
-        return http.get('/beverage')
+        return axios.get('/beverage')
     },
     
     addbeverage(beverage) {
-        return http.post('/beverage/add', beverage)
+        return axios.post('/beverage/add', beverage)
     },
 
     updatebeverage(id) {
-        return http.put('/beverage', id)
+        return axios.put('/beverage', id)
     },
 
     deletebeverage(id) {
-        return http.delete('/beverage', id)
+        return axios.delete('/beverage', id)
     },
 
     

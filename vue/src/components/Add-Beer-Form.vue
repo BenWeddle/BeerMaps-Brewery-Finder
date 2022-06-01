@@ -8,7 +8,7 @@
           >
           <b-form-input
             id="name"
-            v-model="beverage.name"
+            v-model="beverage.beverageName"
             type= "text"
             placeholder= "Beverage Name..."
             required
@@ -22,7 +22,7 @@
           >
           <b-form-textarea
             id="description"
-            v-model="beverage.beverageDescription"
+            v-model="beverage.description"
             type= "text-area"
             placeholder= "Beverage Description..."
           ></b-form-textarea>
@@ -36,8 +36,8 @@
           <b-form-input
             id="abv"
             v-model="beverage.abv"
-            type= "text"
-            placeholder= "ABV %"
+            type= "number"
+            placeholder= "0.0"
             required
           ></b-form-input>
           </b-form-group>
@@ -50,19 +50,28 @@
           <b-form-input
             id="ibu"
             v-model="beverage.ibu"
-            type= "text"
+            type= "number"
             placeholder= "IBU #"
             required
           ></b-form-input>
           </b-form-group>
-
-          <b-form-group
-            id="type"
-            label="Enter the type of beverage: "
-            label-for="type"
-          >
-          <b-form-select v-model="selected" :options="options"></b-form-select>
-          </b-form-group>
+          <div id="check-and-option">
+            <b-form-group
+                id="type"
+                label="Enter the type of beverage: "
+                label-for="type"
+            >
+              <b-form-select v-model="beverage.beverageType" :options="options"></b-form-select>
+            </b-form-group>
+            <b-form-checkbox
+                id="availability"
+                v-model="beverage.available"
+                name="availability"
+                value="true"
+                unchecked-value="false"
+                size="lg"
+            >Check if product is currently available</b-form-checkbox>
+          </div>
 
             <!-- image upload doesnt work, havent decided yet
             <label for="img">Select image:</label>
@@ -83,18 +92,18 @@ export default({
     data() {
       return {
         beverage: {
-          name: '',
-          beverageDescription: '',
-          abv: '',
-          ibu: '',
-          type: '',
-          image: '',
-          availabilty: false
+          beverageName: '',
+          description: '',
+          abv: 0,
+          ibu: 0,
+          beverageType: '',
+          imageUrl: 'none',
+          available: false
         },
         options: [
           { value: null, text: 'Please select an option' },
-          { value: 'beer', text: 'Beer' },
-          { value: 'cider', text: 'Cider' },
+          { value: 'Beer', text: 'Beer' },
+          { value: 'Cider', text: 'Cider' },
           { value: 'Wine', text: 'Wine' },
           { value: 'NA', text: 'N/A Beverage'}
         ]
@@ -142,8 +151,11 @@ export default({
 div {
   padding: 10px;
 }
-
-
+#check-and-option{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #beverageFormSubmit{
   margin-top: 10px;
 }

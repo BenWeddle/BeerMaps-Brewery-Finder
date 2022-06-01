@@ -6,9 +6,11 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.model.Beverage;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 //Authorization
 @CrossOrigin
@@ -26,21 +28,25 @@ public class BeverageController {
         this.breweryDao = breweryDao;
 
     }
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public boolean addBeverage(@RequestBody Beverage beverage, Principal principal) {
-        boolean success = false;
-
+    public boolean addBeverage(@RequestBody Beverage beverage) {
+        boolean success = true;
         /* Need to verify user
         * is not a user */
-        if (isBrewer(userDao.currentUser(principal))){
-            beverageDao.addABeverage(beverage);
-        success = true;
-        }
+//        if (isBrewer(userDao.currentUser(principal))){
+//            beverageDao.addABeverage(beverage);
+//        success = true;
+//        }
+        beverageDao.addABeverage(beverage);
         return success;
     }
 
-
+    @RequestMapping(path = "/all", method = RequestMethod.GET)
+    public List<Beverage> getAllBeverages(){
+        return beverageDao.listAll();
+    }
 
 
     public boolean isBrewer(User user) {
