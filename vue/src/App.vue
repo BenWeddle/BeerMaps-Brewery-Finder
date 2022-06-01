@@ -22,7 +22,7 @@ body {
   background-color:rgb(240, 185, 130);
   border-radius: 70px;
   opacity: .9;
-  
+  padding: 15px;
 }
 
 .home {

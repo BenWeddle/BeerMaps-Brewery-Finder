@@ -1,13 +1,69 @@
 <template>
     <div>
-        <form id="breweryForm">
-            <label for="breweryName">Enter Name of Brewery: </label>
-            <input v-model="brewery.name" id="breweryName" type="text" />
+        <b-form id="breweryForm">
+          <b-form-group
+            id="breweryName"
+            label="Enter Name of Brewery:"
+            label-for="name"
+          >
+          <b-form-input
+            id="name"
+            v-model="brewery.name"
+            type= "text"
+            placeholder= "Brewery Name..."
+            required
+          ></b-form-input>
+          </b-form-group>
 
-            <label for="breweryDescription">Enter a description of your brewery: </label>
-            <input v-model="brewery.breweryDescription" id="breweryDescription" type="text" />
+          <b-form-group
+            id="breweryDescription"
+            label="Enter a description of the brewery"
+            label-for="description"
+          >
+          <b-form-textarea
+            id="description"
+            v-model="brewery.breweryDescription"
+            type= "text-area"
+            placeholder= "Brewery Description..."
+          ></b-form-textarea>
+          </b-form-group>
 
-            <input v-model="brewery.outdoorSeating" v-bind:value="true" type="checkbox" id="outdoorSeating" />
+           <b-form-checkbox
+            id="outdoorSeating"
+            v-model="brewery.outdoorSeating"
+            name="checkbox-1"
+            value="true"
+            unchecked-value="false"
+          >Does it have outdoor seating?</b-form-checkbox>
+
+          <b-form-checkbox
+            id="allowsPets"
+            v-model="brewery.allowsPets"
+            name="allowsPets"
+            value="true"
+            unchecked-value="false"
+          >Does it allow pets?</b-form-checkbox>
+
+          <b-form-checkbox
+            id="hasFood"
+            v-model="brewery.hasFood"
+            name="hasFood"
+            value="true"
+            unchecked-value="false"
+          >Does it serve food?</b-form-checkbox>
+
+          <b-form-checkbox
+            id="onsiteBrewing"
+            v-model="brewery.onSiteBrewing"
+            name="onsiteBrewing"
+            value="true"
+            unchecked-value="false"
+          >Does it have onsite brewing?</b-form-checkbox>
+
+
+
+
+            <!-- <input v-model="brewery.outdoorSeating" v-bind:value="true" type="checkbox" id="outdoorSeating" />
             <label  for="outdoorSeating">Does it have outdoor seating? </label>
             
             <input v-model="brewery.allowsPets" v-bind:value="true" type="checkbox" id="allowsPets" />
@@ -17,11 +73,11 @@
             <label for="hasFood">Does it serve food? </label>
 
             <input v-model="brewery.onSiteBrewing" v-bind:value="true" type="checkbox" id="onSiteBrewing" />
-            <label for="onSiteBrewing">Does it have on-site brewing? </label>
+            <label for="onSiteBrewing">Does it have on-site brewing? </label> -->
 
-            <button id="breweryFormSubmit" type="submit">Submit Brewery</button>
+            <b-button variant="primary" id="breweryFormSubmit" type="submit">Submit Brewery</b-button>
 
-        </form>
+        </b-form>
     </div>
 </template>
 
@@ -49,5 +105,7 @@ export default({
 </script>
 
 <style scoped>
-
+div {
+  padding: 10px;
+}
 </style>
