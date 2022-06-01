@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface RatingDao {
 
-    List<Rating> listAll();
+    Rating getRatingByRatingId(int id);
+    List<Rating> getRatingByBeverage(int beverageId);
 
     List<Rating> listRatingByType(String type);
 
