@@ -1,7 +1,7 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, brewery, address_info, beverage, brewery_beverage, brewery_address_info;
-DROP SEQUENCE IF EXISTS seq_user_id;
+DROP TABLE IF EXISTS users, brewery, address_info, beverage, brewery_beverage, brewery_address_info, rating;
+DROP SEQUENCE IF EXISTS seq_user_id, seq_rating_id;
 
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
@@ -68,6 +68,28 @@ CREATE TABLE brewery_address_info (
     CONSTRAINT FK_brewery_address_info_brewery FOREIGN KEY (brewery_id) REFERENCES brewery(brewery_id),
     CONSTRAINT FK_brewery_address_info_address FOREIGN KEY (address_id) REFERENCES address_info(address_id)
 );
+CREATE SEQUENCE seq_rating_id
+ INCREMENT BY 1
+  NO MAXVALUE
+  NO MINVALUE
+  CACHE 1;
+CREATE TABLE rating(
+	rating_id serial,
+	rating_text VarChar (500) NOT NULL,
+	rating int NOT NULL CHECK (rating <=5),
+	rating_date date,
+	rating_type varchar(25),
+	beverage_id int CONSTRAINT fk_beverage REFERENCES beverage(beverage_id) NOT NULL,
+	brewery_id int CONSTRAINT fk_brewery REFERENCES brewery(brewery_id) NOT NULL,
+    reviewer_id int CONSTRAINT fk_users REFERENCES users(user_id)
+);
+	
+	
+
+
+)
+	
+
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
