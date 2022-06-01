@@ -5,15 +5,19 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 @Component
 public class BreweryDaoJdbc implements BreweryDao{
 
     private JdbcTemplate jdbcTemplate;
+    private JdbcUserDao userDao;
 
-    public BreweryDaoJdbc(JdbcTemplate jdbcTemplate) {
+    public BreweryDaoJdbc(JdbcTemplate jdbcTemplate, JdbcUserDao userDao) {
+
         this.jdbcTemplate = jdbcTemplate;
+        this.userDao = userDao;
     }
 
     @Override
@@ -55,11 +59,11 @@ public class BreweryDaoJdbc implements BreweryDao{
     }
 
     @Override
-    public boolean addBrewery(Brewery brewery) {
+    public boolean addBrewery(Brewery brewery, Principal principal) {
         String sql = "INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) " +
                 "VALUES (?,?,?,?,?,?,?) ";
         return  jdbcTemplate.update(sql,brewery.getBreweryName(), brewery.getDescription(), brewery.isHasOutDoorSeating(),
-                brewery.isPetFriendly(), brewery.isHasFood(), brewery.isHasOnSiteBrewing(), brewery.getBrewerId()) == 0;
+                brewery.isPetFriendly(), brewery.isHasFood(), brewery.isHasOnSiteBrewing(), userDao.currentUser(principal).getId()) == 0;
     }
 
     @Override

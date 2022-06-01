@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Brewery;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface BreweryDao {
@@ -12,7 +13,7 @@ public interface BreweryDao {
 
     Brewery findBreweryByName(String name);
 
-    boolean addBrewery(Brewery brewery);
+    boolean addBrewery(Brewery brewery, Principal principal);
 
     boolean deleteBrewery(int breweryId);
 

@@ -27,12 +27,14 @@ public class BreweryController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public boolean addBrewery(@RequestBody Brewery brewery, Principal principal) {
-        boolean success = false;
+        boolean success = true;
 
-        if (isAdmin(userDao.currentUser(principal))){
-            breweryDao.addBrewery(brewery);
-            success = true;
-        }
+//        if (isAdmin(userDao.currentUser(principal))){
+//            breweryDao.addBrewery(brewery);
+//            success = true;
+//        }
+
+        breweryDao.addBrewery(brewery, principal);
         return success;
     }
 

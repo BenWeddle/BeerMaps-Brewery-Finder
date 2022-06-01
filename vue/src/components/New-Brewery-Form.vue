@@ -8,7 +8,7 @@
           >
           <b-form-input
             id="name"
-            v-model="brewery.name"
+            v-model="brewery.breweryName"
             type= "text"
             placeholder= "Brewery Name..."
             required
@@ -22,7 +22,7 @@
           >
           <b-form-textarea
             id="description"
-            v-model="brewery.breweryDescription"
+            v-model="brewery.description"
             type= "text-area"
             placeholder= "Brewery Description..."
           ></b-form-textarea>
@@ -30,7 +30,7 @@
 
            <b-form-checkbox
             id="outdoorSeating"
-            v-model="brewery.outdoorSeating"
+            v-model="brewery.hasOutDoorSeating"
             name="checkbox-1"
             value="true"
             unchecked-value="false"
@@ -38,7 +38,7 @@
 
           <b-form-checkbox
             id="allowsPets"
-            v-model="brewery.allowsPets"
+            v-model="brewery.isPetFriendly"
             name="allowsPets"
             value="true"
             unchecked-value="false"
@@ -54,7 +54,7 @@
 
           <b-form-checkbox
             id="onsiteBrewing"
-            v-model="brewery.onSiteBrewing"
+            v-model="brewery.hasOnSiteBrewing"
             name="onsiteBrewing"
             value="true"
             unchecked-value="false"
@@ -75,14 +75,14 @@
             <input v-model="brewery.onSiteBrewing" v-bind:value="true" type="checkbox" id="onSiteBrewing" />
             <label for="onSiteBrewing">Does it have on-site brewing? </label> -->
 
-            <b-button variant="primary" id="breweryFormSubmit" type="submit">Submit Brewery</b-button>
+            <b-button v-on:click="addNewBrewery" variant="primary" id="breweryFormSubmit" type="submit">Submit Brewery</b-button>
 
         </b-form>
     </div>
 </template>
 
 <script>
-
+import breweryService from "../services/BreweryService";
 export default({
     setup() {
         
@@ -90,17 +90,31 @@ export default({
     data() {
       return{
         brewery: {
-          name: '',
-          breweryDescription: '',
-          outdoorSeating: false,
+          breweryName: '',
+          description: '',
+          hasOutDoorSeating: false,
           hasFood: false,
-          onSiteBrewing: false
+          hasOnSiteBrewing: false,
+          isPetFriendly: false
         } 
       }
     },
       
     name: "new-brewery-form",
 
+  methods: {
+      addNewBrewery(){
+        breweryService.addBrewery(this.brewery).then(response => {
+          if(response.status == 201){
+            alert("beverage successfully added");
+          }
+        })
+            .catch(error => {
+              console.log(error)
+              alert("beverage was not added")
+            })
+      }
+  }
 })
 </script>
 
