@@ -1,85 +1,136 @@
 <template>
-    <div id="add-beer-div">
-        <form id="NewBeerForm">
-            <label for="beerName">Enter Name of Beer: </label>
-            <input v-model="beer.name" id="beerName" type="text" />
+    <div id="add-beverage-div">
+        <b-form id="NewbeverageForm">
+          <b-form-group
+            id="beverageName"
+            label="Enter Name of beverage:"
+            label-for="name"
+          >
+          <b-form-input
+            id="name"
+            v-model="beverage.name"
+            type= "text"
+            placeholder= "Beverage Name..."
+            required
+          ></b-form-input>
+          </b-form-group>
 
-            <label for="beerDescription">Enter a description of your new beer: </label>
-            <input v-model="beer.beerDescription" id="beerDescription" type="text" />
+          <b-form-group
+            id="beverageDescription"
+            label="Enter a description of the beverage"
+            label-for="description"
+          >
+          <b-form-textarea
+            id="description"
+            v-model="beverage.beverageDescription"
+            type= "text-area"
+            placeholder= "Beverage Description..."
+          ></b-form-textarea>
+          </b-form-group>
 
-            <!-- abv -->
-            <label for="abv">Enter the alcohol by volume(ABV) amount: </label>
-            <input v-model="beer.abv" id="abv" type="text" />
+          <b-form-group
+            id="abv"
+            label="Enter the alcohol by volume(ABV) amount: "
+            label-for="abv"
+          >
+          <b-form-input
+            id="abv"
+            v-model="beverage.abv"
+            type= "text"
+            placeholder= "ABV %"
+            required
+          ></b-form-input>
+          </b-form-group>
 
-            <!-- ibu -->
-            <label for="ibu">Enter the International Bitterness Units(IBU) amount: </label>
-            <input v-model="beer.ibu" id="ibu" type="text" />
+          <b-form-group
+            id="ibu"
+            label="Enter the International Bitterness Units(IBU) amount: "
+            label-for="ibu"
+          >
+          <b-form-input
+            id="ibu"
+            v-model="beverage.ibu"
+            type= "text"
+            placeholder= "IBU #"
+            required
+          ></b-form-input>
+          </b-form-group>
 
-            <!-- type -->
-            <label for="beerType">Enter the type of beer: </label>
-            <input v-model="beer.type" id="beerType" type="text" />
+          <b-form-group
+            id="type"
+            label="Enter the type of beverage: "
+            label-for="type"
+          >
+          <b-form-select v-model="selected" :options="options"></b-form-select>
+          </b-form-group>
 
-            <!-- image doesnt work, havent decided yet-->
+            <!-- image upload doesnt work, havent decided yet
             <label for="img">Select image:</label>
-            <input  type="file" id="img" name="img" accept="image/*">
+            <input  type="file" id="img" name="img" accept="image/*"> -->
 
-            <button v-on:click="addNewBeer" id="beerFormSubmit" type="submit">Submit Beer</button>
+            <b-button variant="primary" v-on:click="addNewbeverage" id="beverageFormSubmit" type="submit">Submit beverage</b-button>
 
-        </form>
+        </b-form>
     </div>
 </template>
 
 <script>
-import beerService from '../services/BeerService'
+import beverageService from '../services/BeverageService'
 export default({
     setup() {
         
     },
     data() {
       return {
-        beer: {
+        beverage: {
           name: '',
-          beerDescription: '',
+          beverageDescription: '',
           abv: '',
           ibu: '',
           type: '',
           image: '',
           availabilty: false
-        }
+        },
+        options: [
+          { value: null, text: 'Please select an option' },
+          { value: 'beer', text: 'Beer' },
+          { value: 'cider', text: 'Cider' },
+          { value: 'Wine', text: 'Wine' },
+          { value: 'NA', text: 'N/A Beverage'}
+        ]
       }
     },
 
-    name: "add-beer-form",
+    name: "add-beverage-form",
     
     methods: {
-      addNewBeer() {
-      beerService.addBeer(this.beer).then(response => {
+      addNewbeverage() {
+      beverageService.addbeverage(this.beverage).then(response => {
         if(response.status == 201) {
-          alert("Beer successfully added");
+          alert("beverage successfully added");
           }
         })
         .catch(error => {
           console.log(error)
-          alert("Beer was not added")
+          alert("beverage was not added")
         })
       }
     },
-      updateBeer() {
-        beerService.updateBeer(this.beer).then(response => {
+      updatebeverage() {
+        beverageService.updatebeverage(this.beverage).then(response => {
           if(response.status == 201) {
-            alert("Beer successfully updated")
+            alert("beverage successfully updated")
           }
         }) 
       },
 
-      deleteBeer() {
-        beerService.deleteBeer(this.beer).then(response => {
+      deletebeverage() {
+        beverageService.deletebeverage(this.beverage).then(response => {
           if(response.status == 201) {
-            alert("Beer Deleted")
+            alert("beverage Deleted")
           }
         })
       },
-
 });
 
 
@@ -88,10 +139,13 @@ export default({
 </script>
 
 <style scoped>
-
-#add-beer-div {
-  
+div {
+  padding: 10px;
 }
 
+
+#beverageFormSubmit{
+  margin-top: 10px;
+}
 
 </style>

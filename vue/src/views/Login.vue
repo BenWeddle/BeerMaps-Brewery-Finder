@@ -34,7 +34,7 @@
         required
       />
       <router-link class="need-an-account" :to="{ name: 'register' }">Need an account?</router-link>
-      <button id="sign-in-button" type="submit">Sign in</button>
+      <b-button variant="primary" id="sign-in-button" type="submit">Sign in</b-button>
     </form>
     <image id="background-image" src="https://heltonbrewing.com/wp-content/uploads/2015/07/Brewery.jpg"></image>
   </div>
@@ -160,6 +160,10 @@ body {
 .home {
   margin-left: 50px;
  
+}
+
+#sign-in-button{
+  margin-top: 10px;
 }
 
 </style>
