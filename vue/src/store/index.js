@@ -19,7 +19,8 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    currentUserRole : ''
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -36,7 +37,11 @@ export default new Vuex.Store({
       localStorage.removeItem('user');
       state.token = '';
       state.user = {};
+      state.currentUserRole = '';
       axios.defaults.headers.common = {};
+    },
+    GET_AUTHORITIES(state, user){
+      state.currentUserRole = user.authorities[0].name;
     }
   }
 })
