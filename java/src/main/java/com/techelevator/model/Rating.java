@@ -3,9 +3,12 @@ package com.techelevator.model;
 import java.time.LocalDate;
 
 public class Rating {
+
+
+    private int ratingId;
     private int id;
     private String type;
-    private int userId;
+    private int reviewerId;
     private int rating;
     private String ratingText;
     private LocalDate date;
@@ -14,14 +17,19 @@ public class Rating {
 
     }
 
-    public Rating(int id, String type, int userId, int rating, String ratingText, LocalDate date) {
+    public Rating(int id, String type, int reviewerId, int rating, String ratingText, LocalDate date, int ratingId) {
         this.id = id;
         this.type = type;
-        this.userId = userId;
+        this.reviewerId = reviewerId;
         this.rating = rating;
         this.ratingText = ratingText;
         this.date = date;
+        this.ratingId = ratingId;
     }
+
+    public int getRatingId() {return ratingId;}
+
+    public void setRatingId(int ratingId) {this.ratingId = ratingId;}
 
     public int getId() {
         return id;
@@ -39,12 +47,12 @@ public class Rating {
         this.type = type;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getReviewerId() {
+        return reviewerId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setReviewerId(int reviewerId) {
+        this.reviewerId = reviewerId;
     }
 
     public int getRating() {

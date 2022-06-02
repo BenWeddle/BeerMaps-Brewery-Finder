@@ -11,7 +11,7 @@ public interface BreweryDao {
 
     Brewery getBreweryById(int breweryId);
 
-    Brewery findBreweryByName(String name);
+    Brewery getBreweryByName(String name);
 
     boolean addBrewery(Brewery brewery, Principal principal);
 

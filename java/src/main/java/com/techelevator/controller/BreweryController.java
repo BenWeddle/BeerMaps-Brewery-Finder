@@ -6,9 +6,11 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.model.Brewery;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -24,22 +26,45 @@ public class BreweryController {
         this.userDao = userDao;
         this.breweryDao = breweryDao;
     }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public boolean addBrewery(@RequestBody Brewery brewery, Principal principal) {
-        boolean success = true;
-
-//        if (isAdmin(userDao.currentUser(principal))){
-//            breweryDao.addBrewery(brewery);
-//            success = true;
-//        }
-
-        breweryDao.addBrewery(brewery, principal);
-        return success;
+        return breweryDao.addBrewery(brewery, principal);
     }
 
-    public boolean isAdmin(User user){
-        return user.getAuthorities().contains("ROLE_ADMIN");
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/all", method = RequestMethod.GET)
+    public List<Brewery> getAllBreweries() {
+        return  breweryDao.listAll();
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/{breweryId}", method = RequestMethod.GET)
+    public Brewery getBreweryById(@PathVariable int breweryId) {
+        return breweryDao.getBreweryById(breweryId);
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/name/{name}", method = RequestMethod.GET)
+    public Brewery getBreweryByName(@PathVariable String name) {
+        return breweryDao.getBreweryByName(name);
+    }
+
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/delete/{breweryId}", method = RequestMethod.DELETE)
+    public boolean deleteBrewery(@PathVariable int breweryId) {
+        return breweryDao.deleteBrewery(breweryId);
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/update", method = RequestMethod.PUT)
+    public boolean updateBrewery(@RequestBody Brewery brewery) {
+        return breweryDao.updateBrewery(brewery);
+    }
 }

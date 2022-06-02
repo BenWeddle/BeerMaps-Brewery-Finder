@@ -47,7 +47,7 @@ public class BreweryDaoJdbc implements BreweryDao{
     }
 
     @Override
-    public Brewery findBreweryByName(String name) {
+    public Brewery getBreweryByName(String name) {
         Brewery brewery = null;
         String sql = "SELECT brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id" +
                 " FROM brewery WHERE name = ? ";
