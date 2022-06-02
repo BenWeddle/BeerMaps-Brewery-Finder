@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import AddBrewery from '../views/AddBrewery.vue'
 import AddBeer from '../views/AddBeer.vue'
+import AdminPage from '../views/AdminPage.vue'
 
 Vue.use(Router)
 
@@ -64,7 +65,13 @@ const router = new Router({
       path: "/addBeer",
       name: "addBeer",
       component: AddBeer
-    }
+    },
+    {
+      path: "/admin",
+      name: "admin-page",
+      component: AdminPage
+    },
+
   ]
 })
 
