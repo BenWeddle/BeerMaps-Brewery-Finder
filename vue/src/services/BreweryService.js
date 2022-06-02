@@ -9,7 +9,7 @@ export default {
     getBreweries() {
         return axios.get('/brewery')
     },
-    
+
     addBrewery(brewery) {
         return axios.post('/brewery/add', brewery)
     },
@@ -22,5 +22,9 @@ export default {
         return axios.delete('/brewery', id)
     },
 
-    
+    getBreweryById(breweryId) {
+        return axios.get(`/brewery/${breweryId}`)
+    }
+
+
 }
