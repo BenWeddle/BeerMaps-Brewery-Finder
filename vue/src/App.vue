@@ -22,11 +22,11 @@ body {
   background-color:rgb(240, 185, 130);
   border-radius: 70px;
   opacity: .9;
-  padding: 15px;
+  padding: 25px;
 }
 
 .home {
-  margin-left: 50px;
+  margin-left: 10px;
  
 }
 </style>
