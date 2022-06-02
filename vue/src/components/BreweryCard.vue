@@ -1,41 +1,41 @@
 <template>
-  <div>
-    <h1>{{ brewery.breweryName }}</h1>
-    <p>{{ brewery.description }}</p>
-    <p>{{ brewery.hasOutdoorSeating }}</p>
-    <p>{{ brewery.hasFood }}</p>
-    <p>{{ brewery.hasOnSiteBrewing }}</p>
-    <p>{{ brewery.isPetFriendly }}</p>
+  <div id="card-container">
+    <h1 class="text-center">{{ brewery.breweryName }}</h1>
+    <p>Description: {{ brewery.description }}</p>
+    <p>Does it have outdoor seating? {{ brewery.hasOutDoorSeating }}</p>
+    <p>Does it have a kitchen? {{ brewery.hasFood }}</p>
+    <p>Do they brew the beer on site? {{ brewery.hasOnSiteBrewing }}</p>
+    <p>Do they allow my lizard? {{ brewery.petFriendly }}</p>
   </div>
 </template>
 
 <script>
-import BreweryService from "../services/BeverageService";
+import BreweryService from "../services/BreweryService";
 export default {
-  name: "brewery-card",
-  components: {},
-
+  name: 'brewery-card',
   data() {
     return {
       brewery: {
-        breweryName: "",
-        description: "",
-        hasOutdoorSeating: "",
-        hasFood: "",
-        hasOnSiteBrewing: "",
-        isPetFriendly: "",
-      },
+        breweryName: '',
+        description: '',
+        hasOutDoorSeating: '',
+        hasFood: '',
+        hasOnSiteBrewing: '',
+        petFriendly: '',
+      }
     };
   },
   created() {
-    BreweryService.getBreweryById(this.$store.state.testBreweryId).then(
-      (response) => {
-        this.brewery.breweryName = response.data.breweryName;
+    BreweryService.getBreweryById(2).then(response => {
+        this.brewery = response.data;
       }
     );
   },
 };
 </script>
 
-<style>
+
+<style scoped>
+
+
 </style>
