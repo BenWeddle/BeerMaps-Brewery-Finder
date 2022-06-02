@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Home</h1>
+    <h1>Add New Brewery</h1>
     <new-brewery-form></new-brewery-form>
   </div>
 </template>
