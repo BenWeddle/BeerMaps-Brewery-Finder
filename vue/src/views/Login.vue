@@ -50,8 +50,7 @@ export default {
     return {
       user: {
         username: "",
-        password: "",
-        image: 'https://mymichiganbeach.com/wp-content/uploads/2022/03/michigan-brew.jpg'
+        password: ""
       },
       invalidCredentials: false
     };
@@ -64,6 +63,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
+            this.$store.commit("GET_AUTHORITIES", response.data.user);
             this.$router.push("/");
           }
         })
