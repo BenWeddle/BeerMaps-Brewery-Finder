@@ -5,6 +5,8 @@
         <router-link to="/addBrewery">Add New Brewery</router-link>
         <br />
         <router-link to="/addBeer">Add New Beer</router-link>
+        <br />
+        <router-link to="/admin">Go to Admin Page</router-link>
     </div>
 </template>
 

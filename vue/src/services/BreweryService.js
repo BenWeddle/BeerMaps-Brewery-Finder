@@ -1,13 +1,9 @@
 import axios from 'axios';
 
-// const http = axios.create({
-//     baseURL: 'http://localhost:8080'
-// });
 
 export default {
-    //URL not active yet
     getBreweries() {
-        return axios.get('/brewery')
+        return axios.get('/brewery/all')
     },
 
     addBrewery(brewery) {
@@ -24,6 +20,10 @@ export default {
 
     getBreweryById(breweryId) {
         return axios.get(`/brewery/${breweryId}`)
+    },
+
+    getBreweryByBrewerId(brewerId){
+        return axios.get(`/brewery/brewer/${brewerId}`)
     }
 
 

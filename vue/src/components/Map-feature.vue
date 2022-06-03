@@ -24,6 +24,8 @@
             <h4>Please select a location</h4>
             <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
             <button @click="addLocationMarker">Add</button>
+            <br />
+            <!-- <p v-for="brewery in breweries" v-bind:key="brewery.id">{{brewery.breweryName}}</p> -->
         </div>
     </div>
 </template>
@@ -33,6 +35,7 @@
 export default({
     setup() {},
     name: 'map',
+    props: ['breweries'],
     data() {
         return {
             center: {
@@ -41,14 +44,16 @@ export default({
             },
             locationMarkers: [],
             locPlaces: [],
-            existingPlace: null
-
+            existingPlace: null,
         }
     },
     created() {
         this.locateGeoLocation();
+        this.dropPinsForBreweries();
     },
-    computed: {},
+    computed: {
+        
+    },
     methods: {
         locateGeoLocation: function() {
             navigator.geolocation.getCurrentPosition(res => {
@@ -72,7 +77,12 @@ export default({
                 this.center = marker
                 this.existingPlace = null
             }
+        },
+        dropPinsForBreweries() {
+            this.breweries.forEach(this.addLocationMarker)
+
         }
+        
     }
 
 })
