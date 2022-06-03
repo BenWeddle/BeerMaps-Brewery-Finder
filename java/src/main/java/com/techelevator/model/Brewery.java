@@ -11,11 +11,15 @@ public class Brewery {
     private boolean hasFood;
     private String phoneNumber;
     private String description;
+    private double latitude;
+    private double longitude;
 
     public Brewery(){
     }
 
-    public Brewery(int breweryId, String breweryName, int brewerId, int addressId, boolean hasOnSiteBrewing, boolean hasOutDoorSeating, boolean isPetFriendly, boolean hasFood, String phoneNumber, String description) {
+    public Brewery(int breweryId, String breweryName, int brewerId, int addressId,
+                   boolean hasOnSiteBrewing, boolean hasOutDoorSeating, boolean isPetFriendly, boolean hasFood,
+                   String phoneNumber, String description, double latitude, double longitude) {
         this.breweryId = breweryId;
         this.breweryName = breweryName;
         this.brewerId = brewerId;
@@ -26,6 +30,8 @@ public class Brewery {
         this.hasFood = hasFood;
         this.phoneNumber = phoneNumber;
         this.description = description;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
     public String getDescription() {
         return description;
@@ -104,6 +110,22 @@ public class Brewery {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
 }
