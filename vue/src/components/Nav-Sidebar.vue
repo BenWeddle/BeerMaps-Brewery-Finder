@@ -1,6 +1,6 @@
 <template>
     <div id="navbar">
-        <h3>Navigation</h3>
+        <h3 id="nav-title">Navigation</h3>
 
         <router-link to="/addBrewery">Add New Brewery</router-link>
         <br />
@@ -22,5 +22,14 @@ export default({
     border: solid black 1px;
     padding: 5px;
     border-radius: 25px;
+    background-color: #ebe6cf;
+}
+
+#nav-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: underline;
+    font-style:italic;
 }
 </style>

@@ -1,16 +1,10 @@
 <template>
     <div id="map">
-<<<<<<< HEAD
-<<<<<<< HEAD
-        <h2>Brewery Map</h2>
-=======
->>>>>>> main
-=======
+
         <label>
         
       </label>
 
->>>>>>> main
         <gmap-map
             :zoom="14"
             :center="center"
@@ -27,7 +21,7 @@
 
         </gmap-map>
         <div class="filter">
-            <h4>Filter boxes and search stuff</h4>
+            <h4>Please select a location</h4>
             <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
             <button @click="addLocationMarker">Add</button>
         </div>
@@ -86,14 +80,20 @@ export default({
 
 <style scoped>
 #map{
-    border: solid black 3px;
-    margin-top: 2px;
+    
+    margin-top: 0px;
     display: flex;
-    gap: 5px;
+    
 }
 
 .filter {
-    background-color: white
+    background-color: #ebe6cf;
+    border-bottom-right-radius: 25px;
+    border-left: solid black 1px;
+    border-right: solid black 1px;
+    border-bottom: solid black 1px;
+    padding: 5px;
 }
+
     
 </style>

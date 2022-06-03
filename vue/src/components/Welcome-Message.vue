@@ -1,10 +1,6 @@
 <template>
     <div id="welcome">
-<<<<<<< HEAD
-        <h3>Welcome</h3>
-=======
         <h3>Welcome {{getUserName}}! Let's find you a cold one!</h3>
->>>>>>> main
     </div>
 </template>
 
@@ -25,7 +21,12 @@ export default({
 #welcome {
     display: flex;
     border: solid black 1px;
-    border-radius: 25px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
     padding: 5px;
+    background-color: #ebe6cf;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
 }
 </style>

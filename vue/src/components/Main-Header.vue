@@ -1,6 +1,5 @@
 <template>
     <div id="header">
-        <h2>Home</h2>
         <h1>BeerMaps</h1>
 
         <b-dropdown text="Menu" split split-to="/" class="m-2" >
@@ -37,11 +36,12 @@ export default({
     font-style:italic;
 }
 #__BVID__11{
-  border: 5px solid red;
+  
+  
 }
 
 h1 {
-    padding-left: 150px;
+    padding-left: 40%;
     font-size: 500%;
 }
 
