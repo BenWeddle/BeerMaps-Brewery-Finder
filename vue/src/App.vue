@@ -51,7 +51,7 @@ html {
 }
 
 body {
-  background-color:rgb(240, 185, 130);
+  background-color:rgb(102, 69, 37);
   border-radius: 70px;
   opacity: .9;
   padding: 25px;
