@@ -23,8 +23,10 @@ public class BreweryDaoJdbc implements BreweryDao{
     @Override
     public List<Brewery> listAll() {
         List<Brewery> breweriesList = new ArrayList<>();
-        String sql = "SELECT brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id" +
-                " FROM brewery ";
+        String sql = "SELECT brewery.brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
+                "FROM brewery " +
+                "JOIN brewery_address_info bai on brewery.brewery_id = bai.brewery_id " +
+                "JOIN address_info ai on ai.address_id = bai.address_id";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()){
@@ -37,8 +39,11 @@ public class BreweryDaoJdbc implements BreweryDao{
     @Override
     public Brewery getBreweryById(int breweryId) {
         Brewery brewery = null;
-        String sql = "SELECT brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id" +
-                " FROM brewery WHERE brewery_id = ? ";
+        String sql = "SELECT brewery.brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
+                " FROM brewery " +
+                "JOIN brewery_address_info bai on brewery.brewery_id = bai.brewery_id " +
+                "JOIN address_info ai on ai.address_id = bai.address_id " +
+                "WHERE bai.brewery_id = ? ";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
         if(results.next()) {
             brewery = mapRowToBrewery(results);
@@ -49,8 +54,11 @@ public class BreweryDaoJdbc implements BreweryDao{
     @Override
     public Brewery getBreweryByBrewerId(int brewerId) {
         Brewery brewery = null;
-        String sql = "SELECT brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id" +
-                " FROM brewery WHERE brewer_id = ? ";
+        String sql = "SELECT brewery.brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
+                " FROM brewery " +
+                "JOIN brewery_address_info bai on brewery.brewery_id = bai.brewery_id " +
+                "JOIN address_info ai on ai.address_id = bai.address_id " +
+                "WHERE brewer_id = ? ";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, brewerId);
         if(results.next()) {
             brewery = mapRowToBrewery(results);
@@ -61,8 +69,11 @@ public class BreweryDaoJdbc implements BreweryDao{
     @Override
     public Brewery getBreweryByName(String name) {
         Brewery brewery = null;
-        String sql = "SELECT brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id" +
-                " FROM brewery WHERE name = ? ";
+        String sql = "SELECT brewery.brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
+                " FROM brewery " +
+                "JOIN brewery_address_info bai on brewery.brewery_id = bai.brewery_id " +
+                "JOIN address_info ai on ai.address_id = bai.address_id " +
+                "WHERE name = ? ";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name);
         if(results.next()) {
             brewery = mapRowToBrewery(results);
@@ -106,8 +117,11 @@ public class BreweryDaoJdbc implements BreweryDao{
         brewery.setPetFriendly(sqlRowSet.getBoolean("pet_friendly"));
         brewery.setHasFood(sqlRowSet.getBoolean("serves_food"));
         brewery.setBrewerId(sqlRowSet.getInt("brewer_id"));
+        brewery.setAddressId(sqlRowSet.getInt("address_id"));
+        brewery.setPhoneNumber(sqlRowSet.getString("phone_number"));
+        brewery.setLatitude(sqlRowSet.getDouble("latitude"));
+        brewery.setLongitude(sqlRowSet.getDouble("longitude"));
         return brewery;
-        //Need to join tables to set phone number and address_id
     }
 
 }

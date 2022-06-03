@@ -1,14 +1,13 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users, brewery, address_info, beverage, brewery_beverage, brewery_address_info, rating;
-DROP SEQUENCE IF EXISTS seq_user_id, seq_rating_id;
+DROP SEQUENCE IF EXISTS seq_user_id;
 
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
   NO MAXVALUE
   NO MINVALUE
   CACHE 1;
-
 
 CREATE TABLE users (
 	user_id int DEFAULT nextval('seq_user_id'::regclass) NOT NULL,
@@ -35,7 +34,9 @@ CREATE TABLE brewery (
 CREATE TABLE address_info (
   address_id serial,
   address varchar(300),
-  phone_number varchar(20),	
+  phone_number varchar(20),
+  latitude numeric(10,8),
+  longitude numeric(10,8),
   CONSTRAINT PK_address_info PRIMARY KEY (address_id)
 );
 
@@ -65,12 +66,6 @@ CREATE TABLE brewery_address_info (
     CONSTRAINT FK_brewery_address_info_address FOREIGN KEY (address_id) REFERENCES address_info(address_id)
 );
 
-CREATE SEQUENCE seq_rating_id
- INCREMENT BY 1
-  NO MAXVALUE
-  NO MINVALUE
-  CACHE 1;
-
 CREATE TABLE rating (
 	rating_id serial,
 	rating_text VarChar (500) NOT NULL,
@@ -82,7 +77,7 @@ CREATE TABLE rating (
     reviewer_id int CONSTRAINT fk_users REFERENCES users(user_id),
     CONSTRAINT PK_rating PRIMARY KEY (rating_id)
 );
-	
+
 
 
 
@@ -133,46 +128,46 @@ INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_fo
 VALUES ('Zaftig Brewing Co.', 'Established in 2013, Zaftig Brewing Company is Worthington''s only craft brewery, offering an extensive array of selections. Well-known in Columbus for our high-gravity, full-bodied ales, we aren''t afraid to push the boundaries of what great craft beer can be.', true, false, true, false, 3);
 
 
-INSERT INTO address_info
-VALUES(1, '714 S High St', '614-725-2070');
-INSERT INTO address_info
-VALUES(2,'467 N High St', '614-228-2537');
-INSERT INTO address_info
-VALUES(3,'1175 N High S', '614-908-3053');
-INSERT INTO address_info
-VALUES(4,'2555 Harrison Rd', '614-224-3626');
-INSERT INTO address_info
-VALUES(5,'2808 N. High St', '614-732-4186');
-INSERT INTO address_info
-VALUES(6,'161 N High St', '614-228-0500');
-INSERT INTO address_info
-VALUES(7,'909 W 5th Ave', '614-456-7074');
-INSERT INTO address_info
-VALUES(8,'800 Goodale Blvd', '614-294-2437');
-INSERT INTO address_info
-VALUES(9,'850 N 4th St', '614-104-4033');
-INSERT INTO address_info
-VALUES(10,'1765 W 3rd Ave', '614-817-1515');
-INSERT INTO address_info
-VALUES(11,'424 W Town St', '216-956-2634');
-INSERT INTO address_info
-VALUES(12,'1125 Cleveland Ave', '614-226-3244');
-INSERT INTO address_info
-VALUES(13,'745 Taylor Ave', '614-887-7687');
-INSERT INTO address_info
-VALUES(14,'2365 W Dublin Granville Rd', '614-389-3864');
-INSERT INTO address_info
-VALUES(15,'1101 N 4th St', '614-817-1515');
-INSERT INTO address_info
-VALUES(16,'2419 Scioto Harper Dr', '614-719-9654');
-INSERT INTO address_info
-VALUES(17,'1130 Dublin Rd', '614-485-0227');
-INSERT INTO address_info
-VALUES(18,'8757 Sancus Blvd', '614-485-0227');
-INSERT INTO address_info
-VALUES(19,'215 N 4th St', '614-429-3936');
-INSERT INTO address_info
-VALUES(20,'7020 Huntley Rd Ste A', '614-636-2537');
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('714 S High St', '614-725-2070', 39.9476, -82.99774);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('467 N High St', '614-228-2537', 39.9719408, -83.0027669);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('1175 N High S', '614-908-3053', 39.98637, -83.00579);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('2555 Harrison Rd', '614-224-3626', 39.9675898, -83.0692897);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('2808 N. High St', '614-732-4186', 40.01939, -83.01185);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('161 N High St', '614-228-0500', 39.9656697, -83.0017892);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('909 W 5th Ave', '614-456-7074', 39.988002, -83.030429);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('800 Goodale Blvd', '614-294-2437', 39.974313, -83.025737);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('850 N 4th St', '614-104-4033', 39.9803665, -83.0002482);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('1765 W 3rd Ave', '614-817-1515', 39.9852813, -83.0529324);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('424 W Town St', '216-956-2634', 39.95787195, -83.01150763);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('1125 Cleveland Ave', '614-226-3244', 39.992787, -82.982658);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('745 Taylor Ave', '614-887-7687', 39.981855, -82.960769);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('2365 W Dublin Granville Rd', '614-389-3864', 40.090144, -83.05232);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('1101 N 4th St', '614-817-1515', 39.985351, -83.0019404);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('2419 Scioto Harper Dr', '614-719-9654', 39.96723751, -83.06626767);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('1130 Dublin Rd', '614-485-0227', 39.973715, -83.047935);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('8757 Sancus Blvd', '614-485-0227', 40.1473396, -83.004836);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('215 N 4th St', '614-429-3936', 39.9577586, -82.99517953);
+INSERT INTO address_info (address, phone_number, latitude, longitude)
+VALUES('7020 Huntley Rd Ste A', '614-636-2537', 40.1063329, -83.0003532);
 
 INSERT INTO brewery_address_info (brewery_id, address_id)
 VALUES(1,1);

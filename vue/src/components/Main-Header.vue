@@ -1,14 +1,14 @@
 <template>
     <div id="header">
+        <router-link class="home" v-bind:to="{ name: 'home' }"><h1>Home</h1></router-link>
         <h1>BeerMaps</h1>
-        <b-dropdown text="Menu" split split-to="/" class="m-2" >
+
+        <b-dropdown text="Menu">
             <template #button-content>
-                <div>
-                    <b-avatar variant="primary"></b-avatar>
-                </div>
+                <b-avatar variant="primary"></b-avatar>
             </template>
             <b-dropdown-item href="#">An item</b-dropdown-item>
-            <b-dropdown-item href="#">Another item</b-dropdown-item>
+            <b-dropdown-item><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></b-dropdown-item>
         </b-dropdown>
 
     </div>
@@ -34,10 +34,15 @@ h1 {
     padding-left: 40%;
     font-size: 500%;
 }
+<<<<<<< HEAD
 
 div {
     background-color: white;
     
+=======
+#home {
+    all: none,
+>>>>>>> main
 }
 
 
