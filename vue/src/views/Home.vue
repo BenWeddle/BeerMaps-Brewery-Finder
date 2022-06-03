@@ -23,8 +23,8 @@ export default {
   },
   created() {
     BreweryService.getBreweries().then(response => {
-      const indivBrewery = response.data
-        this.listOfBreweries = indivBrewery
+      const groupOfBreweries = response.data
+      this.listOfBreweries = groupOfBreweries
       })
 
       BreweryService.getBreweryByBrewerId(this.getBrewerID).then(response => {
