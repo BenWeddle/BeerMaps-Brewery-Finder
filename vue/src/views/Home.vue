@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <welcome-message></welcome-message>
-    <AddGoogleMap></AddGoogleMap>
+    <AddGoogleMap v-bind:breweries="listOfBreweries"></AddGoogleMap>
   </div>
 </template>
 
@@ -16,17 +16,27 @@ export default {
     AddGoogleMap,
     WelcomeMessage,
   },
+  data(){
+    return {
+      listOfBreweries: [],
+    }
+  },
+  created() {
+    BreweryService.getBreweries().then(response => {
+      const indivBrewery = response.data
+        this.listOfBreweries = indivBrewery
+      })
+
+      BreweryService.getBreweryByBrewerId(this.getBrewerID).then(response => {
+        this.$store.commit('SET_BREWERY_ID_FROM_BREWER', response.data.breweryId)
+      })
+  },
   computed: {
     getBrewerID() {
       return this.$store.state.user.id
     }
-  },
-  created() {
-    BreweryService.getBreweryByBrewerId(this.getBrewerID).then(response => {
-      this.$store.commit('SET_BREWERY_ID_FROM_BREWER', response.data.breweryId)
-    })
   }
-
+  
 };
 </script>
 

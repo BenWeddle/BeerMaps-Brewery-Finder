@@ -2,9 +2,8 @@ import axios from 'axios';
 
 
 export default {
-    //URL not active yet
     getBreweries() {
-        return axios.get('/brewery')
+        return axios.get('/brewery/all')
     },
 
     addBrewery(brewery) {
