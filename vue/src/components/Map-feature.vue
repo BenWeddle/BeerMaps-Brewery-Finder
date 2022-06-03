@@ -1,6 +1,6 @@
 <template>
     <div id="map">
-        <h2>This is the Map-feature component</h2>
+        <h2>Brewery Map</h2>
         <gmap-map
             :zoom="14"
             :center="center"
@@ -46,6 +46,15 @@ export default({
 #map{
     border: solid black 3px;
     margin-top: 2px;
+    border-radius: 25px;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(250, 74, 74);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-style:italic;
 }
     
 </style>

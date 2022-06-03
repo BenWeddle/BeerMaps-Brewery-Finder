@@ -21,5 +21,6 @@ export default({
 #navbar {
     border: solid black 1px;
     padding: 5px;
+    border-radius: 25px;
 }
 </style>
