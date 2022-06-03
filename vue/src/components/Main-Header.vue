@@ -27,22 +27,19 @@ export default({
 #header {
     display: flex;
     justify-content: space-between;
-    font-family:cursive;
+    
 }
 
 h1 {
-    padding-left: 40%;
+    padding-right: 7%;
     font-size: 500%;
+    font-style: italic
 }
-<<<<<<< HEAD
-
-div {
-    background-color: white;
+.home {
+    font-size: xx-small;
+    padding-top: 15px;
+    padding-left: 55px
     
-=======
-#home {
-    all: none,
->>>>>>> main
 }
 
 

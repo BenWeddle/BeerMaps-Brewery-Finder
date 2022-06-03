@@ -33,7 +33,7 @@ export default({
     align-items: center;
     justify-content: center;
     text-decoration: underline;
-    font-family:cursive;
+    font-style: italic;
 }
 
 

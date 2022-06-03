@@ -103,6 +103,7 @@ export default({
     border-right: solid black 1px;
     border-bottom: solid black 1px;
     padding: 5px;
+    font-style: italic;
 }
 
     
