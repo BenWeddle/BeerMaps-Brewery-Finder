@@ -1,12 +1,14 @@
 <template>
     <div id="map">
-        <h2>This is the Map-feature component</h2>
         <gmap-map
             :zoom="14"
             :center="center"
             style= "width:100%; height: 600px;"
         >
         </gmap-map>
+        <div class="filter">
+            <h4>Filter boxes and search stuff</h4>
+        </div>
     </div>
 </template>
 
@@ -46,6 +48,12 @@ export default({
 #map{
     border: solid black 3px;
     margin-top: 2px;
+    display: flex;
+    gap: 5px;
+}
+
+.filter {
+    background-color: white
 }
     
 </style>
