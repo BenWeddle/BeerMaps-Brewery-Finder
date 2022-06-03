@@ -25,7 +25,7 @@ export default ({
   },
   computed: {
     isLoginPage(){
-      return this.$route.name === 'login'
+      return this.$route.name === 'login' || this.$route.name === 'register'
     },
     vertical(){
       if (this.isLoginPage === true){
