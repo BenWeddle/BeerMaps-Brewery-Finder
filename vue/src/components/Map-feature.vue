@@ -1,12 +1,18 @@
 <template>
     <div id="map">
+<<<<<<< HEAD
         <h2>Brewery Map</h2>
+=======
+>>>>>>> main
         <gmap-map
             :zoom="14"
             :center="center"
             style= "width:100%; height: 600px;"
         >
         </gmap-map>
+        <div class="filter">
+            <h4>Filter boxes and search stuff</h4>
+        </div>
     </div>
 </template>
 
@@ -46,15 +52,12 @@ export default({
 #map{
     border: solid black 3px;
     margin-top: 2px;
-    border-radius: 25px;
-    padding: 7px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(250, 74, 74);
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-style:italic;
+    gap: 5px;
+}
+
+.filter {
+    background-color: white
 }
     
 </style>

@@ -69,7 +69,7 @@ body {
 
 #vertical{
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 6fr;
   gap: 10px;
 }
 
