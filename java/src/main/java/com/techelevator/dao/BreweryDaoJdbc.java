@@ -47,6 +47,18 @@ public class BreweryDaoJdbc implements BreweryDao{
     }
 
     @Override
+    public Brewery getBreweryByBrewerId(int brewerId) {
+        Brewery brewery = null;
+        String sql = "SELECT brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id" +
+                " FROM brewery WHERE brewer_id = ? ";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, brewerId);
+        if(results.next()) {
+            brewery = mapRowToBrewery(results);
+        }
+        return brewery;
+    }
+
+    @Override
     public Brewery getBreweryByName(String name) {
         Brewery brewery = null;
         String sql = "SELECT brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id" +
@@ -81,6 +93,8 @@ public class BreweryDaoJdbc implements BreweryDao{
         return jdbcTemplate.update(sql, brewery.getBreweryName(), brewery.getDescription(), brewery.isHasOutDoorSeating(),
                 brewery.isPetFriendly(), brewery.isHasFood(), brewery.isHasOnSiteBrewing(), brewery.getBrewerId() , brewery.getBreweryId()) == 0;
     }
+
+
     public Brewery mapRowToBrewery(SqlRowSet sqlRowSet) {
         Brewery brewery = new Brewery();
 

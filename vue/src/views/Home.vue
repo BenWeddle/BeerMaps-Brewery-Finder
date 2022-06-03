@@ -8,7 +8,7 @@
 <script>
 import AddGoogleMap from "../components/Map-feature.vue"
 import WelcomeMessage from "../components/Welcome-Message.vue"
-import BreweryService from "../services/BreweryService"
+import BreweryService from "../services/BreweryService";
 
 export default {
   name: "home",
@@ -24,9 +24,19 @@ export default {
   created() {
     BreweryService.getBreweries().then(response => {
       const indivBrewery = response.data
-      this.listOfBreweries = indivBrewery
-      }
-    )}
+        this.listOfBreweries = indivBrewery
+      })
+
+      BreweryService.getBreweryByBrewerId(this.getBrewerID).then(response => {
+        this.$store.commit('SET_BREWERY_ID_FROM_BREWER', response.data.breweryId)
+      })
+  },
+  computed: {
+    getBrewerID() {
+      return this.$store.state.user.id
+    }
+  }
+  
 };
 </script>
 

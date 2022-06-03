@@ -22,7 +22,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     currentUserRole : '',
-    testBreweryId: 2,
+    breweryIdFromBrewer: 0,
     searchCity: '',
   },
   mutations: {
@@ -45,6 +45,9 @@ export default new Vuex.Store({
     },
     GET_AUTHORITIES(state, user){
       state.currentUserRole = user.authorities[0].name;
+    },
+    SET_BREWERY_ID_FROM_BREWER(state, breweryId){
+      state.breweryIdFromBrewer = breweryId;
     }
   }
 })
