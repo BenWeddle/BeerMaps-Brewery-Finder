@@ -43,17 +43,17 @@ export default ({
 <style>
 html {
  
-  margin-left: 7%;
-  margin-right: 7%;
+  margin-left: 5%;
+  margin-right: 5%;
   /*background-image: url(https://wallpaperboat.com/wp-content/uploads/2020/10/30/58635/beer-04.jpg);*/
-  background-color: #EAE2B7;
+  background-color: white;
   /*background-position: center;*/
   /*background-position-y: 0px;*/
 }
 
 body {
   /*background-color:rgb(240, 185, 130);*/
-  background-color: #EAE2B7;
+  background-color: white;
   border-radius: 70px;
   /*opacity: .9;*/
   /*padding: 25px;*/
@@ -64,7 +64,7 @@ body {
 }
 
 #app{
-  background-color: #EAE2B7;
+  background-color: white;
 }
 
 #vertical{

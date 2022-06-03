@@ -24,7 +24,7 @@ export default({
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     padding: 5px;
-    background-color: #ebe6cf;
+    background-color: #8ca4b8;
     align-items: center;
     justify-content: center;
     font-style: italic;

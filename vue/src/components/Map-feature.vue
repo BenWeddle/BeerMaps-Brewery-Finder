@@ -97,7 +97,7 @@ export default({
 }
 
 .filter {
-    background-color: #ebe6cf;
+    background-color: #8ca4b8;
     border-bottom-right-radius: 25px;
     border-left: solid black 1px;
     border-right: solid black 1px;

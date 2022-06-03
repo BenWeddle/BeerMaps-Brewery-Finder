@@ -24,7 +24,8 @@ export default({
     border: solid black 1px;
     padding: 5px;
     border-radius: 25px;
-    background-color: #ebe6cf;
+    background-color: #8ca4b8;
+    
 }
 
 #nav-title {
@@ -32,6 +33,8 @@ export default({
     align-items: center;
     justify-content: center;
     text-decoration: underline;
-    font-style:italic;
+    font-family:cursive;
 }
+
+
 </style>
