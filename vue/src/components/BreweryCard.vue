@@ -6,6 +6,7 @@
     <p>Does it have a kitchen? {{ brewery.hasFood }}</p>
     <p>Do they brew the beer on site? {{ brewery.hasOnSiteBrewing }}</p>
     <p>Do they allow my lizard? {{ brewery.petFriendly }}</p>
+    
   </div>
 </template>
 
@@ -25,8 +26,13 @@ export default {
       }
     };
   },
+  computed: {
+    getBrewerID() {
+        return this.$store.state.user.id
+    }
+  },
   created() {
-    BreweryService.getBreweryById(2).then(response => {
+    BreweryService.getBreweryById(this.getBrewerID).then(response => {
         this.brewery = response.data;
       }
     );

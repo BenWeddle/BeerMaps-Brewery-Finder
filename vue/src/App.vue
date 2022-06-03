@@ -43,28 +43,34 @@ export default ({
 <style>
 html {
  
-  margin-left: 500px;
-  margin-right: 500px;
-  background-image: url(https://wallpaperboat.com/wp-content/uploads/2020/10/30/58635/beer-04.jpg);
-  background-position: center;
-  background-position-y: 0px;
+  margin-left: 7%;
+  margin-right: 7%;
+  /*background-image: url(https://wallpaperboat.com/wp-content/uploads/2020/10/30/58635/beer-04.jpg);*/
+  background-color: #EAE2B7;
+  /*background-position: center;*/
+  /*background-position-y: 0px;*/
 }
 
 body {
-  background-color:rgb(102, 69, 37);
+  /*background-color:rgb(240, 185, 130);*/
+  background-color: #EAE2B7;
   border-radius: 70px;
-  opacity: .9;
-  padding: 25px;
+  /*opacity: .9;*/
+  /*padding: 25px;*/
 }
 
 .home {
   margin-left: 10px;
- 
 }
+
+#app{
+  background-color: #EAE2B7;
+}
+
 #vertical{
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 20px;
+  grid-template-columns: 1fr 4fr;
+  gap: 10px;
 }
 
 </style>
