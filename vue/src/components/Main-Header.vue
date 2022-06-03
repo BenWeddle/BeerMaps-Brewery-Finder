@@ -3,7 +3,7 @@
         <h1>Home</h1>
         <h1>BeerMaps</h1>
 
-        <b-dropdown split split-to="/" text="Example" class="m-2">
+        <b-dropdown text="Menu" split split-to="/" class="m-2" >
             <template #button-content>
                 <div>
                     <b-avatar variant="primary"></b-avatar>
@@ -34,4 +34,11 @@ export default({
     display: flex;
     justify-content: space-between;
 }
+#__BVID__11{
+  border: 5px solid red;
+}
+
+
+
+
 </style>
