@@ -31,16 +31,12 @@ CREATE TABLE brewery (
     CONSTRAINT FK_brewery_brewer_id FOREIGN KEY (brewer_id) REFERENCES users(user_id)
 );
 
+
 CREATE TABLE address_info (
   address_id serial,
-  city_name varchar(30) NOT NULL,
-  zip_code int NOT NULL,
-  state_name varchar(30) NOT NULL,
-  street_name varchar(30) NOT NULL,
-  street_number int NOT NULL,
-  phone_number varchar(20),
-  CONSTRAINT PK_address_info PRIMARY KEY (address_id),
-  CONSTRAINT UQ_state_name UNIQUE (state_name)
+  address varchar(300),
+  phone_number varchar(20),	
+  CONSTRAINT PK_address_info PRIMARY KEY (address_id)
 );
 
 CREATE TABLE beverage (
@@ -95,6 +91,129 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 INSERT INTO users (username, password_hash, role)
 VALUES ('testBrewer', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_BREWER');
 
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES ('Antiques On High', 'As the sister brewery to Seventh Son Brewing, AoH focuses on the production of sour and wild beers as well as hazy hop-forward IPAs and pale ales.', true, false, true, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES ('Barleys Brewing Company','Barleys Brewing Company is Columbus oldest operating Brewpub. Established in 1992, we offer a variety of award winning ales paired with elevated pub fare', false, false, true, true, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing,brewer_id)
+VALUES('Brewdog Short North & Kennels', ' Our epic brewery in the USA is not only a brewery and taproom serving up cutting-edge brews, but also home to the world''s first craft beer hotel', true, true, true, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Columbus Brewing Co', 'Columbus Brewing Company is an independent craft brewery dedicated to exploring the flavors of American hops. Best known for Columbus IPA and Bodhi, we also enjoy the subtleties of German-style lagers, the intense characteristics of barrel aged beers and everything in between.', false, false, true, true, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Derive Brewing company', 'Located in Columbus, Ohio, Derive Brewing Company specializes in small batched hazy IPAs and saisons', true, false, true, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Elevator Brewery and Draught Haus', 'The Elevator Brewery & Draught Haus is a craft bar, micro-brewery, and chef driven restaurant that has been located in one of the most historic buildings, the Columbia building, in downtown Columbus for the last twenty years', false,false, true, false,3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Endeavor Brewing Company', 'In 2020 Endeavor became central Ohio’s first Brewstillery. Distilling and aging spirits on site, we released our clear spirits – Rum, Botanical Gin, Dry Gin, and Vodka – in 2020, and our first aged spirits – Cask Rum, Cask Gin, Malt Whisky, and Bourbon – in 2022.', true, false, true, true, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Hofbrauhaus Columbus', 'At Hofbräuhaus, we’re proud to have continued that tradition through the centuries – from the founding of our original brewery in Munich in 1589, to every Hofbräuhaus location around the world today', true, false, true, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Hoof Hearted Brewing', 'Relaxed brewery for house ales, stouts & elevated American pub fare in an airy, industrial venue.', true, true, true, true, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Knotty Pine Brewing', 'Casual brewpub serving American fare along with house-brewed beers & handcrafted cocktails',true, false, true, true, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Land-Grant Brewing Company', 'Production brewery & taproom located downtown in the historic Franklinton neighborhood of Columbus, featuring a sprawling outdoor beer garden and rotating food trucks.', true, true, true, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('North High Brewing', 'North High Brewing was founded in 2011 by a couple of guys who were passionate about great beer and fun times, and we opened our doors here in 2012 as just the 7th brewery in Central Ohio', true, false, true, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Pretentious Barrel House','Established in October of 2017, Pretentious is the first brewery in Columbus to specialize exclusively in barrel-aged sour ales.', true, true, false, true,3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Random Precision Brewing Company', 'An all wild and sour brewery with an open and inviting taproom', false, true, false, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Seventh Son Brewing Co', 'Seventh Son Brewing has been producing exceptional beers at the intersection of 4th & 4th in Columbus’ historic Italian Village since April of 2013.', true, false, true, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Sideswipe Brewing', 'After years of home brewing not yet famous Craig opened Sideswipe Brewing in 2013 to share his passion for brewing and naming this marvelous venture Sideswipe', true, true, false, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Smokehouse Brewing', 'Smokehouse Brewing Company is a community place where one feels at home, no matter where home happens to be.', true, false, true, true, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Spires Social Brewing Co.', 'Family owned craft brewery with on-site production, taproom, full bar, featuring craft beer and soda.', true, true, false, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES('Wolfs Ridge Brewing', 'Established in 2013, Wolf’s Ridge has grown into one of Columbus’ premier dining and drinking destinations, winning numerous local and national awards for their food and drink programs that have become synonymous with quality, inventiveness, and approachability.', true, false, true, false, 3);
+INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
+VALUES ('Zaftig Brewing Co.', 'Established in 2013, Zaftig Brewing Company is Worthington''s only craft brewery, offering an extensive array of selections. Well-known in Columbus for our high-gravity, full-bodied ales, we aren''t afraid to push the boundaries of what great craft beer can be.', true, false, true, false, 3);
+
+
+INSERT INTO address_info
+VALUES(1, '714 S High St', '614-725-2070');
+INSERT INTO address_info
+VALUES(2,'467 N High St', '614-228-2537');
+INSERT INTO address_info
+VALUES(3,'1175 N High S', '614-908-3053');
+INSERT INTO address_info
+VALUES(4,'2555 Harrison Rd', '614-224-3626');
+INSERT INTO address_info
+VALUES(5,'2808 N. High St', '614-732-4186');
+INSERT INTO address_info
+VALUES(6,'161 N High St', '614-228-0500');
+INSERT INTO address_info
+VALUES(7,'909 W 5th Ave', '614-456-7074');
+INSERT INTO address_info
+VALUES(8,'800 Goodale Blvd', '614-294-2437');
+INSERT INTO address_info
+VALUES(9,'850 N 4th St', '614-104-4033');
+INSERT INTO address_info
+VALUES(10,'1765 W 3rd Ave', '614-817-1515');
+INSERT INTO address_info
+VALUES(11,'424 W Town St', '216-956-2634');
+INSERT INTO address_info
+VALUES(12,'1125 Cleveland Ave', '614-226-3244');
+INSERT INTO address_info
+VALUES(13,'745 Taylor Ave', '614-887-7687');
+INSERT INTO address_info
+VALUES(14,'2365 W Dublin Granville Rd', '614-389-3864');
+INSERT INTO address_info
+VALUES(15,'1101 N 4th St', '614-817-1515');
+INSERT INTO address_info
+VALUES(16,'2419 Scioto Harper Dr', '614-719-9654');
+INSERT INTO address_info
+VALUES(17,'1130 Dublin Rd', '614-485-0227');
+INSERT INTO address_info
+VALUES(18,'8757 Sancus Blvd', '614-485-0227');
+INSERT INTO address_info
+VALUES(19,'215 N 4th St', '614-429-3936');
+INSERT INTO address_info
+VALUES(20,'7020 Huntley Rd Ste A', '614-636-2537');
+
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(1,1);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(2,2);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(3,3);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(4,4);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(5,5);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(6,6);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(7,7);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(8,8);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(9,9);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(10,10);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(11,11);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(12,12);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(13,13);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(14,14);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(15,15);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(16,16);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(17,17);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(18,18);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(19,19);
+INSERT INTO brewery_address_info (brewery_id, address_id)
+VALUES(20,20);
 
 INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) VALUES ('Bud Light', 'gross', 'image', 4.00, 'Beer', 5, true);
 INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) VALUES ('Corona', 'not gross', 'image', 6.00, 'Beer', 3, true);
