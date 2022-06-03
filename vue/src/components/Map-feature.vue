@@ -48,7 +48,7 @@ export default({
         }
     },
     created() {
-        this.locateGeoLocation();
+        // this.locateGeoLocation();
         this.dropPinsForBreweries();
     },
     computed: {
@@ -79,13 +79,21 @@ export default({
             }
         },
         dropPinsForBreweries() {
-            this.breweries.forEach(this.addLocationMarker)
-
+            this.breweries.forEach((brewery) => {
+                const marker = {
+                    lat: brewery.latitude,
+                    lng: brewery.longitude
+                }
+                this.locationMarkers.push({position: marker})
+                this.locPlaces.push(this.existingPlace)
+                this.center = marker
+                this.existingPlace = null
+            })
         }
-        
     }
-
+        
 })
+
 </script>
 
 <style scoped>
