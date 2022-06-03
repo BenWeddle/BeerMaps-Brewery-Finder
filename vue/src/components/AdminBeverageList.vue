@@ -6,11 +6,6 @@
       <b-button size="sm" @click="row.toggleDetails" class="mr-2">
         {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
       </b-button>
-
-      <!-- As `row.showDetails` is one-way, we call the toggleDetails function on @change -->
-<!--      <b-form-checkbox v-model="row.detailsShowing" @change="row.toggleDetails">-->
-<!--        Details via check-->
-<!--      </b-form-checkbox>-->
     </template>
 
     <template #row-details="row">
@@ -36,6 +31,7 @@
         </b-row>
 
         <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
+        <b-button size ="sm" variant ="danger" id="delete-button">Delete</b-button>
       </b-card>
     </template>
   </b-table>
