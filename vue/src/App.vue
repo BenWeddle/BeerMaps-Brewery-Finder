@@ -34,7 +34,7 @@ export default ({
       else {
         return "vertical"
       }
-      },
+      }
     }
 })
 </script>

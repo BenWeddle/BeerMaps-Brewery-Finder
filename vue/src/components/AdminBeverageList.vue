@@ -43,21 +43,33 @@
 </div>
 </template>
 
-<script>
-export default {
-  name: "AdminBeverageList",
-  data(){
-    return {
-      fields: ['beverageName', 'beverageType', 'show_details'],
+<!--
       beverages: [
         { available: true, abv: 6, beverageName: 'Coors', beverageType: 'Beer', ibu: 10, description: 'As cold as the Rockies' },
         { available: false, abv: 8, beverageName: 'Bud-Light', beverageType: 'Beer', ibu: 25, description: 'Not the best beer' },
         {available: false, abv: 4, beverageName: 'Reds', beverageType: 'Cider', ibu: 5, description: 'There are apples in it'},
         { available: true, abv: 5, beverageName: 'Red Stripe', beverageType: 'Beer', ibu: 50, description: 'Hooray Beer!!!!' }
-      ]
+      ]-->
+
+
+<script>
+import BeverageService from "../services/BeverageService";
+export default {
+  name: "AdminBeverageList",
+  data() {
+    return {
+      fields: ['beverageName', 'beverageType', 'show_details'],
+      beverages: []
     }
-  }
+  },
+  computed: {},
+    created() {
+      BeverageService.getBeveragesByBreweryId(this.$store.state.breweryIdFromBrewer).then(response => {
+        this.beverages = response.data;
+      })
+    }
 }
+
 </script>
 
 <style scoped>

@@ -24,5 +24,9 @@ export default {
 
     getBeverageByBeverageId(beverageId){
         return axios.get(`/beverage/${beverageId}`)
+    },
+
+    getBeveragesByBreweryId(breweryId){
+        return axios.get(`/beverage/brewery/${breweryId}`)
     }
 }

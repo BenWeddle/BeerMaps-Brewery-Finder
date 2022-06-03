@@ -47,6 +47,13 @@ public class BreweryController {
         return breweryDao.getBreweryById(breweryId);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/brewer/{brewerId}", method = RequestMethod.GET)
+    public Brewery getBreweryByBrewerId(@PathVariable int brewerId) {
+        return breweryDao.getBreweryByBrewerId(brewerId);
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_BREWER')")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/name/{name}", method = RequestMethod.GET)
