@@ -27,12 +27,19 @@ export default({
 #header {
     display: flex;
     justify-content: space-between;
+    
 }
-#__BVID__11{
-  border: 5px solid red;
+
+h1 {
+    padding-right: 7%;
+    font-size: 500%;
+    font-style: italic
 }
-#home {
-    all: none,
+.home {
+    font-size: xx-small;
+    padding-top: 15px;
+    padding-left: 55px
+    
 }
 
 

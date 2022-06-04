@@ -30,45 +30,46 @@ export default {
 
 #brew{
   grid-area: brewery;
-  border: 3px solid #F48C06;
-  padding: 10px;
-  background-color: #FAA307;
-  border-radius: 10%;
+  border: 1px solid black;
+  padding-top: 10px;
+  background-color: #8ca4b8;
+  border-radius: 25px;
 }
 
 #brew:hover{
-  background-color: #F48C06;
-  border: 3px solid #FAA307;
+  background-color: #8ca4b8;
+  border: 1px solid black;
 }
 
 #bev{
   grid-area: beverage;
-  border: 3px solid #FAA307;
+  border: 1px solid black;
   padding: 10px;
-  background-color: #FFBA08;
-  border-radius: 10%;
+  background-color: #8ca4b8;
+  border-radius: 25px;
 }
 
 #bev:hover{
-  background-color: #FAA307;
-  border: 3px solid #FFBA08;
+  background-color: #8ca4b8;
+  border: 1px solid black;
 }
 
 #bev-list{
   grid-area: bevlist;
-  border: 5px solid purple;
+  border: 1px solid black;
   padding: 10px;
+  border-radius: 25px;
 }
 
 #nav{
   grid-area: right;
-  border: 5px solid orange;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  background-color: #F48C06;
-  border-radius: 15%;
+  background-color: #8ca4b8;
+  border-radius: 25px;
 }
 
 #page-container{
