@@ -1,6 +1,9 @@
 <template>
 <div class="beverage-container">
 
+  <b-alert v-model="displayAlert" variant="success" dismissible>
+    Successfully Deleted!
+  </b-alert>
   <b-table :items="beverages" :fields="fields" striped responsive="sm">
     <template #cell(show_details)="row">
       <b-button size="sm" @click="row.toggleDetails" class="mr-2">
@@ -31,42 +34,80 @@
         </b-row>
 
         <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
-        <b-button size ="sm" variant ="danger" id="delete-button" @click="deleteBeverageById(row.item.beverageId)">Delete</b-button>
+
+        <b-modal ref="confirm-delete"
+                 hide-footer centered
+                 title="Are you sure?"
+                 >
+          <div class="d-block text-center">
+            <h3>Are you sure you want to remove this beverage?</h3>
+          </div>
+          <div id="popup-buttons">
+            <b-button class="mt-3" variant="outline-danger" block  @click="deleteBeverageById(row.item.beverageId)">Delete Beverage</b-button>
+            <b-button class="mt-3" variant="outline-warning" block @click="exitDeleteConfirmation">Cancel</b-button>
+          </div>
+        </b-modal>
+
+        <b-button size ="sm" variant ="danger" id="delete-button" @click="confirmDelete">Delete</b-button>
       </b-card>
     </template>
   </b-table>
+  <b-button size ="md" variant ="primary" id="add-button" @click="addBeverage">Add Beverage</b-button>
+
+  <b-modal id="add-beverage" v-model="showMe" title="Test Modal">
+    <add-beer-form></add-beer-form>
+  </b-modal>
+
 
 </div>
 </template>
 
-<!--
-      beverages: [
-        { available: true, abv: 6, beverageName: 'Coors', beverageType: 'Beer', ibu: 10, description: 'As cold as the Rockies' },
-        { available: false, abv: 8, beverageName: 'Bud-Light', beverageType: 'Beer', ibu: 25, description: 'Not the best beer' },
-        {available: false, abv: 4, beverageName: 'Reds', beverageType: 'Cider', ibu: 5, description: 'There are apples in it'},
-        { available: true, abv: 5, beverageName: 'Red Stripe', beverageType: 'Beer', ibu: 50, description: 'Hooray Beer!!!!' }
-      ]-->
-
-
 <script>
 import BeverageService from "../services/BeverageService";
+import AddBeerForm from "./Add-Beer-Form";
 export default {
   name: "AdminBeverageList",
+  components: {
+    AddBeerForm
+  },
   data() {
     return {
       fields: ['beverageName', 'beverageType', 'show_details'],
-      beverages: []
+      beverages: [],
+      displayAlert: false,
+      showMe: false
     }
   },
   computed: {},
-    created() {
+  created() {
+    this.loadBeverages();
+  },
+  methods: {
+    deleteBeverageById(beverageId) {
+      BeverageService.deletebeverage(beverageId);
+      this.exitDeleteConfirmation();
+      this.displayAlert = true;
+      // this.confirmationToast();
+    },
+    confirmDelete() {
+      this.$refs['confirm-delete'].show()
+    },
+    exitDeleteConfirmation() {
+      this.$refs['confirm-delete'].hide()
+    },
+    loadBeverages() {
       BeverageService.getBeveragesByBreweryId(this.$store.state.breweryIdFromBrewer).then(response => {
         this.beverages = response.data;
       })
     },
-  methods: {
-    deleteBeverageById(beverageId){
-      BeverageService.deletebeverage(beverageId)
+    confirmationToast(){
+      this.$root.$bvToast.toast('Beverage has been successfully deleted', {
+        title: 'Confirmation',
+        noAutoHide: true
+      })
+    },
+    addBeverage(){
+      this.showMe = true;
     }
   }
 }
@@ -74,5 +115,10 @@ export default {
 </script>
 
 <style scoped>
+
+#popup-buttons{
+  display: flex;
+  justify-content: space-evenly;
+}
 
 </style>
