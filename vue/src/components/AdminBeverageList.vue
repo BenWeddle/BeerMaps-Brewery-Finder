@@ -31,7 +31,7 @@
         </b-row>
 
         <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
-        <b-button size ="sm" variant ="danger" id="delete-button">Delete</b-button>
+        <b-button size ="sm" variant ="danger" id="delete-button" @click="deleteBeverageById(row.item.beverageId)">Delete</b-button>
       </b-card>
     </template>
   </b-table>
@@ -63,7 +63,12 @@ export default {
       BeverageService.getBeveragesByBreweryId(this.$store.state.breweryIdFromBrewer).then(response => {
         this.beverages = response.data;
       })
+    },
+  methods: {
+    deleteBeverageById(beverageId){
+      BeverageService.deletebeverage(beverageId)
     }
+  }
 }
 
 </script>

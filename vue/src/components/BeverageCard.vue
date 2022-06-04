@@ -7,6 +7,7 @@
     <p>How many IBU's are there? {{ beverage.ibu }}</p>
     <p>Do you have a picture? {{ beverage.imageUrl }}</p>
     <p>Can i buy it? {{ beverage.available }}</p>
+    <p>Whats my Id? {{beverage.beverageId}}</p>
   </div>
 </template>
 
@@ -17,6 +18,7 @@ export default {
   data() {
     return {
       beverage: {
+        beverageId: 0,
         beverageName: '',
         description: '',
         abv: '',

@@ -41,6 +41,7 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       state.currentUserRole = '';
+      state.breweryIdFromBrewer = 0;
       axios.defaults.headers.common = {};
     },
     GET_AUTHORITIES(state, user){

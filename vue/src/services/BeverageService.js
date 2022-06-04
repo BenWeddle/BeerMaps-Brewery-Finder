@@ -18,8 +18,8 @@ export default {
         return axios.put('/beverage', id)
     },
 
-    deletebeverage(id) {
-        return axios.delete('/beverage', id)
+    deletebeverage(beverageId) {
+        return axios.delete(`/beverage/delete/${beverageId}`)
     },
 
     getBeverageByBeverageId(beverageId){

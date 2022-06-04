@@ -87,7 +87,7 @@ INSERT INTO users (username, password_hash, role)
 VALUES ('testBrewer', '$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC', 'ROLE_BREWER');
 
 INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
-VALUES ('Antiques On High', 'As the sister brewery to Seventh Son Brewing, AoH focuses on the production of sour and wild beers as well as hazy hop-forward IPAs and pale ales.', true, false, true, false, 3);
+VALUES ('Antiques On High', 'As the sister brewery to Seventh Son Brewing, AoH focuses on the production of sour and wild beers as well as hazy hop-forward IPAs and pale ales.', true, false, true, false, 2);
 INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
 VALUES ('Barleys Brewing Company','Barleys Brewing Company is Columbus oldest operating Brewpub. Established in 1992, we offer a variety of award winning ales paired with elevated pub fare', false, false, true, true, 3);
 INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing,brewer_id)
@@ -214,9 +214,9 @@ INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type,
 INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) VALUES ('Corona', 'not gross', 'image', 6.00, 'Beer', 3, true);
 INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) VALUES ('Angry Orchard', 'cidery', 'image', 3.00, 'Cider', 2, true);
 
-INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) VALUES ('Brewery1', 'A brewery', true, true, true, true, 2);
-INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) VALUES ('Brewery2', 'A 2nd brewery', true, false, true, false, 1);
-INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) VALUES ('Brewery1', 'A 3rd brewery', false, true, false, true, 3);
+-- INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) VALUES ('Brewery1', 'A brewery', true, true, true, true, 2);
+-- INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) VALUES ('Brewery2', 'A 2nd brewery', true, false, true, false, 1);
+-- INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) VALUES ('Brewery1', 'A 3rd brewery', false, true, false, true, 3);
 
 INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (1, 1);
 INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (1, 2);
@@ -228,9 +228,9 @@ INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (2, 2);
 INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (3, 1);
 INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (3, 3);
 
-INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (1, 21);
-INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (2, 21);
-INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (3, 21);
+-- INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (1, 21);
+-- INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (2, 21);
+-- INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (3, 21);
 
 
 COMMIT TRANSACTION;

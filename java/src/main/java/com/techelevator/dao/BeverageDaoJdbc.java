@@ -74,7 +74,7 @@ public class BeverageDaoJdbc implements BeverageDao{
     }
 
     @Override
-    public boolean addABeverage(Beverage beverage) {
+    public boolean addBeverageGlobally(Beverage beverage) {
         String sql = " INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) " +
                 "VALUES (?,?,?,?,?,?,?) " ;
 
@@ -84,10 +84,20 @@ public class BeverageDaoJdbc implements BeverageDao{
     }
 
     @Override
-    public boolean deleteBeverage(int beverageId) {
-        String sql = "DELETE FROM beverage WHERE beverage_id = ?";
+    public boolean deleteBeverageFromBrewery(int beverageId) {
+        String sql = "DELETE FROM brewery_beverage WHERE beverage_id = ?";
 
         return jdbcTemplate.update(sql, beverageId) == 0;
+    }
+
+    @Override
+    public boolean deleteBeverageGlobally(int beverageId) {
+        String sql = "BEGIN TRANSACTION; " +
+                "DELETE FROM brewery_beverage WHERE beverage_id = ?; " +
+                "DELETE FROM beverage WHERE beverage_id = ?; " +
+                "COMMIT;";
+
+        return jdbcTemplate.update(sql, beverageId, beverageId) == 0;
     }
 
     @Override
