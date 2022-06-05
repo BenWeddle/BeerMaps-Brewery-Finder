@@ -1,12 +1,15 @@
 <template>
   <div id="card-container">
     <h1 class="text-center">{{ brewery.breweryName }}</h1>
-    <p>Description: {{ brewery.description }}</p>
-    <p>Does it have outdoor seating? {{ brewery.hasOutDoorSeating }}</p>
-    <p>Does it have a kitchen? {{ brewery.hasFood }}</p>
-    <p>Do they brew the beer on site? {{ brewery.hasOnSiteBrewing }}</p>
-    <p>Do they allow my lizard? {{ brewery.petFriendly }}</p>
-    
+    <div id="description">
+      <p>{{ brewery.description }}</p>
+    </div>
+    <div id="attributes">
+      <p>Outdoor Seating {{ brewery.hasOutDoorSeating }}</p>
+      <p>Food Menu {{ brewery.hasFood }}</p>
+      <p>On-Site Brewing {{ brewery.hasOnSiteBrewing }}</p>
+      <p>Pet Friendly {{ brewery.petFriendly }}</p>
+    </div>
   </div>
 </template>
 
@@ -42,6 +45,32 @@ export default {
 
 
 <style scoped>
+.text-center {
+  font-style: italic;
+  
+  
+}
+
+#attributes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#description {
+  /* display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap; */
+  padding-right: 50px;
+  padding-left: 50px;
+  
+}
+
+#card-container {
+  
+}
 
 
 </style>

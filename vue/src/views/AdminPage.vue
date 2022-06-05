@@ -11,7 +11,6 @@
 
 <script>
 import BreweryCard from '../components/BreweryCard';
-import BeverageCard from "../components/BeverageCard";
 import RightNav from "../components/AdminPageRightNav";
 import AdminBeverageList from "../components/AdminBeverageList";
 import ViewGlobalBeverages from "../components/ViewGlobalBeverages";
