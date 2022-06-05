@@ -33,7 +33,7 @@ export default {
 <style scoped>
 
 .card{
-  
+
   background-color: orange;
 }
 
