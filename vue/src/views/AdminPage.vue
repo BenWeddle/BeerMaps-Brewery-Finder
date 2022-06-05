@@ -19,7 +19,6 @@ export default {
   components: {
     RightNav,
     BreweryCard,
-    BeverageCard,
     AdminBeverageList,
     ViewGlobalBeverages,
     ViewAllBreweries
@@ -103,7 +102,7 @@ export default {
   "beverage beverage beverage right"
   "bevlist bevlist bevlist right"
   "bevlist bevlist bevlist right"
-  "all-breweries all-breweries all-breweries all-breweries"
+  "all-breweries all-breweries all-breweries all-breweries"git
   ;
   gap: 10px;
 }
