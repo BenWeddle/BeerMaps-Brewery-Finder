@@ -1,7 +1,6 @@
 <template>
   <div id="page-container">
     <brewery-card id="brew"></brewery-card>
-    <beverage-card id="bev"></beverage-card>
     <right-nav id="nav"></right-nav>
     <admin-beverage-list id="bev-list"></admin-beverage-list>
   </div>
@@ -9,14 +8,12 @@
 
 <script>
 import BreweryCard from '../components/BreweryCard';
-import BeverageCard from "../components/BeverageCard";
 import RightNav from "../components/AdminPageRightNav";
 import AdminBeverageList from "../components/AdminBeverageList";
 export default {
   components: {
     RightNav,
     BreweryCard,
-    BeverageCard,
     AdminBeverageList
   },
   setup() {
