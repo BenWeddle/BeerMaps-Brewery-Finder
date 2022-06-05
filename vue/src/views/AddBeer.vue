@@ -19,6 +19,13 @@ export default {
 </script>
 
 <style scoped>
+div {
+  font-family: tangerine;
+  font-style: italic;
+}
 
+#add {
+  padding-left: 25px;
+}
 
 </style>

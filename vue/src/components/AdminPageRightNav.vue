@@ -1,15 +1,15 @@
 <template>
   <div id="nav-container">
-    <h1 class="text-center">A BUNCH OF LINKS WILL GO UNDER HERE</h1>
-    <b-button size="lg" @click="showGlobalBeverages">View Global Beverages</b-button>
-    <b-button size="lg" @click="showAddBeverage">Add a Beverage Globally</b-button>
+    <h1 class="text-center">Admin Management</h1>
+    <b-button size="lg" @click="showGlobalBeverages">View All Beverages</b-button>
+    <b-button size="lg" @click="showAddBeverage">Add a Beverage to Website</b-button>
     <b-button size="lg" href="#">I am also also link</b-button>
     <b-button size="lg" href="#">I am also kind of a link</b-button>
     <b-button size="lg" href="#">I am not a link, or am i?</b-button>
 
     <b-modal id="global-beverage"
              v-model="showGlobal"
-             title="Global Beverages"
+             title="All Our Beverages"
              size="xl"
              hide-footer centered
     >
@@ -65,6 +65,15 @@ export default {
 .finish-button-container{
   display: flex;
   justify-content: end;
+}
+
+.text-center {
+  text-decoration: underline;
+}
+
+div {
+  font-family: tangerine;
+  font-style: italic;
 }
 
 </style>

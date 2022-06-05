@@ -3,7 +3,7 @@
         <router-link class="home" v-bind:to="{ name: 'home' }"><h1>Home</h1></router-link>
         <h1>BeerMaps</h1>
         <!-- <img :src="image"/> -->
-        <b-dropdown text="Menu">
+        <b-dropdown text="Menu" id="dropdown">
             <template #button-content>
                 <b-avatar variant="primary"></b-avatar>
             </template>
@@ -33,7 +33,7 @@
 }
 
 h1 {
-    padding-right: 5%;
+    padding-right:2%;
     font-size: 500%;
     font-family: tangerine;
     font-style: italic;
@@ -45,6 +45,12 @@ h1 {
     font-size: 40%;
     padding-top: 40px;
     padding-left: 55px;
+}
+
+#dropdown {
+  margin-top: 2%;
+  margin-bottom: 1%;
+  padding-right: 1%;
 }
 
 

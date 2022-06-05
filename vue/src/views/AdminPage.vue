@@ -1,7 +1,6 @@
 <template>
   <div id="page-container">
     <brewery-card id="brew"></brewery-card>
-    <beverage-card id="bev"></beverage-card>
     <right-nav id="nav"></right-nav>
     <admin-beverage-list id="bev-list"></admin-beverage-list>
     <ViewAllBreweries id="all-breweries"></ViewAllBreweries>
@@ -32,7 +31,7 @@ export default {
 #all-breweries{
   grid-area: all-breweries;
   border: 1px solid black;
-  padding: 10px;
+  padding: 0px;
   border-radius: 25px;
 }
 
@@ -65,8 +64,12 @@ export default {
 #bev-list{
   grid-area: bevlist;
   border: 1px solid black;
-  padding: 10px;
+  padding: 1px;
   border-radius: 25px;
+  font-family: tangerine;
+  font-style: italic;
+  font-weight: bold;
+  background-color: #8ca4b8;
 }
 
 #nav{
@@ -75,9 +78,14 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   background-color: #8ca4b8;
   border-radius: 25px;
+  font-family: tangerine;
+  font-style: italic;
+  padding-top: 40px;
+  padding-bottom: 100px;
+  
 }
 
 #page-container{
