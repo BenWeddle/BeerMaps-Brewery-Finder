@@ -7,7 +7,7 @@ import axios from 'axios';
 export default {
     //URL not active yet
     getbeverages() {
-        return axios.get('/beverage')
+        return axios.get('/beverage/all')
     },
     
     addbeverage(beverage) {
@@ -20,6 +20,10 @@ export default {
 
     deletebeverage(beverageId) {
         return axios.delete(`/beverage/delete/${beverageId}`)
+    },
+
+    deleteBeverageGloballyById(beverageId) {
+        return axios.delete(`/beverage/delete/global/${beverageId}`)
     },
 
     getBeverageByBeverageId(beverageId){

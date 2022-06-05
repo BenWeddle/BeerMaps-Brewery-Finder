@@ -54,8 +54,15 @@
   </b-table>
   <b-button size ="md" variant ="primary" id="add-button" @click="addBeverage">Add Beverage</b-button>
 
-  <b-modal id="add-beverage" v-model="showMe" title="Test Modal">
+  <b-modal id="add-beverage"
+           v-model="showMe"
+           title="Add a New Beverage"
+           hide-footer centered
+  >
     <add-beer-form></add-beer-form>
+    <div id="finish-button-container">
+      <b-button class="mt-3" variant="outline-primary"  @click="showMe = false">Finish</b-button>
+    </div>
   </b-modal>
 
 
@@ -119,6 +126,11 @@ export default {
 #popup-buttons{
   display: flex;
   justify-content: space-evenly;
+}
+
+#finish-button-container{
+  display: flex;
+  justify-content: end;
 }
 
 </style>
