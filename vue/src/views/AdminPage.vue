@@ -102,7 +102,7 @@ export default {
   "beverage beverage beverage right"
   "bevlist bevlist bevlist right"
   "bevlist bevlist bevlist right"
-  "all-breweries all-breweries all-breweries all-breweries"git
+  "all-breweries all-breweries all-breweries all-breweries"
   ;
   gap: 10px;
 }
