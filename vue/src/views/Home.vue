@@ -2,6 +2,7 @@
   <div class="home">
     <welcome-message></welcome-message>
     <AddGoogleMap v-bind:breweries="listOfBreweries"></AddGoogleMap>
+    <UserBrewerySearch></UserBrewerySearch>
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 import AddGoogleMap from "../components/Map-feature.vue"
 import WelcomeMessage from "../components/Welcome-Message.vue"
 import BreweryService from "../services/BreweryService";
+import UserBrewerySearch from "../components/UserBrewerySearch";
 
 export default {
   name: "home",
   components: {
     AddGoogleMap,
     WelcomeMessage,
+    UserBrewerySearch
   },
   data(){
     return {
