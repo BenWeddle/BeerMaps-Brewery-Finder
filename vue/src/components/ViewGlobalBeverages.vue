@@ -5,6 +5,10 @@
     Successfully Deleted!
   </b-alert>
 
+  <b-alert v-model="displayAddAlert" variant="success" dismissible>
+    Successfully Added!
+  </b-alert>
+
   <b-table :items="beverages" :fields="fields" striped responsive="sm">
     <template #cell(details_and_options)="row">
       <b-button size="sm" @click="row.toggleDetails" class="mr-2">
@@ -34,13 +38,29 @@
             <h3>Are you sure you want to delete this beverage globally?</h3>
             <h4>This cannot be undone.</h4>
           </div>
-          <div id="popup-buttons">
+          <div class="popup-buttons">
             <b-button class="mt-3" variant="outline-danger" block  @click="deleteBeverageGlobally(row.item.beverageId)">Delete Beverage</b-button>
             <b-button class="mt-3" variant="outline-warning" block @click="exitDeleteConfirmation">Cancel</b-button>
           </div>
         </b-modal>
 
+        <b-modal ref="confirm-add"
+                 hide-footer centered
+                 title="Are you sure?"
+        >
+          <div class="d-block text-center">
+            <h3>Are you sure you want to add this beverage to your menu?</h3>
+          </div>
+          <div class="popup-buttons">
+            <b-button class="mt-3" variant="outline-success" block  @click="addBeverageToMenu(row.item.beverageId)">Add Beverage</b-button>
+            <b-button class="mt-3" variant="outline-danger" block @click="exitAddConfirmation">Cancel</b-button>
+          </div>
+        </b-modal>
+
+
+
         <b-button size ="sm" variant ="danger" id="delete-button" @click="confirmDelete">Delete</b-button>
+        <b-button size ="sm" variant ="outline-success" id="add-button" @click="confirmAdd">Add to Brewery Menu</b-button>
       </b-card>
     </template>
   </b-table>
@@ -56,7 +76,8 @@ export default {
     return {
       fields: ['beverageName', 'beverageType', 'abv', 'ibu', 'details_and_options'],
       beverages: [],
-      displayAlert: false
+      displayAlert: false,
+      displayAddAlert: false
     }
   },
   created(){
@@ -73,11 +94,22 @@ export default {
       this.exitDeleteConfirmation();
       this.displayAlert = true;
     },
+    addBeverageToMenu(beverageId){
+      BeverageService.addBeverageToMenu(beverageId);
+      this.exitAddConfirmation();
+      this.displayAddAlert = true;
+    },
     confirmDelete(){
       this.$refs['confirm-delete'].show()
     },
     exitDeleteConfirmation() {
       this.$refs['confirm-delete'].hide()
+    },
+    confirmAdd(){
+      this.$refs['confirm-add'].show()
+    },
+    exitAddConfirmation() {
+      this.$refs['confirm-add'].hide()
     }
   }
 }
@@ -85,7 +117,7 @@ export default {
 
 <style scoped>
 
-#popup-buttons{
+.popup-buttons{
   display: flex;
   justify-content: space-evenly;
 }

@@ -5,15 +5,20 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 @Component
 public class BeverageDaoJdbc implements BeverageDao{
 
     private JdbcTemplate jdbcTemplate;
+    private JdbcUserDao userDao;
+    private BreweryDaoJdbc breweryDao;
 
-    public BeverageDaoJdbc(JdbcTemplate jdbcTemplate){
+    public BeverageDaoJdbc(JdbcTemplate jdbcTemplate, JdbcUserDao userDao, BreweryDaoJdbc breweryDao){
         this.jdbcTemplate = jdbcTemplate;
+        this.userDao = userDao;
+        this.breweryDao = breweryDao;
     }
     @Override
     public List<Beverage> listAll() {
@@ -81,6 +86,15 @@ public class BeverageDaoJdbc implements BeverageDao{
 
         return jdbcTemplate.update(sql, beverage.getBeverageName(), beverage.getDescription(), beverage.getImageUrl()
         , beverage.getAbv(), beverage.getBeverageType(), beverage.getIbu(), beverage.isAvailable() ) == 0;
+    }
+
+    @Override
+    public boolean addBeverageToBrewery(int beverageId, Principal principal) {
+        String sql = "INSERT INTO brewery_beverage (beverage_id, brewery_id) " +
+                "VALUES (?,?) ";
+
+        return jdbcTemplate.update(sql, beverageId,
+                breweryDao.getBreweryByBrewerId(Math.toIntExact(userDao.currentUser(principal).getId())).getBreweryId()) == 0;
     }
 
     @Override

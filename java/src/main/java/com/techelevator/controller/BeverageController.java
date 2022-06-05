@@ -35,6 +35,13 @@ public class BeverageController {
         return beverageDao.addBeverageGlobally(beverage);
     }
 
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/brewery/add/{beverageId}", method = RequestMethod.POST)
+    public boolean addBeverageToBrewery(@PathVariable int beverageId, Principal principal) {
+        return beverageDao.addBeverageToBrewery(beverageId, principal);
+    }
+
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_BREWER','ROLE_USER')")
     @RequestMapping(path = "/all", method = RequestMethod.GET)

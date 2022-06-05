@@ -1,7 +1,6 @@
 <template>
   <div id="page-container">
     <brewery-card id="brew"></brewery-card>
-    <view-global-beverages id="global"></view-global-beverages>
     <beverage-card id="bev"></beverage-card>
     <right-nav id="nav"></right-nav>
     <admin-beverage-list id="bev-list"></admin-beverage-list>
@@ -13,14 +12,12 @@
 import BreweryCard from '../components/BreweryCard';
 import RightNav from "../components/AdminPageRightNav";
 import AdminBeverageList from "../components/AdminBeverageList";
-import ViewGlobalBeverages from "../components/ViewGlobalBeverages";
 import ViewAllBreweries from "../components/ViewAllBreweries";
 export default {
   components: {
     RightNav,
     BreweryCard,
     AdminBeverageList,
-    ViewGlobalBeverages,
     ViewAllBreweries
   },
   setup() {
@@ -31,13 +28,6 @@ export default {
 </script>
 
 <style scoped>
-
-#global{
-  grid-area: global;
-  border: 1px solid black;
-  padding: 10px;
-  border-radius: 25px;
-}
 
 #all-breweries{
   grid-area: all-breweries;
@@ -96,8 +86,6 @@ export default {
 
   grid-template-areas:
   "brewery brewery brewery right"
-  "global global global right"
-  "global global global right"
   "beverage beverage beverage right"
   "beverage beverage beverage right"
   "bevlist bevlist bevlist right"

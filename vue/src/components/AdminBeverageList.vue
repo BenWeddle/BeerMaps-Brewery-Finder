@@ -52,37 +52,21 @@
       </b-card>
     </template>
   </b-table>
-  <b-button size ="md" variant ="primary" id="add-button" @click="addBeverage">Add Beverage</b-button>
-
-  <b-modal id="add-beverage"
-           v-model="showMe"
-           title="Add a New Beverage"
-           hide-footer centered
-  >
-    <add-beer-form></add-beer-form>
-    <div id="finish-button-container">
-      <b-button class="mt-3" variant="outline-primary"  @click="showMe = false">Finish</b-button>
-    </div>
-  </b-modal>
-
 
 </div>
 </template>
 
 <script>
 import BeverageService from "../services/BeverageService";
-import AddBeerForm from "./Add-Beer-Form";
 export default {
   name: "AdminBeverageList",
   components: {
-    AddBeerForm
   },
   data() {
     return {
       fields: ['beverageName', 'beverageType', 'show_details'],
       beverages: [],
-      displayAlert: false,
-      showMe: false
+      displayAlert: false
     }
   },
   computed: {},
@@ -112,9 +96,6 @@ export default {
         title: 'Confirmation',
         noAutoHide: true
       })
-    },
-    addBeverage(){
-      this.showMe = true;
     }
   }
 }
@@ -126,11 +107,6 @@ export default {
 #popup-buttons{
   display: flex;
   justify-content: space-evenly;
-}
-
-#finish-button-container{
-  display: flex;
-  justify-content: end;
 }
 
 </style>

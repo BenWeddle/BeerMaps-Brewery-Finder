@@ -14,6 +14,10 @@ export default {
         return axios.post('/beverage/add', beverage)
     },
 
+    addBeverageToMenu(beverageId){
+        return axios.post(`/beverage/brewery/add/${beverageId}`)
+    },
+
     updatebeverage(id) {
         return axios.put('/beverage', id)
     },

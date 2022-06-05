@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Beverage;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface BeverageDao {
@@ -14,6 +15,8 @@ public interface BeverageDao {
     Beverage getBeverageByName(String name);
 
     boolean addBeverageGlobally(Beverage beverage);
+
+    boolean addBeverageToBrewery(int beverageId, Principal principal);
 
     boolean deleteBeverageFromBrewery(int beverageId);
 
