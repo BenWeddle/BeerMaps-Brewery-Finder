@@ -32,6 +32,7 @@ export default({
     align-items: center;
     justify-content: center;
     text-decoration: underline;
+    font-family: tangerine;
     font-style: italic;
 }
 

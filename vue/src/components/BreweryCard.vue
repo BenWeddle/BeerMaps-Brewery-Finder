@@ -46,9 +46,8 @@ export default {
 
 <style scoped>
 .text-center {
+  font-family: tangerine;
   font-style: italic;
-  
-  
 }
 
 #attributes {
@@ -56,16 +55,16 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: tangerine;
+  font-style: italic;
 }
 
 #description {
-  /* display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-wrap: wrap; */
   padding-right: 50px;
   padding-left: 50px;
-  
+  font-family: tangerine;
+  font-style: italic;
+  font-size: larger;
 }
 
 #card-container {
