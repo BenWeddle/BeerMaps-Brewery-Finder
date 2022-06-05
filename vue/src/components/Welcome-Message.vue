@@ -27,6 +27,7 @@ export default({
     background-color: #8ca4b8;
     align-items: center;
     justify-content: center;
+    font-family: tangerine;
     font-style: italic;
 }
 </style>
