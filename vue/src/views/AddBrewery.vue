@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Add New Brewery</h1>
+    <h1 id="header">Add New Brewery</h1>
     <new-brewery-form></new-brewery-form>
   </div>
 </template>
@@ -21,6 +21,15 @@ export default {
 #breweryForm{
     display: flex;
     flex-direction: column;
+}
+
+div {
+  font-family: tangerine;
+  font-style: italic;
+}
+
+#header {
+  padding-left: 25px;
 }
 
 </style>
