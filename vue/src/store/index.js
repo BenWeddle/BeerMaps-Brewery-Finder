@@ -24,7 +24,8 @@ export default new Vuex.Store({
     currentUserRole : '',
     breweryIdFromBrewer: 0,
     searchCity: '',
-    selectedBreweryMenu: ''
+    selectedBreweryMenu: '',
+    selectedBreweryRatings: ''
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -53,6 +54,9 @@ export default new Vuex.Store({
     },
     SET_SELECTED_MENU(state, breweryId){
       state.selectedBreweryMenu = breweryId;
+    },
+    SET_SELECTED_BREWERY_RATINGS(state, breweryId){
+      state.selectedBreweryRatings = breweryId;
     }
   }
 })

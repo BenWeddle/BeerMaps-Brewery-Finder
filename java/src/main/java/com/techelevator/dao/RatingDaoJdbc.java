@@ -122,6 +122,7 @@ public class RatingDaoJdbc implements RatingDao{
         rating.setDate(rowSet.getDate("rating_date").toLocalDate());
         rating.setType(rowSet.getString("rating_type"));
         rating.setReviewerId(rowSet.getInt("reviewer_id"));
+        rating.setRating(rowSet.getInt("rating"));
         return rating;
     }
 }

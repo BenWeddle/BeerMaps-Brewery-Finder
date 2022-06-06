@@ -63,15 +63,19 @@
           <b-col sm="3" class="text-sm-right"><b>Longitude: </b></b-col>
           <b-col>{{row.item.longitude}}</b-col>
         </b-row>
+        <div class="detail-option-buttons">
+          <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
 
-        <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
+          <b-button size ="sm" variant ="outline-success" id="view-menu" @click="showBreweryMenu(row.item.breweryId)">View Offerings</b-button>
 
-        <b-button size ="sm" variant ="outline-success" id="view-menu" @click="showBreweryMenu(row.item.breweryId)">View Offerings</b-button>
+          <b-button size ="sm" variant ="outline-warning" id="view-ratings" @click="showBreweryRatings(row.item.breweryId)">Ratings</b-button>
+        </div>
+
       </b-card>
     </template>
   </b-table>
 
-  <b-modal id="view-menu"
+  <b-modal id="menu-popup"
            v-model="showMenu"
            title="Current Offerings"
            hide-footer centered
@@ -82,16 +86,30 @@
       <b-button class="mt-3" variant="outline-danger"  @click="showMenu = false">Finish</b-button>
     </div>
   </b-modal>
+
+  <b-modal id="ratings-popup"
+           v-model="showRatings"
+           title="Ratings"
+           hide-footer centered
+           size="xl"
+  >
+  <view-brewery-ratings></view-brewery-ratings>
+    <div class="finish-button-container">
+      <b-button class="mt-3" variant="outline-danger"  @click="showRatings = false">Finish</b-button>
+    </div>
+  </b-modal>
 </div>
 </template>
 
 <script>
 import BreweryService from "../services/BreweryService";
 import BeverageListByBreweryId from "./BeverageListByBreweryId";
+import ViewBreweryRatings from "./ViewBreweryRatings";
 export default {
   name: "UserBrewerySearch",
   components: {
-    BeverageListByBreweryId
+    BeverageListByBreweryId,
+    ViewBreweryRatings
   },
   data() {
     return {
@@ -105,6 +123,7 @@ export default {
         hasOnSiteBrewing: ''
       },
       showMenu: false,
+      showRatings: false
     };
   },
   computed: {
@@ -155,6 +174,10 @@ export default {
     showBreweryMenu(breweryId){
       this.$store.commit('SET_SELECTED_MENU', breweryId);
       this.showMenu = true;
+    },
+    showBreweryRatings(breweryId){
+      this.$store.commit('SET_SELECTED_BREWERY_RATINGS', breweryId);
+      this.showRatings = true;
     }
   },
   created() {
@@ -178,5 +201,9 @@ export default {
 .finish-button-container{
   display: flex;
   justify-content: end;
+}
+.detail-option-buttons{
+  display: flex;
+  justify-content: space-evenly;
 }
 </style>
