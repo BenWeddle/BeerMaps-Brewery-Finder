@@ -42,21 +42,9 @@ export default({
             locationMarkers: [],
             locPlaces: [],
             existingPlace: null,
-<<<<<<< HEAD
-            // listOfBreweries: 
-        }
-    },
-    created() {
-        // this.locateGeoLocation();
-        
-    },
-    mounted() {
-        this.dropPinsForBreweries();
-=======
             listOfBreweries: this.$store.state.listOfBreweries,
             isLoading: true
         };
->>>>>>> main
     },
     computed: {
         storeListOfBreweries(){
@@ -89,23 +77,6 @@ export default({
                 this.center = marker
                 this.existingPlace = null
             }
-<<<<<<< HEAD
-
-            // this.dropPinsForBreweries()
-        },
-        dropPinsForBreweries() {
-            this.$store.state.listOfBreweries.forEach((brewery) => {
-                const marker = {
-                    lat: brewery.latitude,
-                    lng: brewery.longitude
-                }
-                this.locationMarkers.push({position: marker})
-                this.locPlaces.push(this.existingPlace)
-                // this.center = marker
-                this.existingPlace = null
-            })
-=======
->>>>>>> main
         }
     }
 })
