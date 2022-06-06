@@ -24,18 +24,23 @@ export default {
       listOfBreweries: [],
     }
   },
-  created() {
-    BreweryService.getBreweries().then(response => {
-      // this.listOfBreweries = response.data
-      this.$store.commit("LIST_OF_BREWERIES", response.data)
-      })
-      .catch(error => {
+  methods: {
+    getAllBreweriesAddToStore(){
+      BreweryService.getBreweries().then(response => {
+        this.$store.commit("LIST_OF_BREWERIES", response.data)
+      }).catch(error => {
         alert(error + "There was an error getting breweries")
-      }),
-
+      })
+    },
+    setStoreBreweryId(){
       BreweryService.getBreweryByBrewerId(this.getBrewerID).then(response => {
         this.$store.commit('SET_BREWERY_ID_FROM_BREWER', response.data.breweryId)
       })
+    }
+  },
+  created() {
+    this.getAllBreweriesAddToStore();
+    this.setStoreBreweryId();
   },
   computed: {
     getBrewerID() {
