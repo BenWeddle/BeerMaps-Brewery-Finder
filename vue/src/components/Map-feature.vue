@@ -9,30 +9,12 @@
             :center="center"
             style= "width:100%; height: 600px;"
         >
-<<<<<<< HEAD
-        <!-- <gmap-marker
-            :key="index"
-            v-for="(m,index) in locationMarkers"
-            :position="m.position"
-            @click="center=m.position"
-        ></gmap-marker> -->
-
-        <gmap-marker
-            :key="m.id"
-            v-for="(m) in locationMarkers"
-            :position="m.position"
-            @click="center=m.position"
-        ></gmap-marker>
-
-
-=======
            <gmap-marker
                :key="index"
                v-for="(m,index) in this.dropPinsForBreweries"
                :position="m.position"
                @click="center=m.position"
            ></gmap-marker>
->>>>>>> main
 
         </gmap-map>
         <div class="filter">
