@@ -169,7 +169,9 @@ export default {
 #filter-input{
   border: 1px solid black;
   padding: 10px;
-  border-radius: 15px;
+  border-radius: 25px;
+  margin-top: 20px;
+
 }
 #checkbox-row{
   margin-top: 10px;
@@ -178,5 +180,13 @@ export default {
 .finish-button-container{
   display: flex;
   justify-content: end;
+}
+
+div {
+  background-color:#8ca4b8;
+  border-radius: 25px;
+  font-family: tangerine;
+  font-style: italic;
+  font-weight: bold;
 }
 </style>
