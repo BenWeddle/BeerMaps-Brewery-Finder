@@ -207,7 +207,7 @@ export default {
 .detail-option-buttons{
   display: flex;
   justify-content: space-evenly;
-
+}
 div {
   background-color:#8ca4b8;
   border-radius: 25px;
