@@ -487,6 +487,22 @@ INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (41, 20);
 INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (55, 20);
 INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (31, 20);
 
+--Test Ratings - Beverage
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Pretty Decent OK', 3, '2022-06-05', 'beverage', 1, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Better Than Decent', 4, '2022-06-05', 'beverage', 1, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('The best I have ever had', 5, '2022-06-05', 'beverage', 1, 2);
+
+--Test Ratings - Brewery
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('This is a crappy place', 1, '2022-06-05', 'brewery', 1, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Slightly better than crappy', 2, '2022-06-05', 'brewery', 1, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Mediocre at best', 3, '2022-06-05', 'brewery', 1, 2);
+
 
 
 COMMIT TRANSACTION;

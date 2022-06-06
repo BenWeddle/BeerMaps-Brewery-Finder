@@ -2,19 +2,18 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Rating;
 
+import java.security.Principal;
 import java.util.List;
 
 public interface RatingDao {
 
-    Rating getRatingByRatingId(int ratingId);
-
-    List<Rating> getRatingsByBeverage(int beverageId);
+    Rating getRatingByRatingId(int ratingId, String type);
 
     List<Rating> listRatingByType(String type);
 
-    Rating getRatingById(int id, String type);
+    List<Rating> getRatingsByTypeAndId(int id, String type);
 
-    boolean addRating(Rating rating);
+    boolean addRating(Rating rating, Principal principal);
 
     boolean deleteRating(int ratingId);
 
