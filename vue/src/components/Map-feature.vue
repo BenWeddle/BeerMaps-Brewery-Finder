@@ -31,7 +31,6 @@
 </template>
 
 <script>
-
 export default({
     setup() {},
     name: 'map',
@@ -53,8 +52,10 @@ export default({
         // this.locateGeoLocation();
        
     },
-    mounted() {
-         this.dropPinsForBreweries();
+    mounted: function() {
+         this.dropPinsForBreweries(function() {
+
+         })
     },
     computed: {
         
