@@ -26,9 +26,12 @@ export default {
   },
   created() {
     BreweryService.getBreweries().then(response => {
-      const groupOfBreweries = response.data
-      this.listOfBreweries = groupOfBreweries
+      // this.listOfBreweries = response.data
+      this.$store.commit("LIST_OF_BREWERIES", response.data)
       })
+      .catch(error => {
+        alert(error + "There was an error getting breweries")
+      }),
 
       BreweryService.getBreweryByBrewerId(this.getBrewerID).then(response => {
         this.$store.commit('SET_BREWERY_ID_FROM_BREWER', response.data.breweryId)

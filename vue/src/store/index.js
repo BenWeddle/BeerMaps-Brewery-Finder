@@ -24,6 +24,7 @@ export default new Vuex.Store({
     currentUserRole : '',
     breweryIdFromBrewer: 0,
     searchCity: '',
+    listOfBreweries: [],
     selectedBreweryMenu: '',
     selectedBreweryRatings: ''
   },
@@ -51,6 +52,9 @@ export default new Vuex.Store({
     },
     SET_BREWERY_ID_FROM_BREWER(state, breweryId){
       state.breweryIdFromBrewer = breweryId;
+    },
+    LIST_OF_BREWERIES(state, list){
+      state.listOfBreweries = list;
     },
     SET_SELECTED_MENU(state, breweryId){
       state.selectedBreweryMenu = breweryId;

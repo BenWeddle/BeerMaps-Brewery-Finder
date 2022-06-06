@@ -6,7 +6,7 @@
       </label>
 
         <gmap-map
-            :zoom="14"
+            :zoom="12"
             :center="center"
             style= "width:100%; height: 600px;"
         >
@@ -39,17 +39,22 @@ export default({
     data() {
         return {
             center: {
-                lat: 39.783704,
-                lng: -100.4458825,
+                lat: 39.983334,
+                lng: -82.983330,
+                // current coordinates for Columbus OH
             },
             locationMarkers: [],
             locPlaces: [],
             existingPlace: null,
+            listOfBreweries: this.$store.state.listOfBreweries
         }
     },
     created() {
-        this.locateGeoLocation();
-        this.dropPinsForBreweries();
+        // this.locateGeoLocation();
+       
+    },
+    mounted() {
+         this.dropPinsForBreweries();
     },
     computed: {
         
@@ -79,13 +84,21 @@ export default({
             }
         },
         dropPinsForBreweries() {
-            this.breweries.forEach(this.addLocationMarker)
-
+            this.listOfBreweries.forEach((brewery) => {
+                const marker = {
+                    lat: brewery.latitude,
+                    lng: brewery.longitude
+                }
+                this.locationMarkers.push({position: marker})
+                this.locPlaces.push(this.existingPlace)
+                this.center = marker
+                this.existingPlace = null
+            })
         }
-        
     }
-
+        
 })
+
 </script>
 
 <style scoped>
