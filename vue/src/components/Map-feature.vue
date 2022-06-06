@@ -6,13 +6,20 @@
       </label>
 
         <gmap-map
-            :zoom="12"
+            :zoom="11"
             :center="center"
             style= "width:100%; height: 600px;"
         >
-        <gmap-marker
+        <!-- <gmap-marker
             :key="index"
             v-for="(m,index) in locationMarkers"
+            :position="m.position"
+            @click="center=m.position"
+        ></gmap-marker> -->
+
+        <gmap-marker
+            :key="m.id"
+            v-for="(m) in locationMarkers"
             :position="m.position"
             @click="center=m.position"
         ></gmap-marker>
@@ -34,7 +41,7 @@
 
 export default({
     setup() {},
-    name: 'map',
+    name: 'map-area',
     props: ['breweries'],
     data() {
         return {
@@ -46,15 +53,15 @@ export default({
             locationMarkers: [],
             locPlaces: [],
             existingPlace: null,
-            listOfBreweries: this.$store.state.listOfBreweries
+            // listOfBreweries: 
         }
     },
     created() {
         // this.locateGeoLocation();
-       
+        
     },
     mounted() {
-         this.dropPinsForBreweries();
+        this.dropPinsForBreweries();
     },
     computed: {
         
@@ -82,16 +89,18 @@ export default({
                 this.center = marker
                 this.existingPlace = null
             }
+
+            // this.dropPinsForBreweries()
         },
         dropPinsForBreweries() {
-            this.listOfBreweries.forEach((brewery) => {
+            this.$store.state.listOfBreweries.forEach((brewery) => {
                 const marker = {
                     lat: brewery.latitude,
                     lng: brewery.longitude
                 }
                 this.locationMarkers.push({position: marker})
                 this.locPlaces.push(this.existingPlace)
-                this.center = marker
+                // this.center = marker
                 this.existingPlace = null
             })
         }

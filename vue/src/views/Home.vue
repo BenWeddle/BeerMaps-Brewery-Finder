@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <welcome-message></welcome-message>
-    <AddGoogleMap v-bind:breweries="listOfBreweries"></AddGoogleMap>
+    <AddGoogleMap ></AddGoogleMap>
     <UserBrewerySearch></UserBrewerySearch>
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
   },
   created() {
     BreweryService.getBreweries().then(response => {
-      // this.listOfBreweries = response.data
+      this.listOfBreweries = response.data
       this.$store.commit("LIST_OF_BREWERIES", response.data)
       })
       .catch(error => {
