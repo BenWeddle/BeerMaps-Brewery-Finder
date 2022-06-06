@@ -77,7 +77,7 @@
             <label for="img">Select image:</label>
             <input  type="file" id="img" name="img" accept="image/*"> -->
 
-            <b-button variant="primary" v-on:click="addNewbeverage" id="beverageFormSubmit" type="submit">Submit beverage</b-button>
+            <b-button variant="primary" v-on:click.prevent="addNewbeverage" id="beverageFormSubmit" type="submit">Add Beverage</b-button>
 
         </b-form>
     </div>

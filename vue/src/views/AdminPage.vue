@@ -1,23 +1,23 @@
 <template>
   <div id="page-container">
     <brewery-card id="brew"></brewery-card>
-    <beverage-card id="bev"></beverage-card>
     <right-nav id="nav"></right-nav>
     <admin-beverage-list id="bev-list"></admin-beverage-list>
+    <ViewAllBreweries id="all-breweries"></ViewAllBreweries>
   </div>
 </template>
 
 <script>
 import BreweryCard from '../components/BreweryCard';
-import BeverageCard from "../components/BeverageCard";
 import RightNav from "../components/AdminPageRightNav";
 import AdminBeverageList from "../components/AdminBeverageList";
+import ViewAllBreweries from "../components/ViewAllBreweries";
 export default {
   components: {
     RightNav,
     BreweryCard,
-    BeverageCard,
-    AdminBeverageList
+    AdminBeverageList,
+    ViewAllBreweries
   },
   setup() {
 
@@ -27,6 +27,13 @@ export default {
 </script>
 
 <style scoped>
+
+#all-breweries{
+  grid-area: all-breweries;
+  border: 1px solid black;
+  padding: 0px;
+  border-radius: 25px;
+}
 
 #brew{
   grid-area: brewery;
@@ -57,8 +64,12 @@ export default {
 #bev-list{
   grid-area: bevlist;
   border: 1px solid black;
-  padding: 10px;
+  padding: 1px;
   border-radius: 25px;
+  font-family: tangerine;
+  font-style: italic;
+  font-weight: bold;
+  background-color: #8ca4b8;
 }
 
 #nav{
@@ -67,9 +78,14 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   background-color: #8ca4b8;
   border-radius: 25px;
+  font-family: tangerine;
+  font-style: italic;
+  padding-top: 40px;
+  padding-bottom: 100px;
+  
 }
 
 #page-container{
@@ -82,6 +98,7 @@ export default {
   "beverage beverage beverage right"
   "bevlist bevlist bevlist right"
   "bevlist bevlist bevlist right"
+  "all-breweries all-breweries all-breweries all-breweries"
   ;
   gap: 10px;
 }

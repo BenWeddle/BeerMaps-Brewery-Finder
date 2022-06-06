@@ -5,15 +5,20 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 @Component
 public class BeverageDaoJdbc implements BeverageDao{
 
     private JdbcTemplate jdbcTemplate;
+    private JdbcUserDao userDao;
+    private BreweryDaoJdbc breweryDao;
 
-    public BeverageDaoJdbc(JdbcTemplate jdbcTemplate){
+    public BeverageDaoJdbc(JdbcTemplate jdbcTemplate, JdbcUserDao userDao, BreweryDaoJdbc breweryDao){
         this.jdbcTemplate = jdbcTemplate;
+        this.userDao = userDao;
+        this.breweryDao = breweryDao;
     }
     @Override
     public List<Beverage> listAll() {
@@ -74,7 +79,7 @@ public class BeverageDaoJdbc implements BeverageDao{
     }
 
     @Override
-    public boolean addABeverage(Beverage beverage) {
+    public boolean addBeverageGlobally(Beverage beverage) {
         String sql = " INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) " +
                 "VALUES (?,?,?,?,?,?,?) " ;
 
@@ -84,10 +89,29 @@ public class BeverageDaoJdbc implements BeverageDao{
     }
 
     @Override
-    public boolean deleteBeverage(int beverageId) {
-        String sql = "DELETE FROM beverage WHERE beverage_id = ?";
+    public boolean addBeverageToBrewery(int beverageId, Principal principal) {
+        String sql = "INSERT INTO brewery_beverage (beverage_id, brewery_id) " +
+                "VALUES (?,?) ";
+
+        return jdbcTemplate.update(sql, beverageId,
+                breweryDao.getBreweryByBrewerId(Math.toIntExact(userDao.currentUser(principal).getId())).getBreweryId()) == 0;
+    }
+
+    @Override
+    public boolean deleteBeverageFromBrewery(int beverageId) {
+        String sql = "DELETE FROM brewery_beverage WHERE beverage_id = ?";
 
         return jdbcTemplate.update(sql, beverageId) == 0;
+    }
+
+    @Override
+    public boolean deleteBeverageGlobally(int beverageId) {
+        String sql = "BEGIN TRANSACTION; " +
+                "DELETE FROM brewery_beverage WHERE beverage_id = ?; " +
+                "DELETE FROM beverage WHERE beverage_id = ?; " +
+                "COMMIT;";
+
+        return jdbcTemplate.update(sql, beverageId, beverageId) == 0;
     }
 
     @Override

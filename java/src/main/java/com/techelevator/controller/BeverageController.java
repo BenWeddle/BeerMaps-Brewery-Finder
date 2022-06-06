@@ -32,7 +32,14 @@ public class BeverageController {
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public boolean addBeverage(@RequestBody Beverage beverage) {
-        return beverageDao.addABeverage(beverage);
+        return beverageDao.addBeverageGlobally(beverage);
+    }
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/brewery/add/{beverageId}", method = RequestMethod.POST)
+    public boolean addBeverageToBrewery(@PathVariable int beverageId, Principal principal) {
+        return beverageDao.addBeverageToBrewery(beverageId, principal);
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
@@ -45,8 +52,15 @@ public class BeverageController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_BREWER')")
     @RequestMapping(path="/delete/{beverageId}", method = RequestMethod.DELETE)
-    public boolean deleteBeverage(@PathVariable int beverageId) {
-        return beverageDao.deleteBeverage(beverageId);
+    public boolean deleteBeverageFromBrewery(@PathVariable int beverageId) {
+        return beverageDao.deleteBeverageFromBrewery(beverageId);
+    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_BREWER')")
+    @RequestMapping(path="/delete/global/{beverageId}", method = RequestMethod.DELETE)
+    public boolean deleteBeverageGlobally(@PathVariable int beverageId) {
+        return beverageDao.deleteBeverageGlobally(beverageId);
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)

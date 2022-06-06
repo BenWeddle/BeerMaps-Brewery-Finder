@@ -46,14 +46,14 @@ html {
   margin-left: 5%;
   margin-right: 5%;
   /*background-image: url(https://wallpaperboat.com/wp-content/uploads/2020/10/30/58635/beer-04.jpg);*/
-  background-color: white;
+  background-color: rgb(211, 208, 208);
   /*background-position: center;*/
   /*background-position-y: 0px;*/
 }
 
 body {
   /*background-color:rgb(240, 185, 130);*/
-  background-color: white;
+  background-color: rgb(211, 208, 208);
   border-radius: 70px;
   /*opacity: .9;*/
   /*padding: 25px;*/
@@ -64,12 +64,12 @@ body {
 }
 
 #app{
-  background-color: white;
+  background-color:rgb(211, 208, 208) ;
 }
 
 #vertical{
   display: grid;
-  grid-template-columns: 1fr 6fr;
+  grid-template-columns: 1fr 7fr;
   gap: 10px;
 }
 

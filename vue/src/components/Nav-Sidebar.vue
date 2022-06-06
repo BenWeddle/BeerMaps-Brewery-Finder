@@ -1,7 +1,6 @@
 <template>
     <div id="navbar">
         <h3 id="nav-title">Navigation</h3>
-
         <router-link to="/addBrewery">Add New Brewery</router-link>
         <br />
         <router-link to="/addBeer">Add New Beer</router-link>
@@ -15,7 +14,7 @@
 export default({
     setup() {},
     name: "nav-sidebar",
-
+    
 })
 </script>
 
@@ -33,6 +32,7 @@ export default({
     align-items: center;
     justify-content: center;
     text-decoration: underline;
+    font-family: tangerine;
     font-style: italic;
 }
 
