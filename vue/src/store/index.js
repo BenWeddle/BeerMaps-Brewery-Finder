@@ -24,12 +24,9 @@ export default new Vuex.Store({
     currentUserRole : '',
     breweryIdFromBrewer: 0,
     searchCity: '',
-<<<<<<< HEAD
-    listOfBreweries: []
-=======
+    listOfBreweries: [],
     selectedBreweryMenu: '',
     selectedBreweryRatings: ''
->>>>>>> main
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -56,16 +53,14 @@ export default new Vuex.Store({
     SET_BREWERY_ID_FROM_BREWER(state, breweryId){
       state.breweryIdFromBrewer = breweryId;
     },
-<<<<<<< HEAD
     LIST_OF_BREWERIES(state, list){
       state.listOfBreweries = list;
-=======
+    },
     SET_SELECTED_MENU(state, breweryId){
       state.selectedBreweryMenu = breweryId;
     },
     SET_SELECTED_BREWERY_RATINGS(state, breweryId){
       state.selectedBreweryRatings = breweryId;
->>>>>>> main
     }
   }
 })

@@ -6,7 +6,7 @@
       </label>
 
         <gmap-map
-            :zoom="14"
+            :zoom="12"
             :center="center"
             style= "width:100%; height: 600px;"
         >
@@ -51,7 +51,10 @@ export default({
     },
     created() {
         // this.locateGeoLocation();
-        this.dropPinsForBreweries();
+       
+    },
+    mounted() {
+         this.dropPinsForBreweries();
     },
     computed: {
         
