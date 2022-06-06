@@ -23,7 +23,8 @@ export default {
   },
   created() {
     BreweryService.getBreweries().then(response => {
-      this.listOfBreweries = response.data
+      // this.listOfBreweries = response.data
+      this.$store.commit("LIST_OF_BREWERIES", response.data)
       })
       .catch(error => {
         alert(error + "There was an error getting breweries")

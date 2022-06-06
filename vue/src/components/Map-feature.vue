@@ -39,12 +39,14 @@ export default({
     data() {
         return {
             center: {
-                lat: 39.783704,
-                lng: -100.4458825,
+                lat: 39.983334,
+                lng: -82.983330,
+                // current coordinates for Columbus OH
             },
             locationMarkers: [],
             locPlaces: [],
             existingPlace: null,
+            listOfBreweries: this.$store.state.listOfBreweries
         }
     },
     created() {
@@ -79,7 +81,7 @@ export default({
             }
         },
         dropPinsForBreweries() {
-            this.breweries.forEach((brewery) => {
+            this.listOfBreweries.forEach((brewery) => {
                 const marker = {
                     lat: brewery.latitude,
                     lng: brewery.longitude
