@@ -12,9 +12,6 @@ public class Beverage {
     private boolean isAvailable;
 
 
-
-
-
     public Beverage(){
     }
 
