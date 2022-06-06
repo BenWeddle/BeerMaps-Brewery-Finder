@@ -10,7 +10,6 @@
       <nav-sidebar v-show="!isLoginPage"></nav-sidebar>
       <router-view />
     </div>
-    
   </div>
 </template>
 <script>
@@ -18,7 +17,6 @@ import MainHeader from "@/components/Main-Header.vue"
 import NavSidebar from "@/components/Nav-Sidebar.vue"
 
 export default ({
-  setup() {},
   components: {
     MainHeader,
     NavSidebar,

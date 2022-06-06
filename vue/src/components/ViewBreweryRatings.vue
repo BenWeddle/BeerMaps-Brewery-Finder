@@ -11,7 +11,7 @@
 
         <b-row class="mb-2">
           <b-col sm="3" class="text-sm-right"><b>User: </b></b-col>
-          <b-col>!!!!!!!!!!!!this.getNameFromId(row.item.reviewerId)!!!!!!!!!!!!!</b-col>
+          <b-col>{{this.getNameFromId(row.item.reviewerId)}}</b-col>
         </b-row>
 
         <b-row class="mb-2">
