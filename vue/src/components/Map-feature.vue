@@ -1,8 +1,7 @@
 <template>
-    <div id="map">
+    <div id="brewery-map">
 
         <label>
-        
       </label>
 
         <gmap-map
@@ -10,6 +9,7 @@
             :center="center"
             style= "width:100%; height: 600px;"
         >
+<<<<<<< HEAD
         <!-- <gmap-marker
             :key="index"
             v-for="(m,index) in locationMarkers"
@@ -25,6 +25,14 @@
         ></gmap-marker>
 
 
+=======
+           <gmap-marker
+               :key="index"
+               v-for="(m,index) in this.dropPinsForBreweries"
+               :position="m.position"
+               @click="center=m.position"
+           ></gmap-marker>
+>>>>>>> main
 
         </gmap-map>
         <div class="filter">
@@ -32,7 +40,6 @@
             <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
             <button @click="addLocationMarker">Add</button>
             <br />
-            <!-- <p v-for="brewery in breweries" v-bind:key="brewery.id">{{brewery.breweryName}}</p> -->
         </div>
     </div>
 </template>
@@ -53,6 +60,7 @@ export default({
             locationMarkers: [],
             locPlaces: [],
             existingPlace: null,
+<<<<<<< HEAD
             // listOfBreweries: 
         }
     },
@@ -62,19 +70,29 @@ export default({
     },
     mounted() {
         this.dropPinsForBreweries();
+=======
+            listOfBreweries: this.$store.state.listOfBreweries,
+            isLoading: true
+        };
+>>>>>>> main
     },
     computed: {
-        
+        storeListOfBreweries(){
+          return this.$store.state.listOfBreweries
+        },
+        dropPinsForBreweries() {
+        let locations = []
+        this.storeListOfBreweries.forEach((brewery) => {
+          const marker = {
+            lat: brewery.latitude,
+            lng: brewery.longitude
+          }
+          locations.push({position: marker})
+        })
+        return locations;
+      }
     },
     methods: {
-        locateGeoLocation: function() {
-            navigator.geolocation.getCurrentPosition(res => {
-                this.center = {
-                    lat: res.coords.latitude,
-                    lng: res.coords.longitude
-                }
-            })
-        },
         initMarker(loc) {
             this.existingPlace = loc;
         },
@@ -89,6 +107,7 @@ export default({
                 this.center = marker
                 this.existingPlace = null
             }
+<<<<<<< HEAD
 
             // this.dropPinsForBreweries()
         },
@@ -103,9 +122,10 @@ export default({
                 // this.center = marker
                 this.existingPlace = null
             })
+=======
+>>>>>>> main
         }
     }
-        
 })
 
 </script>
