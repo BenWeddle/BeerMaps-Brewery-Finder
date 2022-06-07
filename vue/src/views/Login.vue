@@ -137,14 +137,13 @@ label.sr-only {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 255px;
-
+  margin-left: 250px;
 }
+
 html {
  
   margin-left: 500px;
   margin-right: 500px;
-  background-image: url(https://wallpaperboat.com/wp-content/uploads/2020/10/30/58635/beer-04.jpg);
   background-position: center;
   background-position-y: 0px;
 }
@@ -163,6 +162,11 @@ body {
 
 #sign-in-button{
   margin-top: 10px;
+}
+
+div {
+  font-family: tangerine;
+  font-style: italic;
 }
 
 </style>

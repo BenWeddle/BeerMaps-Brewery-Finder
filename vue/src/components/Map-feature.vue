@@ -41,23 +41,9 @@ export default({
             locationMarkers: [],
             locPlaces: [],
             existingPlace: null,
-<<<<<<< HEAD
-            listOfBreweries: this.$store.state.listOfBreweries
-        }
-    },
-    created() {
-        // this.locateGeoLocation();
-       
-    },
-    mounted: function() {
-         this.dropPinsForBreweries(function() {
-
-         })
-=======
             listOfBreweries: this.$store.state.listOfBreweries,
             isLoading: true
         };
->>>>>>> main
     },
     computed: {
         storeListOfBreweries(){
@@ -98,20 +84,21 @@ export default({
 
 <style scoped>
 #map{
-    
-    margin-top: 0px;
     display: flex;
-    
 }
 
 .filter {
     background-color: #8ca4b8;
     border-bottom-right-radius: 25px;
-    border-left: solid black 1px;
-    border-right: solid black 1px;
-    border-bottom: solid black 1px;
+    border-bottom-left-radius: 25px;
+    border: solid black 1px;
     padding: 5px;
+    padding-left: 15px;
     font-style: italic;
+}
+
+h4 {
+    font-size: large;
 }
 
     
