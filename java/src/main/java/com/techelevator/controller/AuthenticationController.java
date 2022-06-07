@@ -2,6 +2,8 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.dao.UsernameDao;
+import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.LoginDTO;
-import com.techelevator.model.RegisterUserDTO;
-import com.techelevator.model.User;
-import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
@@ -28,11 +26,13 @@ public class AuthenticationController {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private UserDao userDao;
+    private UsernameDao usernameDao;
 
-    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao) {
+    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, UsernameDao usernameDao) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
+        this.usernameDao = usernameDao;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -63,6 +63,11 @@ public class AuthenticationController {
         }
     }
 
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value = "/user/get/{name}", method = RequestMethod.GET)
+    public Username getUser(@PathVariable String name){
+        return usernameDao.getUsernameByUsername(name);
+    }
 
     /**
      * Object to return as body in JWT Authentication.

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import java.security.Principal;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class BreweryController {
         return breweryDao.addBrewery(brewery, principal);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_BREWER')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_BREWER')")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/all", method = RequestMethod.GET)
     public List<Brewery> getAllBreweries() {
@@ -73,5 +74,12 @@ public class BreweryController {
     @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public boolean updateBrewery(@RequestBody Brewery brewery) {
         return breweryDao.updateBrewery(brewery);
+    }
+
+    @PreAuthorize("permitAll()")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/update/{breweryId}/{brewerId}", method = RequestMethod.PUT)
+    public boolean updateBreweryRegister(@PathVariable int breweryId, @PathVariable int brewerId) {
+        return breweryDao.registerBrewer(breweryId, brewerId);
     }
 }

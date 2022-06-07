@@ -105,6 +105,12 @@ public class BreweryDaoJdbc implements BreweryDao{
                 brewery.isPetFriendly(), brewery.isHasFood(), brewery.isHasOnSiteBrewing(), brewery.getBrewerId() , brewery.getBreweryId()) == 0;
     }
 
+    @Override
+    public boolean registerBrewer(int breweryId, int brewerId) {
+        String sql = "UPDATE brewery SET brewer_id = ? WHERE brewery_id = ?";
+        return jdbcTemplate.update(sql, brewerId, breweryId) == 0;
+    }
+
 
     public Brewery mapRowToBrewery(SqlRowSet sqlRowSet) {
         Brewery brewery = new Brewery();

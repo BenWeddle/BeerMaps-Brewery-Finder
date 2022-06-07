@@ -6,4 +6,5 @@ public interface UsernameDao {
 
     Username getUsernameById(int userId);
 
+    Username getUsernameByUsername(String name);
 }

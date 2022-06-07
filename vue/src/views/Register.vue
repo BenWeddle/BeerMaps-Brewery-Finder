@@ -37,6 +37,22 @@
       type="checkbox"
       id="brewerCheckbox"/>
       <label for="brewerCheckbox">Are you a brewer?</label>
+
+      <b-form-group
+        label="Select your Brewery"
+        v-if="this.user.role === 'brewer'"
+      >
+        <b-form-select
+            id="brewery-select"
+            v-model="selected"
+            :options="brewerySelectOptions"
+            class="mb-3"
+            value-field="value"
+            text-field="text"
+            disabled-field="notEnabled"
+        ></b-form-select>
+      </b-form-group>
+
       <button class="create-account-button" type="submit">
         Create Account
       </button>
@@ -47,7 +63,8 @@
 
 <script>
 import authService from '../services/AuthService';
-
+import BreweryService from "../services/BreweryService";
+import UserService from "../services/UserService";
 export default {
   name: 'register',
   data() {
@@ -60,7 +77,34 @@ export default {
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
+      selected: 0,
+      breweries: [],
+      currentUser: {},
+      registerSuccess: false
     };
+  },
+  computed: {
+    brewerySelectOptions(){
+      let returnOptions = []
+      this.breweries.forEach((brewery) => {
+        const selectObject = {
+          value: brewery.breweryId,
+          text: brewery.breweryName
+        }
+        returnOptions.push(selectObject);
+      })
+      return returnOptions;
+    }
+  },
+  watch: {
+    registerSuccess(value){
+      console.log(value)
+      this.getUsername();
+    },
+    currentUser(value){
+      console.log(value)
+      this.updateBrewer();
+    }
   },
   methods: {
     register() {
@@ -73,10 +117,17 @@ export default {
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
-              this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
-              });
+
+              if(this.user.role === 'brewer'){
+                this.registerSuccess = true;
+              }
+
+              if(this.user.role === 'user'){
+                this.$router.push({
+                  path: '/login',
+                  query: { registration: 'success' }
+                });
+              }
             }
           })
           .catch((error) => {
@@ -88,7 +139,20 @@ export default {
           });
       }
     },
-
+    getUsername(){
+      UserService.getUserByUsername(this.user.username).then(response => {
+        this.currentUser = response.data
+      })
+    },
+    updateBrewer(){
+      console.log(this.selected)
+      BreweryService.registerBrewer(this.selected, this.currentUser.userId).then(() =>{
+              this.$router.push({
+                path: '/login',
+                query: {registration: 'success'}
+              });
+      })
+    },
     changeBrewerMethod() {
       if (this.user.role === "user") {
         this.user.role = "brewer"
@@ -96,12 +160,18 @@ export default {
         this.user.role = "user"
       }
     },
-
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
     },
+    getAllBreweries(){
+      BreweryService.getBreweries().then(response =>
+          this.breweries = response.data
+      )}
   },
+  created(){
+    this.getAllBreweries();
+  }
 };
 </script>
 

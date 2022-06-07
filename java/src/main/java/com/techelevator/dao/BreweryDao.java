@@ -19,5 +19,7 @@ public interface BreweryDao {
 
     boolean updateBrewery(Brewery brewery);
 
+    boolean registerBrewer(int breweryId, int brewerId);
+
     Brewery getBreweryByBrewerId(int brewerId);
 }
