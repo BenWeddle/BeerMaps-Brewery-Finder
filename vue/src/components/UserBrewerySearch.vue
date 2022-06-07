@@ -36,7 +36,7 @@
       <b-card>
         <b-row class="mb-2">
           <b-col sm="3" class="text-sm-right"><b>Address: </b></b-col>
-          <b-col>Get Address By ID</b-col>
+          <b-col>{{getAddressByAddressId(row.item.addressId)}}</b-col>
         </b-row>
 
         <b-row class="mb-2">
@@ -46,7 +46,7 @@
 
         <b-row class="mb-2">
           <b-col sm="3" class="text-sm-right"><b>Hours of Operation:</b></b-col>
-          <b-col>We do not yet have this information or access to it</b-col>
+          <b-col>{{row.item.hours}}</b-col>
         </b-row>
 
         <b-row class="mb-2">
@@ -200,6 +200,12 @@ export default {
     },
     updateStoreBreweryList(){
       this.$store.commit('LIST_OF_BREWERIES', this.filteredList);
+    },
+    getAddressByAddressId(addressId){
+      let correctAddress = this.$store.state.addressList.filter((address) =>
+          address.addressId === addressId
+      );
+      return correctAddress[0].address;
     }
   },
   created() {
@@ -231,7 +237,7 @@ export default {
   justify-content: space-evenly;
 }
 div {
-  background-color:#8ca4b8;
+  background-color: #f3bc23;
   border-radius: 25px;
   font-family: tangerine;
   font-style: italic;

@@ -93,7 +93,7 @@ export default({
               {position: marker,
                 infoText: '<h4>' + `${brewery.breweryName}` + '</h4>' +
                     '<h6> Phone Number: ' + `${brewery.phoneNumber}`+'</h6>' +
-                    '<h6> Address: '+ `${this.getAddressByBreweryId(brewery.addressId)[0].address}`+'</h6>'
+                    '<h6> Address: '+ `${this.getAddressByAddressId(brewery.addressId)[0].address}`+'</h6>'
               })
         })
         return locations;
@@ -133,7 +133,7 @@ export default({
       toggleIconWindow(){
           this.iconInfoWinOpen = !this.iconInfoWinOpen;
       },
-      getAddressByBreweryId(addressId){
+      getAddressByAddressId(addressId){
         let correctAddress = this.$store.state.addressList.filter((address) =>
             address.addressId === addressId
         );
@@ -146,20 +146,21 @@ export default({
 
 <style scoped>
 #map{
-    
-    margin-top: 0px;
     display: flex;
-    
 }
 
 .filter {
-    background-color: #8ca4b8;
+    background-color: #f3bc23;
     border-bottom-right-radius: 25px;
-    border-left: solid black 1px;
-    border-right: solid black 1px;
-    border-bottom: solid black 1px;
+    border-bottom-left-radius: 25px;
+    border: solid black 1px;
     padding: 5px;
+    padding-left: 15px;
     font-style: italic;
+}
+
+h4 {
+    font-size: large;
 }
 
     
