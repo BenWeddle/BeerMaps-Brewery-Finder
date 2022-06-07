@@ -9,11 +9,15 @@
             :center="center"
             style= "width:100%; height: 600px;"
         >
+          <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
+          </gmap-info-window>
+
            <gmap-marker
                :key="index"
                v-for="(m,index) in this.dropPinsForBreweries"
                :position="m.position"
-               @click="center=m.position"
+               :clickable="true"
+               @click="toggleInfoWindow(m,index)"
            ></gmap-marker>
 
         </gmap-map>
@@ -42,8 +46,18 @@ export default({
             locationMarkers: [],
             locPlaces: [],
             existingPlace: null,
-            listOfBreweries: this.$store.state.listOfBreweries,
-            isLoading: true
+            infoWindowPos: null,
+            infoWinOpen: false,
+            currentMidx: null,
+            infoOptions: {
+            content: '',
+            //optional: offset infowindow so it visually sits nicely on top of our marker
+            pixelOffset: {
+              width: 0,
+              height: -35
+            }
+          }
+
         };
     },
     computed: {
@@ -57,7 +71,12 @@ export default({
             lat: brewery.latitude,
             lng: brewery.longitude
           }
-          locations.push({position: marker})
+          locations.push(
+              {position: marker,
+                infoText: '<h4>' + `${brewery.breweryName}` + '</h4>' +
+                    '<h6> Phone Number: ' + `${brewery.phoneNumber}`+'</h6>' +
+                    '<h6> Address: '+ `${this.getAddressByBreweryId(brewery.addressId)[0].address}`+'</h6>'
+              })
         })
         return locations;
       }
@@ -77,7 +96,28 @@ export default({
                 this.center = marker
                 this.existingPlace = null
             }
+        },
+        toggleInfoWindow(marker, idx) {
+
+          this.infoWindowPos = marker.position;
+          this.infoOptions.content = marker.infoText;
+
+        //check if its the same marker that was selected if yes toggle
+        if (this.currentMidx == idx) {
+          this.infoWinOpen = !this.infoWinOpen;
         }
+        //if different marker set infowindow to open and reset current marker index
+        else {
+          this.infoWinOpen = true;
+          this.currentMidx = idx;
+        }
+      },
+      getAddressByBreweryId(addressId){
+        let correctAddress = this.$store.state.addressList.filter((address) =>
+            address.addressId === addressId
+        );
+        return correctAddress;
+      }
     }
 })
 

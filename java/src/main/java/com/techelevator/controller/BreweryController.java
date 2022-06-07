@@ -33,7 +33,7 @@ public class BreweryController {
         return breweryDao.addBrewery(brewery, principal);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_BREWER')")
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER', 'ROLE_BREWER')")
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/all", method = RequestMethod.GET)
     public List<Brewery> getAllBreweries() {
@@ -72,6 +72,13 @@ public class BreweryController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @RequestMapping(path = "/update", method = RequestMethod.PUT)
     public boolean updateBrewery(@RequestBody Brewery brewery) {
+        return breweryDao.updateBrewery(brewery);
+    }
+
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_BREWER')")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(path = "/update/register", method = RequestMethod.PUT)
+    public boolean updateBreweryRegister(@RequestBody Brewery brewery) {
         return breweryDao.updateBrewery(brewery);
     }
 }

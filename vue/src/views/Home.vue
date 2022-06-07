@@ -11,7 +11,7 @@ import AddGoogleMap from "../components/Map-feature.vue"
 import WelcomeMessage from "../components/Welcome-Message.vue"
 import BreweryService from "../services/BreweryService";
 import UserBrewerySearch from "../components/UserBrewerySearch";
-
+import AddressService from "../services/AddressService";
 export default {
   name: "home",
   components: {
@@ -36,11 +36,17 @@ export default {
       BreweryService.getBreweryByBrewerId(this.getBrewerID).then(response => {
         this.$store.commit('SET_BREWERY_ID_FROM_BREWER', response.data.breweryId)
       })
+    },
+    setStoreAddressList(){
+      AddressService.getAllAddresses().then(response => {
+        this.$store.commit('SET_ADDRESS_LIST', response.data);
+      })
     }
   },
   created() {
     this.getAllBreweriesAddToStore();
     this.setStoreBreweryId();
+    this.setStoreAddressList();
   },
   computed: {
     getBrewerID() {

@@ -37,6 +37,22 @@
       type="checkbox"
       id="brewerCheckbox"/>
       <label for="brewerCheckbox">Are you a brewer?</label>
+
+      <b-form-group
+        label="Select your Brewery"
+        v-if="this.user.role === 'brewer'"
+      >
+        <b-form-select
+            id="brewery-select"
+            v-model="selected"
+            :options="brewerySelectOptions"
+            class="mb-3"
+            value-field="value"
+            text-field="text"
+            disabled-field="notEnabled"
+        ></b-form-select>
+      </b-form-group>
+
       <button class="create-account-button" type="submit">
         Create Account
       </button>
@@ -47,7 +63,8 @@
 
 <script>
 import authService from '../services/AuthService';
-
+import BreweryService from "../services/BreweryService";
+import UserService from "../services/UserService";
 export default {
   name: 'register',
   data() {
@@ -60,7 +77,23 @@ export default {
       },
       registrationErrors: false,
       registrationErrorMsg: 'There were problems registering this user.',
+      selected: 0,
+      breweries: [],
+      currentUser: {}
     };
+  },
+  computed: {
+    brewerySelectOptions(){
+      let returnOptions = []
+      this.breweries.forEach((brewery) => {
+        const selectObject = {
+          value: brewery.breweryId,
+          text: brewery.breweryName
+        }
+        returnOptions.push(selectObject);
+      })
+      return returnOptions;
+    }
   },
   methods: {
     register() {
@@ -73,6 +106,10 @@ export default {
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
+              //Get the userId by userName
+              this.getUsername();
+              //Set BrewerId to UserId -- Using the Selected Brewery ID
+              this.updateBrewer();
               this.$router.push({
                 path: '/login',
                 query: { registration: 'success' },
@@ -88,7 +125,15 @@ export default {
           });
       }
     },
-
+    getUsername(){
+      UserService.getUserByUsername(this.user.username).then(response => {
+        this.currentUser = response.data
+      })
+    },
+    updateBrewer(){
+      console.log(this.getSelectedBrewery())
+      BreweryService.updateBrewery(this.getSelectedBrewery[0])
+    },
     changeBrewerMethod() {
       if (this.user.role === "user") {
         this.user.role = "brewer"
@@ -96,12 +141,26 @@ export default {
         this.user.role = "user"
       }
     },
-
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
     },
+    getAllBreweries(){
+      BreweryService.getBreweries().then(response =>
+          this.breweries = response.data
+      )}
   },
+  getSelectedBrewery(){
+    let selectedBrewery = []
+    selectedBrewery  = this.breweries.filter((brewery) =>
+        brewery.breweryId === this.selected
+    );
+    selectedBrewery[0].brewerId = this.currentUser.userId
+    return selectedBrewery;
+  },
+  created(){
+    this.getAllBreweries();
+  }
 };
 </script>
 
