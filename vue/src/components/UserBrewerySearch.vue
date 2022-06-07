@@ -68,7 +68,7 @@
 
           <b-button size ="sm" variant ="outline-success" id="view-menu" @click="showBreweryMenu(row.item.breweryId)">View Offerings</b-button>
 
-          <b-button size ="sm" variant ="outline-warning" id="view-ratings" @click="showBreweryRatings(row.item.breweryId)">Ratings</b-button>
+          <b-button size ="sm" variant ="outline-success" id="view-ratings" @click="showBreweryRatings(row.item.breweryId)">Ratings</b-button>
         </div>
 
       </b-card>
@@ -220,7 +220,8 @@ export default {
 #filter-input{
   border: 1px solid black;
   padding: 10px;
-  border-radius: 25px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
   margin-top: 20px;
 
 }
@@ -238,9 +239,11 @@ export default {
 }
 div {
   background-color: #f3bc23;
-  border-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
   font-family: tangerine;
   font-style: italic;
   font-weight: bold;
+
 }
 </style>

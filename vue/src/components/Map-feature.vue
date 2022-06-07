@@ -21,12 +21,6 @@
            ></gmap-marker>
 
         </gmap-map>
-        <div class="filter">
-            <h4>Please select a location</h4>
-            <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
-            <button @click="addLocationMarker">Add</button>
-            <br />
-        </div>
     </div>
 </template>
 
@@ -123,23 +117,6 @@ export default({
 </script>
 
 <style scoped>
-#map{
-    display: flex;
-}
-
-.filter {
-    background-color: #f3bc23;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
-    border: solid black 1px;
-    padding: 5px;
-    padding-left: 15px;
-    font-style: italic;
-}
-
-h4 {
-    font-size: large;
-}
 
     
 </style>
