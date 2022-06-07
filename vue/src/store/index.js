@@ -26,7 +26,8 @@ export default new Vuex.Store({
     searchCity: '',
     listOfBreweries: [],
     selectedBreweryMenu: '',
-    selectedBreweryRatings: ''
+    selectedBreweryRatings: '',
+    addressList: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -61,6 +62,9 @@ export default new Vuex.Store({
     },
     SET_SELECTED_BREWERY_RATINGS(state, breweryId){
       state.selectedBreweryRatings = breweryId;
+    },
+    SET_ADDRESS_LIST(state, list){
+      state.addressList = list;
     }
   }
 })

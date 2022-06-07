@@ -10,8 +10,8 @@ export default {
         return axios.post('/brewery/add', brewery)
     },
 
-    updateBrewery(id) {
-        return axios.put('/brewery', id)
+    registerBrewer(breweryId, brewerId) {
+        return axios.put(`/brewery/update/${breweryId}/${brewerId}`)
     },
 
     deleteBrewery(id) {
