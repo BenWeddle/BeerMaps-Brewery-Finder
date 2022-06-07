@@ -29,49 +29,7 @@ CREATE TABLE brewery (
     CONSTRAINT PK_brewery PRIMARY KEY (brewery_id),
     CONSTRAINT FK_brewery_brewer_id FOREIGN KEY (brewer_id) REFERENCES users(user_id)
 );
---ADDING HOURS AND IMAGES
-ALTER TABLE brewery 
-ADD hours varchar(500);
-UPDATE brewery SET hours = 'M: 4PM-11PM T: 4PM-11PM W: 4PM-11PM Th: 4PM-12AM F: 4PM-2AM SAT: 12PM-2AM SUN: 12PM-11PM'
-WHERE brewery_id = 1;
-UPDATE brewery SET hours = 'M: 11AM-10PM T: 11AM-10PM W: 11AM-10PM Th: 11AM-10PM F: 11AM-11PM SAT: 11AM-11PM SUN: 11AM-10PM'
-WHERE brewery_id = 2;
-UPDATE brewery SET hours = 'M: 4PM-10PM T: 4PM-10PM W: 4PM-10PM Th: 4PM-10PM F: 12PM-12AM SAT: 12PM-12AM SUN: 12PM-9PM'
-WHERE brewery_id = 3;
-UPDATE brewery SET hours = 'M: CLOSED T: 3PM-11PM W: 3PM-11PM Th: 3PM-11PM F: 1130AM-12AM SAT: 1130AM-12AM  SUN: 1130-10PM '
-WHERE brewery_id = 4;
-UPDATE brewery SET hours = 'M: 4PM-11PM T: 4PM-11PM W: 4PM-11PM Th: 4PM-12AM F: 2PM-12AM SAT: 12PM-12AM SUN: 12PM-9PM'
-WHERE brewery_id = 5;
-UPDATE brewery SET hours = 'M: CLOSED T: 1130AM-9PM W: 1130AM-9PM Th: 1130AM-9PM F: 1130AM-930PM SAT: 430PM-930PM SUN: CLOSED'
-WHERE brewery_id = 6;
-UPDATE brewery SET hours = 'M: 3PM-11PM T: 3PM-11PM W: 3PM-11PM Th: 3PM-11PM F: 3PM-1AM SAT: 12PM-1AM SUN: 11AM-9PM'
-WHERE brewery_id = 7;
-UPDATE brewery SET hours = 'M: 11AM-10PM T: 11AM-11PM W: 11AM-11PM Th: 11AM-11PM F: 11AM-11PM SAT: 11AM-12PM SUN: 11AM-10PM'
-WHERE brewery_id = 8;
-UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: CLOSED Th: CLOSED F: 4PM-10PM SAT: 12PM-10PM SUN: 12PM-7PM'
-WHERE brewery_id = 9;
-UPDATE brewery SET hours = 'M: 4PM-11PM T: 3PM-11PM W: 3PM-11PM Th: 3PM-12AM F: 3PM-1AM SAT: 10AM-1AM SUN: 10AM-10PM'
-WHERE brewery_id = 10;
-UPDATE brewery SET hours = 'M: 3PM-10PM T: 3PM-10PM  W: 3PM-10PM  Th: 11AM-12AM F: 11AM-1AM SAT: 11AM-1AM SUN: 11AM-10PM'
-WHERE brewery_id = 11;
-UPDATE brewery SET hours = 'M: 2PM-10PM T: 2PM-10PM W: 2PM-10PM Th: 2PM-10PM F: 12PM-12AM SAT: 12PM-12AM SUN: 12PM-10PM'
-WHERE brewery_id = 12;
-UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: CLOSED Th: CLOSED F: 5PM-10PM SAT: 1PM-10PM SUN: 1PM-6PM'
-WHERE brewery_id = 13;
-UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: 4PM-10PM Th: 4PM-10PM F: 4PM-11PM SAT: 12PM-11PM SUN: 1PM-7PM'
-WHERE brewery_id = 14;
-UPDATE brewery SET hours = 'M: 330PM-11PM T: 330PM-11PM W: 330PM-11PM Th: 330PM-12AM F: 11AM-2AM SAT: 11AM-2AM SUN: 11AM-11PM'
-WHERE brewery_id = 15;
-UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: 4PM-9PM Th: 4PM-9PM F: 4PM-10PM SAT: 1PM-10PM SUN: 1PM-7PM'
-WHERE brewery_id = 16;
-UPDATE brewery SET hours = 'M: CLOSED T: 11AM-8PM W: 11AM-8PM Th: 11AM-8PM F: 11AM-9PM SAT: 12PM-9PM SUN: 12PM-8PM'
-WHERE brewery_id = 17;
-UPDATE brewery SET hours = 'M: CLOSED T: 3PM-10PM W: 3PM-10PM Th: 3PM-10PM F: 3PM-11PM SAT: 12PM-11PM SUN: 12PM-8PM'
-WHERE brewery_id = 18;
-UPDATE brewery SET hours = 'M: CLOSED T: 3PM-11PM W: 1130AM-11PM Th: 1130AM-12AM F: 1130AM-12AM SAT: 10AM-12AM SUN: 10AM-10PM'
-WHERE brewery_id = 19;
-UPDATE brewery SET hours = 'M: 3PM-9PM T: 3PM-9PM W: 3PM-9PM Th: 3PM-9AM F: 3PM-10PM SAT: 11AM-10PM SUN: 1PM-7PM'
-WHERE brewery_id = 20;
+
 --IMAGE URL FOR BREWERY
 
 
@@ -175,6 +133,95 @@ INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_fo
 VALUES('Wolfs Ridge Brewing', 'Established in 2013, Wolf’s Ridge has grown into one of Columbus’ premier dining and drinking destinations, winning numerous local and national awards for their food and drink programs that have become synonymous with quality, inventiveness, and approachability.', true, false, true, false, 3);
 INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
 VALUES ('Zaftig Brewing Co.', 'Established in 2013, Zaftig Brewing Company is Worthington''s only craft brewery, offering an extensive array of selections. Well-known in Columbus for our high-gravity, full-bodied ales, we aren''t afraid to push the boundaries of what great craft beer can be.', true, false, true, false, 3);
+
+
+--ADDING HOURS AND IMAGES
+ALTER TABLE brewery
+ADD hours varchar(500);
+UPDATE brewery SET hours = 'M: 4PM-11PM T: 4PM-11PM W: 4PM-11PM Th: 4PM-12AM F: 4PM-2AM SAT: 12PM-2AM SUN: 12PM-11PM'
+WHERE brewery_id = 1;
+UPDATE brewery SET hours = 'M: 11AM-10PM T: 11AM-10PM W: 11AM-10PM Th: 11AM-10PM F: 11AM-11PM SAT: 11AM-11PM SUN: 11AM-10PM'
+WHERE brewery_id = 2;
+UPDATE brewery SET hours = 'M: 4PM-10PM T: 4PM-10PM W: 4PM-10PM Th: 4PM-10PM F: 12PM-12AM SAT: 12PM-12AM SUN: 12PM-9PM'
+WHERE brewery_id = 3;
+UPDATE brewery SET hours = 'M: CLOSED T: 3PM-11PM W: 3PM-11PM Th: 3PM-11PM F: 1130AM-12AM SAT: 1130AM-12AM  SUN: 1130-10PM '
+WHERE brewery_id = 4;
+UPDATE brewery SET hours = 'M: 4PM-11PM T: 4PM-11PM W: 4PM-11PM Th: 4PM-12AM F: 2PM-12AM SAT: 12PM-12AM SUN: 12PM-9PM'
+WHERE brewery_id = 5;
+UPDATE brewery SET hours = 'M: CLOSED T: 1130AM-9PM W: 1130AM-9PM Th: 1130AM-9PM F: 1130AM-930PM SAT: 430PM-930PM SUN: CLOSED'
+WHERE brewery_id = 6;
+UPDATE brewery SET hours = 'M: 3PM-11PM T: 3PM-11PM W: 3PM-11PM Th: 3PM-11PM F: 3PM-1AM SAT: 12PM-1AM SUN: 11AM-9PM'
+WHERE brewery_id = 7;
+UPDATE brewery SET hours = 'M: 11AM-10PM T: 11AM-11PM W: 11AM-11PM Th: 11AM-11PM F: 11AM-11PM SAT: 11AM-12PM SUN: 11AM-10PM'
+WHERE brewery_id = 8;
+UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: CLOSED Th: CLOSED F: 4PM-10PM SAT: 12PM-10PM SUN: 12PM-7PM'
+WHERE brewery_id = 9;
+UPDATE brewery SET hours = 'M: 4PM-11PM T: 3PM-11PM W: 3PM-11PM Th: 3PM-12AM F: 3PM-1AM SAT: 10AM-1AM SUN: 10AM-10PM'
+WHERE brewery_id = 10;
+UPDATE brewery SET hours = 'M: 3PM-10PM T: 3PM-10PM  W: 3PM-10PM  Th: 11AM-12AM F: 11AM-1AM SAT: 11AM-1AM SUN: 11AM-10PM'
+WHERE brewery_id = 11;
+UPDATE brewery SET hours = 'M: 2PM-10PM T: 2PM-10PM W: 2PM-10PM Th: 2PM-10PM F: 12PM-12AM SAT: 12PM-12AM SUN: 12PM-10PM'
+WHERE brewery_id = 12;
+UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: CLOSED Th: CLOSED F: 5PM-10PM SAT: 1PM-10PM SUN: 1PM-6PM'
+WHERE brewery_id = 13;
+UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: 4PM-10PM Th: 4PM-10PM F: 4PM-11PM SAT: 12PM-11PM SUN: 1PM-7PM'
+WHERE brewery_id = 14;
+UPDATE brewery SET hours = 'M: 330PM-11PM T: 330PM-11PM W: 330PM-11PM Th: 330PM-12AM F: 11AM-2AM SAT: 11AM-2AM SUN: 11AM-11PM'
+WHERE brewery_id = 15;
+UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: 4PM-9PM Th: 4PM-9PM F: 4PM-10PM SAT: 1PM-10PM SUN: 1PM-7PM'
+WHERE brewery_id = 16;
+UPDATE brewery SET hours = 'M: CLOSED T: 11AM-8PM W: 11AM-8PM Th: 11AM-8PM F: 11AM-9PM SAT: 12PM-9PM SUN: 12PM-8PM'
+WHERE brewery_id = 17;
+UPDATE brewery SET hours = 'M: CLOSED T: 3PM-10PM W: 3PM-10PM Th: 3PM-10PM F: 3PM-11PM SAT: 12PM-11PM SUN: 12PM-8PM'
+WHERE brewery_id = 18;
+UPDATE brewery SET hours = 'M: CLOSED T: 3PM-11PM W: 1130AM-11PM Th: 1130AM-12AM F: 1130AM-12AM SAT: 10AM-12AM SUN: 10AM-10PM'
+WHERE brewery_id = 19;
+UPDATE brewery SET hours = 'M: 3PM-9PM T: 3PM-9PM W: 3PM-9PM Th: 3PM-9AM F: 3PM-10PM SAT: 11AM-10PM SUN: 1PM-7PM'
+WHERE brewery_id = 20;
+--IMAGES
+ALTER TABLE brewery 
+ADD image_url varchar(500);
+UPDATE brewery SET image_url = 'https://614now.com/wp-content/uploads/2018/12/2018_AntiquesOnHigh_Kaiser-10-1024x683.jpg'
+WHERE brewery_id = 1;
+UPDATE brewery SET image_url = 'https://drinkupcolumbus.com/wp-content/uploads/2016/03/Barleys-Brewing-Company_01.jpg'
+WHERE brewery_id = 2;
+UPDATE brewery SET image_url = 'https://www.brewdog.com/public/files/DSC04924.jpg'
+WHERE brewery_id = 3;
+UPDATE brewery SET image_url ='https://media.bizj.us/view/img/12039158/20210616172927*750xx9248-5202-0-867.jpg'
+WHERE brewery_id = 4;
+UPDATE brewery SET image_url ='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSImMzpzMj4t2Vj3cw5vKRsN0kO5duLe7meIw&usqp=CAU'
+WHERE brewery_id = 5;
+UPDATE brewery SET image_url = 'https://media-cdn.tripadvisor.com/media/photo-s/17/fc/fc/00/original-handcrafted.jpg'
+WHERE brewery_id = 6;
+UPDATE brewery SET image_url = 'https://www.gannett-cdn.com/authoring/2019/12/06/NCOD/ghows-OH-1a459dc1-f17c-448b-9c5b-f07ef726d8d5-3e9160df.jpeg?width=660&height=434&fit=crop&format=pjpg&auto=webp'
+WHERE brewery_id = 7;
+UPDATE brewery SET image_url = 'https://ohio.org/static/uploads/068t0000002vJXeAAM.jpg'
+WHERE brewery_id = 8;
+UPDATE brewery SET image_url = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_9sjR-zp5VOoJly1dm-AnJ7-qBOfi_wsk_g&usqp=CAU'
+WHERE brewery_id = 9;
+UPDATE brewery SET image_url = 'https://breakfastwithnick.com/wp-content/uploads/knotty-pine-brewing-6.jpeg'
+WHERE brewery_id = 10;
+UPDATE brewery SET image_url = 'https://media-exp1.licdn.com/dms/image/C4E1BAQHYYIcnEa2pIg/company-background_10000/0/1537889269236?e=1655226000&v=beta&t=GT6A-BDDju7TT4ZehGQie_O6HepYQESvkuKzr3veqo0'
+WHERE brewery_id = 11;
+UPDATE brewery SET image_url = 'https://images.squarespace-cdn.com/content/v1/5f2d61243d1dbf4e15a42fb7/1633527386623-OE2MC0LK3QX9NHUM4CCG/Short_North.jpg?format=1500w'
+WHERE brewery_id = 12;
+UPDATE brewery SET image_url = 'https://drinkupcolumbus.com/wp-content/uploads/2017/10/pretentious-barrel-house-mural.jpg'
+WHERE brewery_id = 13;
+UPDATE brewery SET image_url = 'https://images.squarespace-cdn.com/content/v1/5739eb3259827e68705e4267/1580095203961-FKELC0Z1P2JVUJRJXCV3/IMG_0755.jpg?format=300w'
+WHERE brewery_id = 14;
+UPDATE brewery SET image_url = 'https://ohiomagazine.imgix.net/sitefinity/images/default-source/articles/2018/02---february-2018/seventh-son_bar-space.jpg?sfvrsn=f06eac38_4&w=960&auto=compress%2cformat'
+WHERE brewery_id = 15;
+UPDATE brewery SET image_url = 'https://images.squarespace-cdn.com/content/v1/61376bef1c244a35f91d2d89/bf6feb0b-3a35-40aa-8bf7-89678cc99f4e/untitled-1859.jpg?format=750w'
+WHERE brewery_id = 16;
+UPDATE brewery SET image_url = 'https://fartleyfarms.com/wp-content/uploads/2019/07/IMG_7710.JPG-scaled.jpeg'
+WHERE brewery_id = 17;
+UPDATE brewery SET image_url = 'https://www.gannett-cdn.com/-mm-/27de1a8d150de430c721ef32458936d45459c04e/c=0-53-1024-629/local/-/media/2020/12/18/ColumbusAlive/ghows-OH-200929737-6953bbd9.jpg?width=660&height=372&fit=crop&format=pjpg&auto=webp'
+WHERE brewery_id = 18;
+UPDATE brewery SET image_url = 'https://media-cdn.tripadvisor.com/media/photo-s/15/73/f2/88/storefront.jpg'
+WHERE brewery_id = 19;
+UPDATE brewery SET image_url = 'https://media.bizj.us/view/img/11539170/20191121100152*1024xx4032-2268-0-378.jpg'
+WHERE brewery_id = 20;
+
 
 
 INSERT INTO address_info (address, phone_number, latitude, longitude)

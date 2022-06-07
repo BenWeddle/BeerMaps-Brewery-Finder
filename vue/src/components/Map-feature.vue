@@ -74,7 +74,7 @@ export default({
               {position: marker,
                 infoText: '<h4>' + `${brewery.breweryName}` + '</h4>' +
                     '<h6> Phone Number: ' + `${brewery.phoneNumber}`+'</h6>' +
-                    '<h6> Address: '+ `${this.getAddressByBreweryId(brewery.addressId)[0].address}`+'</h6>'
+                    '<h6> Address: '+ `${this.getAddressByAddressId(brewery.addressId)[0].address}`+'</h6>'
               })
         })
         return locations;
@@ -111,7 +111,7 @@ export default({
           this.currentMidx = idx;
         }
       },
-      getAddressByBreweryId(addressId){
+      getAddressByAddressId(addressId){
         let correctAddress = this.$store.state.addressList.filter((address) =>
             address.addressId === addressId
         );

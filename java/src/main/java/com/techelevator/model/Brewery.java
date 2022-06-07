@@ -13,6 +13,7 @@ public class Brewery {
     private String description;
     private double latitude;
     private double longitude;
+    private String hours;
 
     public Brewery(){
     }
@@ -33,6 +34,11 @@ public class Brewery {
         this.latitude = latitude;
         this.longitude = longitude;
     }
+
+    public String getHours() {return hours;}
+
+    public void setHours(String hours) {this.hours = hours;}
+
     public String getDescription() {
         return description;
     }
@@ -40,6 +46,7 @@ public class Brewery {
     public void setDescription(String description) {
         this.description = description;
     }
+
     public int getBreweryId() {
         return breweryId;
     }

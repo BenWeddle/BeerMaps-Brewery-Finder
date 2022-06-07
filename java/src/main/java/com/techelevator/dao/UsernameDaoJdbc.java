@@ -6,6 +6,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class UsernameDaoJdbc implements UsernameDao{
 
@@ -35,6 +38,17 @@ public class UsernameDaoJdbc implements UsernameDao{
             returnedUsername = mapRowToUsername(results);
         }
         return returnedUsername;
+    }
+    @Override
+    public List<Username> getAllUsernames() {
+        List<Username> usernameList = new ArrayList<>();
+        String sql = "SELECT username, user_id FROM users";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()){
+            Username username = mapRowToUsername(results);
+            usernameList.add(username);
+        }
+        return usernameList;
     }
 
     public Username mapRowToUsername(SqlRowSet rowSet){

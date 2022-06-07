@@ -12,6 +12,7 @@ import WelcomeMessage from "../components/Welcome-Message.vue"
 import BreweryService from "../services/BreweryService";
 import UserBrewerySearch from "../components/UserBrewerySearch";
 import AddressService from "../services/AddressService";
+import UserService from "../services/UserService";
 export default {
   name: "home",
   components: {
@@ -41,12 +42,18 @@ export default {
       AddressService.getAllAddresses().then(response => {
         this.$store.commit('SET_ADDRESS_LIST', response.data);
       })
+    },
+    setUsernameList(){
+      UserService.getAllUsernames().then(response => {
+        this.$store.commit('SET_USERNAME_LIST', response.data)
+      })
     }
   },
   created() {
     this.getAllBreweriesAddToStore();
     this.setStoreBreweryId();
     this.setStoreAddressList();
+    this.setUsernameList();
   },
   computed: {
     getBrewerID() {
