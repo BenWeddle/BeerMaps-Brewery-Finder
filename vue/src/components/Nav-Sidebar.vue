@@ -1,21 +1,38 @@
 <template>
-    <div id="navbar">
+    <div>
+    <b-navbar toggleable="lg" type="dark" variant="info">
         <router-link class="home" v-bind:to="{ name: 'home' }"><h1>Home</h1></router-link>
-        <br />
-        <router-link to="/addBrewery">Add New Brewery</router-link>
-        <br />
-        <router-link to="/addBeer">Add New Beer</router-link>
-        <br />
-        <router-link to="/admin">Go to Admin Page</router-link>
-        <br />
-        <b-dropdown text="Menu" id="dropdown">
-            <template #button-content>
-                <b-avatar variant="primary"></b-avatar>
-            </template>
-            <b-dropdown-item href="#">An item</b-dropdown-item>
-            <b-dropdown-item><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></b-dropdown-item>
-        </b-dropdown>
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
+    <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+            <router-link to="/addBrewery">Add New Brewery</router-link>
+        </b-navbar-nav> 
+        <b-navbar-nav> 
+            <router-link to="/addBeer">Add New Beer</router-link>
+        </b-navbar-nav> 
+        <b-navbar-nav>
+            <router-link to="/admin">Go to Admin Page</router-link>
+        </b-navbar-nav>
+
+      <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+        <b-nav-form>
+          <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+          <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
+        </b-nav-form>
+
+
+        <b-nav-item-dropdown right>
+            <!-- Using 'button-content' slot -->
+            <template #button-content>
+                <em>User</em>
+            </template>
+            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            </b-nav-item-dropdown>
+        </b-navbar-nav>
+        </b-collapse>
+    </b-navbar>
     </div>
 </template>
 
@@ -29,31 +46,21 @@ export default({
 </script>
 
 <style scoped>
-#navbar {
-    display: flex;
+div {
+    
     align-items: center;
-    justify-content: flex-end;
     justify-content: space-between;
-    border: solid black 1px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 15px;
-    border-radius: 25px;
-    background-color: #8ca4b8;
-    font-weight: bolder;
-    font-style: italic;
     font-family: tangerine;
+    font-style: italic;
+}
+
+.home {
+    padding-right: 200px;
+    padding-left: 10px;
+}
+
+#links {
     
-    
 }
-
-:hover {
-  color: rgb(233, 204, 110);
-}
-
-.router-link-exact-active {
-  
-}
-
 
 </style>
