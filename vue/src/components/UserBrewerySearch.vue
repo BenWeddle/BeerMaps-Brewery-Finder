@@ -237,7 +237,7 @@ export default {
   justify-content: space-evenly;
 }
 div {
-  background-color:#8ca4b8;
+  background-color: #f3bc23;
   border-radius: 25px;
   font-family: tangerine;
   font-style: italic;

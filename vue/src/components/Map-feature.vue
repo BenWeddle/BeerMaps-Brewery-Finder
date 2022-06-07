@@ -5,11 +5,11 @@
       </label>
 
         <gmap-map
-            :zoom="12"
+            :zoom="11"
             :center="center"
             style= "width:100%; height: 600px;"
         >
-          <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
+            <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
           </gmap-info-window>
 
            <gmap-marker
@@ -19,6 +19,15 @@
                :clickable="true"
                @click="toggleInfoWindow(m,index)"
            ></gmap-marker>
+
+           <!-- Adds you are here star and info window -->
+           <gmap-info-window :options="iconInfoOptions" :position="this.center" :opened="iconInfoWinOpen" @closeclick="iconInfoWinOpen=false"></gmap-info-window>
+            <gmap-marker
+            :position="this.center"
+            :icon= youAreHereIcon
+            :clickable="true"
+             @click="toggleIconWindow"
+            ></gmap-marker>
 
         </gmap-map>
         <div class="filter">
@@ -31,10 +40,11 @@
 </template>
 
 <script>
+import starIcon from '../images/starIcon-small.png'
 
 export default({
     setup() {},
-    name: 'map',
+    name: 'map-area',
     props: ['breweries'],
     data() {
         return {
@@ -56,6 +66,11 @@ export default({
               width: 0,
               height: -35
             }
+          },
+          youAreHereIcon: starIcon,
+          iconInfoWinOpen: false,
+          iconInfoOptions: {
+              content: 'You Are Here',
           }
 
         };
@@ -74,8 +89,8 @@ export default({
           locations.push(
               {position: marker,
                 infoText: '<h4>' + `${brewery.breweryName}` + '</h4>' +
-                    '<h6> Phone Number: ' + `${brewery.phoneNumber}`+'</h6>' +
-                    '<h6> Address: '+ `${this.getAddressByAddressId(brewery.addressId)[0].address}`+'</h6>'
+                    '<h6> Phone Number: ' + `${brewery.phoneNumber}`+'</h6>'
+                    //+ '<h6> Address: '+ `${this.getAddressByAddressId(brewery.addressId)[0].address}`+'</h6>'
               })
         })
         return locations;
@@ -112,6 +127,9 @@ export default({
           this.currentMidx = idx;
         }
       },
+      toggleIconWindow(){
+          this.iconInfoWinOpen = !this.iconInfoWinOpen;
+      },
       getAddressByAddressId(addressId){
         let correctAddress = this.$store.state.addressList.filter((address) =>
             address.addressId === addressId
@@ -125,20 +143,21 @@ export default({
 
 <style scoped>
 #map{
-    
-    margin-top: 0px;
     display: flex;
-    
 }
 
 .filter {
-    background-color: #8ca4b8;
+    background-color: #f3bc23;
     border-bottom-right-radius: 25px;
-    border-left: solid black 1px;
-    border-right: solid black 1px;
-    border-bottom: solid black 1px;
+    border-bottom-left-radius: 25px;
+    border: solid black 1px;
     padding: 5px;
+    padding-left: 15px;
     font-style: italic;
+}
+
+h4 {
+    font-size: large;
 }
 
     

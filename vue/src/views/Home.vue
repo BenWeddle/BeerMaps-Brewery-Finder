@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <welcome-message></welcome-message>
-    <AddGoogleMap v-bind:breweries="listOfBreweries"></AddGoogleMap>
+    <AddGoogleMap ></AddGoogleMap>
     <UserBrewerySearch></UserBrewerySearch>
   </div>
 </template>
