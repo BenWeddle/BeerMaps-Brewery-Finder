@@ -5,11 +5,11 @@
       </label>
 
         <gmap-map
-            :zoom="12"
+            :zoom="11"
             :center="center"
             style= "width:100%; height: 600px;"
         >
-          <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
+            <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
           </gmap-info-window>
 
            <gmap-marker
@@ -20,15 +20,25 @@
                @click="toggleInfoWindow(m,index)"
            ></gmap-marker>
 
+           <!-- Adds you are here star and info window -->
+           <gmap-info-window :options="iconInfoOptions" :position="this.center" :opened="iconInfoWinOpen" @closeclick="iconInfoWinOpen=false"></gmap-info-window>
+            <gmap-marker
+            :position="this.center"
+            :icon= youAreHereIcon
+            :clickable="true"
+             @click="toggleIconWindow"
+            ></gmap-marker>
+
         </gmap-map>
     </div>
 </template>
 
 <script>
+import starIcon from '../images/starIcon-small.png'
+
 export default({
     setup() {},
-    name: 'map',
-    props: ['breweries'],
+    name: 'map-area',
     data() {
         return {
             center: {
@@ -42,6 +52,8 @@ export default({
             infoWindowPos: null,
             infoWinOpen: false,
             currentMidx: null,
+            parseAddressId: 0,
+            continuePlot: false,
             infoOptions: {
             content: '',
             //optional: offset infowindow so it visually sits nicely on top of our marker
@@ -49,10 +61,56 @@ export default({
               width: 0,
               height: -35
             }
+          },
+          youAreHereIcon: starIcon,
+          iconInfoWinOpen: false,
+          iconInfoOptions: {
+              content: 'You Are Here',
           }
 
         };
     },
+  methods: {
+    initMarker(loc) {
+      this.existingPlace = loc;
+    },
+    addLocationMarker() {
+      if (this.existingPlace) {
+        const marker = {
+          lat: this.existingPlace.geometry.location.lat(),
+          lng: this.existingPlace.geometry.location.lng()
+        }
+        this.locationMarkers.push({position: marker})
+        this.locPlaces.push(this.existingPlace)
+        this.center = marker
+        this.existingPlace = null
+      }
+    },
+    toggleInfoWindow(marker, idx) {
+
+      this.infoWindowPos = marker.position;
+      this.infoOptions.content = marker.infoText;
+
+      //check if its the same marker that was selected if yes toggle
+      if (this.currentMidx == idx) {
+        this.infoWinOpen = !this.infoWinOpen;
+      }
+      //if different marker set infowindow to open and reset current marker index
+      else {
+        this.infoWinOpen = true;
+        this.currentMidx = idx;
+      }
+    },
+    toggleIconWindow(){
+      this.iconInfoWinOpen = !this.iconInfoWinOpen;
+    }
+  },
+  watch:{
+    parseAddressId(value){
+      console.log(value)
+      this.continuePlot = true;
+    }
+  },
     computed: {
         storeListOfBreweries(){
           return this.$store.state.listOfBreweries
@@ -64,52 +122,28 @@ export default({
             lat: brewery.latitude,
             lng: brewery.longitude
           }
+          // console.log(this.$store.state.addressList)
+          // console.log(brewery.addressId)
+          // console.log(this.getAddressByAddressId(1))
+          this.parseAddressId = brewery.addressId;
+          console.log(this.parseAddressId)
+          console.log(this.getAddressByAddressId)
+          if(this.continuePlot)
           locations.push(
               {position: marker,
                 infoText: '<h4>' + `${brewery.breweryName}` + '</h4>' +
-                    '<h6> Phone Number: ' + `${brewery.phoneNumber}`+'</h6>' +
-                    '<h6> Address: '+ `${this.getAddressByAddressId(brewery.addressId)[0].address}`+'</h6>'
+                    '<h6> Phone Number: ' + `${brewery.phoneNumber}`+'</h6>'
+                       // + '<h6> Address: '+ `${this.getAddressByAddressId}`+'</h6>'
               })
         })
         return locations;
-      }
-    },
-    methods: {
-        initMarker(loc) {
-            this.existingPlace = loc;
-        },
-        addLocationMarker() {
-            if (this.existingPlace) {
-                const marker = {
-                    lat: this.existingPlace.geometry.location.lat(),
-                    lng: this.existingPlace.geometry.location.lng()
-                }
-                this.locationMarkers.push({position: marker})
-                this.locPlaces.push(this.existingPlace)
-                this.center = marker
-                this.existingPlace = null
-            }
-        },
-        toggleInfoWindow(marker, idx) {
-
-          this.infoWindowPos = marker.position;
-          this.infoOptions.content = marker.infoText;
-
-        //check if its the same marker that was selected if yes toggle
-        if (this.currentMidx == idx) {
-          this.infoWinOpen = !this.infoWinOpen;
-        }
-        //if different marker set infowindow to open and reset current marker index
-        else {
-          this.infoWinOpen = true;
-          this.currentMidx = idx;
-        }
       },
-      getAddressByAddressId(addressId){
-        let correctAddress = this.$store.state.addressList.filter((address) =>
-            address.addressId === addressId
+      getAddressByAddressId(){
+        let correctAddress = []
+        correctAddress = this.$store.state.addressList.filter((object) =>
+            object.addressId === this.parseAddressId
         );
-        return correctAddress;
+        return correctAddress.address;
       }
     }
 })

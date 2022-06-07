@@ -14,6 +14,10 @@ export default {
         return axios.put(`/brewery/update/${breweryId}/${brewerId}`)
     },
 
+    updateBrewery(brewery){
+      return axios.put('brewery/update', brewery)
+    },
+
     deleteBrewery(id) {
         return axios.delete('/brewery', id)
     },

@@ -106,12 +106,12 @@ export default({
       addNewBrewery(){
         breweryService.addBrewery(this.brewery).then(response => {
           if(response.status == 201){
-            alert("beverage successfully added");
+            alert("Brewery successfully added");
           }
         })
             .catch(error => {
               console.log(error)
-              alert("beverage was not added")
+              alert("Brewery was not added")
             })
       }
   }
