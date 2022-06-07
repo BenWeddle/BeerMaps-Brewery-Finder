@@ -31,7 +31,7 @@ h1 {
     font-style: italic;
     font-weight: bolder;
     text-decoration: underline;
-    text-decoration-color: #8ca4b8;
+    text-decoration-color: #f3bc23;
 }
 
 </style>
