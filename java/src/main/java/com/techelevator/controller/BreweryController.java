@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.PermitAll;
 import java.security.Principal;
 import java.util.List;
 
@@ -75,10 +76,10 @@ public class BreweryController {
         return breweryDao.updateBrewery(brewery);
     }
 
-//    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_BREWER')")
+    @PreAuthorize("permitAll()")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    @RequestMapping(path = "/update/register", method = RequestMethod.PUT)
-    public boolean updateBreweryRegister(@RequestBody Brewery brewery) {
-        return breweryDao.updateBrewery(brewery);
+    @RequestMapping(path = "/update/{breweryId}/{brewerId}", method = RequestMethod.PUT)
+    public boolean updateBreweryRegister(@PathVariable int breweryId, @PathVariable int brewerId) {
+        return breweryDao.registerBrewer(breweryId, brewerId);
     }
 }

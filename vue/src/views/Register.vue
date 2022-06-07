@@ -79,7 +79,8 @@ export default {
       registrationErrorMsg: 'There were problems registering this user.',
       selected: 0,
       breweries: [],
-      currentUser: {}
+      currentUser: {},
+      registerSuccess: false
     };
   },
   computed: {
@@ -95,6 +96,16 @@ export default {
       return returnOptions;
     }
   },
+  watch: {
+    registerSuccess(value){
+      console.log(value)
+      this.getUsername();
+    },
+    currentUser(value){
+      console.log(value)
+      this.updateBrewer();
+    }
+  },
   methods: {
     register() {
       if (this.user.password != this.user.confirmPassword) {
@@ -106,14 +117,17 @@ export default {
           .register(this.user)
           .then((response) => {
             if (response.status == 201) {
-              //Get the userId by userName
-              this.getUsername();
-              //Set BrewerId to UserId -- Using the Selected Brewery ID
-              this.updateBrewer();
-              this.$router.push({
-                path: '/login',
-                query: { registration: 'success' },
-              });
+
+              if(this.user.role === 'brewer'){
+                this.registerSuccess = true;
+              }
+
+              if(this.user.role === 'user'){
+                this.$router.push({
+                  path: '/login',
+                  query: { registration: 'success' }
+                });
+              }
             }
           })
           .catch((error) => {
@@ -131,8 +145,13 @@ export default {
       })
     },
     updateBrewer(){
-      console.log(this.getSelectedBrewery())
-      BreweryService.updateBrewery(this.getSelectedBrewery[0])
+      console.log(this.selected)
+      BreweryService.registerBrewer(this.selected, this.currentUser.userId).then(() =>{
+              this.$router.push({
+                path: '/login',
+                query: {registration: 'success'}
+              });
+      })
     },
     changeBrewerMethod() {
       if (this.user.role === "user") {
@@ -149,14 +168,6 @@ export default {
       BreweryService.getBreweries().then(response =>
           this.breweries = response.data
       )}
-  },
-  getSelectedBrewery(){
-    let selectedBrewery = []
-    selectedBrewery  = this.breweries.filter((brewery) =>
-        brewery.breweryId === this.selected
-    );
-    selectedBrewery[0].brewerId = this.currentUser.userId
-    return selectedBrewery;
   },
   created(){
     this.getAllBreweries();
