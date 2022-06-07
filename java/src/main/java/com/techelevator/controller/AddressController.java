@@ -43,7 +43,7 @@ public class AddressController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_BREWER')")
     @RequestMapping(path="/update", method = RequestMethod.PUT)
-    public boolean updateBeverage(@RequestBody Address address) {
+    public boolean updateAddress(@RequestBody Address address) {
         return addressDao.updateAddress(address);
     }
 

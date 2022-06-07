@@ -26,6 +26,17 @@ public class UsernameDaoJdbc implements UsernameDao{
         return username;
     }
 
+    @Override
+    public Username getUsernameByUsername(String name) {
+        Username returnedUsername = null;
+        String sql = "SELECT username, user_id FROM users WHERE username = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name);
+        if(results.next()){
+            returnedUsername = mapRowToUsername(results);
+        }
+        return returnedUsername;
+    }
+
     public Username mapRowToUsername(SqlRowSet rowSet){
         Username username = new Username();
         username.setUsername(rowSet.getString("username"));

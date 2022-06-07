@@ -6,21 +6,21 @@
         <label>Brewery Name:</label>
       </b-col>
       <b-col sm="4">
-        <b-form-input :state="resultState" v-model="filter.name"></b-form-input>
+        <b-form-input  :state="resultState" v-model="breweryName"></b-form-input>
       </b-col>
     </b-row>
     <b-row id="checkbox-row">
       <b-col>
-        <b-form-checkbox v-model="filter.hasFood">Has Food</b-form-checkbox>
+        <b-form-checkbox v-model="hasFood">Has Food</b-form-checkbox>
       </b-col>
       <b-col>
-        <b-form-checkbox v-model="filter.hasOnSiteBrewing">On Site Brewing</b-form-checkbox>
+        <b-form-checkbox v-model="hasOnSiteBrewing">On Site Brewing</b-form-checkbox>
       </b-col>
       <b-col>
-        <b-form-checkbox v-model="filter.hasOutDoorSeating">Out Door Seating</b-form-checkbox>
+        <b-form-checkbox v-model="hasOutDoorSeating">Out Door Seating</b-form-checkbox>
       </b-col>
       <b-col>
-        <b-form-checkbox v-model="filter.petFriendly">Pet Friendly</b-form-checkbox>
+        <b-form-checkbox v-model="petFriendly">Pet Friendly</b-form-checkbox>
       </b-col>
     </b-row>
   </b-container>
@@ -115,54 +115,73 @@ export default {
     return {
       breweries: [],
       fields: ['breweryName', 'hasOnSiteBrewing', 'hasOutDoorSeating', 'hasFood', 'petFriendly', 'description', 'show_details'],
-      filter: {
-        name: '',
-        hasFood: '',
-        petFriendly: '',
-        hasOutDoorSeating: '',
-        hasOnSiteBrewing: ''
-      },
       showMenu: false,
-      showRatings: false
+      showRatings: false,
+      breweryName: '',
+      hasFood: '',
+      petFriendly: '',
+      hasOutDoorSeating: '',
+      hasOnSiteBrewing: ''
     };
   },
   computed: {
     filteredList(){
       let filteredBreweries = this.breweries;
-      if (this.filter.name != ""){
+      if (this.breweryName != ""){
         filteredBreweries = filteredBreweries.filter((brewery) =>
             brewery.breweryName
             .toLowerCase()
-            .includes(this.filter.name.toLowerCase())
+            .includes(this.breweryName.toLowerCase())
         );
       }
-      if (this.filter.hasFood === true){
+      if (this.asFood === true){
         filteredBreweries = filteredBreweries.filter((brewery) =>
             brewery.hasFood === true
         );
       }
-      if (this.filter.petFriendly === true){
+      if (this.petFriendly === true){
         filteredBreweries = filteredBreweries.filter((brewery) =>
             brewery.petFriendly === true
         );
       }
-      if (this.filter.hasOutDoorSeating === true){
+      if (this.hasOutDoorSeating === true){
         filteredBreweries = filteredBreweries.filter((brewery) =>
             brewery.hasOutDoorSeating === true
         );
       }
-      if (this.filter.hasOnSiteBrewing === true){
+      if (this.hasOnSiteBrewing === true){
         filteredBreweries = filteredBreweries.filter((brewery) =>
             brewery.hasOnSiteBrewing === true
         );
       }
-
-        return filteredBreweries;
+      return filteredBreweries;
     },
     resultState(){
-      if(this.filter.name === ''){
+      if(this.breweryName === ''){
         return null;
       } else return this.filteredList.length > 0;
+    }
+  },
+  watch: {
+    breweryName(value) {
+      console.log(value);
+       this.updateStoreBreweryList();
+    },
+    hasFood(value) {
+      console.log(value);
+       this.updateStoreBreweryList();
+    },
+    petFriendly(value) {
+      console.log(value);
+       this.updateStoreBreweryList();
+    },
+    hasOutDoorSeating(value) {
+      console.log(value);
+       this.updateStoreBreweryList();
+    },
+    hasOnSiteBrewing(value) {
+      console.log(value);
+       this.updateStoreBreweryList();
     }
   },
   methods: {
@@ -178,6 +197,9 @@ export default {
     showBreweryRatings(breweryId){
       this.$store.commit('SET_SELECTED_BREWERY_RATINGS', breweryId);
       this.showRatings = true;
+    },
+    updateStoreBreweryList(){
+      this.$store.commit('LIST_OF_BREWERIES', this.filteredList);
     }
   },
   created() {
