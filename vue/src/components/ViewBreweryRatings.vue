@@ -11,7 +11,7 @@
 
         <b-row class="mb-2">
           <b-col sm="3" class="text-sm-right"><b>User: </b></b-col>
-          <b-col>{{row.item.reviewerId}}</b-col>
+          <b-col>{{getNameFromId(row.item.reviewerId)}}</b-col>
         </b-row>
 
         <b-row class="mb-2">
@@ -30,7 +30,6 @@
 
 <script>
 import RatingService from "../services/RatingService";
-import UserService from "../services/UserService";
 export default {
   name: "ViewBreweryRatings",
   data(){
@@ -59,10 +58,10 @@ export default {
       })
     },
     getNameFromId(reviewerId){
-      UserService.getUserById(reviewerId).then(response => {
-        let name = response.data.username;
-        return name;
-      })
+      let correctUser = this.$store.state.usernameList.filter((username) =>
+          username.userId === reviewerId
+      );
+      return correctUser[0].username;
     }
   }
 }

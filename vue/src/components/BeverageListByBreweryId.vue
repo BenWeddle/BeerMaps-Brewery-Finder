@@ -3,7 +3,6 @@
 
   <b-table :items="beverages" :fields="fields" striped responsive="sm">
   </b-table>
-
 </div>
 </template>
 

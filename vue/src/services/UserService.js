@@ -9,5 +9,9 @@ export default {
 
     getUserByUsername(username){
         return axios.get(`/user/get/${username}`)
+    },
+
+    getAllUsernames(){
+        return axios.get('/user/get/all')
     }
 }

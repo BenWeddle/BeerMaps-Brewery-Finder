@@ -19,6 +19,8 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -67,6 +69,12 @@ public class AuthenticationController {
     @RequestMapping(value = "/user/get/{name}", method = RequestMethod.GET)
     public Username getUser(@PathVariable String name){
         return usernameDao.getUsernameByUsername(name);
+    }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @RequestMapping(value = "/user/get/all", method = RequestMethod.GET)
+    public List<Username> getAllUsernames(){
+        return usernameDao.getAllUsernames();
     }
 
     /**

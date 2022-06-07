@@ -29,49 +29,7 @@ CREATE TABLE brewery (
     CONSTRAINT PK_brewery PRIMARY KEY (brewery_id),
     CONSTRAINT FK_brewery_brewer_id FOREIGN KEY (brewer_id) REFERENCES users(user_id)
 );
---ADDING HOURS AND IMAGES
-ALTER TABLE brewery 
-ADD hours varchar(500);
-UPDATE brewery SET hours = 'M: 4PM-11PM T: 4PM-11PM W: 4PM-11PM Th: 4PM-12AM F: 4PM-2AM SAT: 12PM-2AM SUN: 12PM-11PM'
-WHERE brewery_id = 1;
-UPDATE brewery SET hours = 'M: 11AM-10PM T: 11AM-10PM W: 11AM-10PM Th: 11AM-10PM F: 11AM-11PM SAT: 11AM-11PM SUN: 11AM-10PM'
-WHERE brewery_id = 2;
-UPDATE brewery SET hours = 'M: 4PM-10PM T: 4PM-10PM W: 4PM-10PM Th: 4PM-10PM F: 12PM-12AM SAT: 12PM-12AM SUN: 12PM-9PM'
-WHERE brewery_id = 3;
-UPDATE brewery SET hours = 'M: CLOSED T: 3PM-11PM W: 3PM-11PM Th: 3PM-11PM F: 1130AM-12AM SAT: 1130AM-12AM  SUN: 1130-10PM '
-WHERE brewery_id = 4;
-UPDATE brewery SET hours = 'M: 4PM-11PM T: 4PM-11PM W: 4PM-11PM Th: 4PM-12AM F: 2PM-12AM SAT: 12PM-12AM SUN: 12PM-9PM'
-WHERE brewery_id = 5;
-UPDATE brewery SET hours = 'M: CLOSED T: 1130AM-9PM W: 1130AM-9PM Th: 1130AM-9PM F: 1130AM-930PM SAT: 430PM-930PM SUN: CLOSED'
-WHERE brewery_id = 6;
-UPDATE brewery SET hours = 'M: 3PM-11PM T: 3PM-11PM W: 3PM-11PM Th: 3PM-11PM F: 3PM-1AM SAT: 12PM-1AM SUN: 11AM-9PM'
-WHERE brewery_id = 7;
-UPDATE brewery SET hours = 'M: 11AM-10PM T: 11AM-11PM W: 11AM-11PM Th: 11AM-11PM F: 11AM-11PM SAT: 11AM-12PM SUN: 11AM-10PM'
-WHERE brewery_id = 8;
-UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: CLOSED Th: CLOSED F: 4PM-10PM SAT: 12PM-10PM SUN: 12PM-7PM'
-WHERE brewery_id = 9;
-UPDATE brewery SET hours = 'M: 4PM-11PM T: 3PM-11PM W: 3PM-11PM Th: 3PM-12AM F: 3PM-1AM SAT: 10AM-1AM SUN: 10AM-10PM'
-WHERE brewery_id = 10;
-UPDATE brewery SET hours = 'M: 3PM-10PM T: 3PM-10PM  W: 3PM-10PM  Th: 11AM-12AM F: 11AM-1AM SAT: 11AM-1AM SUN: 11AM-10PM'
-WHERE brewery_id = 11;
-UPDATE brewery SET hours = 'M: 2PM-10PM T: 2PM-10PM W: 2PM-10PM Th: 2PM-10PM F: 12PM-12AM SAT: 12PM-12AM SUN: 12PM-10PM'
-WHERE brewery_id = 12;
-UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: CLOSED Th: CLOSED F: 5PM-10PM SAT: 1PM-10PM SUN: 1PM-6PM'
-WHERE brewery_id = 13;
-UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: 4PM-10PM Th: 4PM-10PM F: 4PM-11PM SAT: 12PM-11PM SUN: 1PM-7PM'
-WHERE brewery_id = 14;
-UPDATE brewery SET hours = 'M: 330PM-11PM T: 330PM-11PM W: 330PM-11PM Th: 330PM-12AM F: 11AM-2AM SAT: 11AM-2AM SUN: 11AM-11PM'
-WHERE brewery_id = 15;
-UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: 4PM-9PM Th: 4PM-9PM F: 4PM-10PM SAT: 1PM-10PM SUN: 1PM-7PM'
-WHERE brewery_id = 16;
-UPDATE brewery SET hours = 'M: CLOSED T: 11AM-8PM W: 11AM-8PM Th: 11AM-8PM F: 11AM-9PM SAT: 12PM-9PM SUN: 12PM-8PM'
-WHERE brewery_id = 17;
-UPDATE brewery SET hours = 'M: CLOSED T: 3PM-10PM W: 3PM-10PM Th: 3PM-10PM F: 3PM-11PM SAT: 12PM-11PM SUN: 12PM-8PM'
-WHERE brewery_id = 18;
-UPDATE brewery SET hours = 'M: CLOSED T: 3PM-11PM W: 1130AM-11PM Th: 1130AM-12AM F: 1130AM-12AM SAT: 10AM-12AM SUN: 10AM-10PM'
-WHERE brewery_id = 19;
-UPDATE brewery SET hours = 'M: 3PM-9PM T: 3PM-9PM W: 3PM-9PM Th: 3PM-9AM F: 3PM-10PM SAT: 11AM-10PM SUN: 1PM-7PM'
-WHERE brewery_id = 20;
+
 --IMAGE URL FOR BREWERY
 
 
@@ -176,6 +134,50 @@ VALUES('Wolfs Ridge Brewing', 'Established in 2013, Wolf’s Ridge has grown int
 INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id)
 VALUES ('Zaftig Brewing Co.', 'Established in 2013, Zaftig Brewing Company is Worthington''s only craft brewery, offering an extensive array of selections. Well-known in Columbus for our high-gravity, full-bodied ales, we aren''t afraid to push the boundaries of what great craft beer can be.', true, false, true, false, 3);
 
+
+--ADDING HOURS AND IMAGES
+ALTER TABLE brewery
+ADD hours varchar(500);
+UPDATE brewery SET hours = 'M: 4PM-11PM T: 4PM-11PM W: 4PM-11PM Th: 4PM-12AM F: 4PM-2AM SAT: 12PM-2AM SUN: 12PM-11PM'
+WHERE brewery_id = 1;
+UPDATE brewery SET hours = 'M: 11AM-10PM T: 11AM-10PM W: 11AM-10PM Th: 11AM-10PM F: 11AM-11PM SAT: 11AM-11PM SUN: 11AM-10PM'
+WHERE brewery_id = 2;
+UPDATE brewery SET hours = 'M: 4PM-10PM T: 4PM-10PM W: 4PM-10PM Th: 4PM-10PM F: 12PM-12AM SAT: 12PM-12AM SUN: 12PM-9PM'
+WHERE brewery_id = 3;
+UPDATE brewery SET hours = 'M: CLOSED T: 3PM-11PM W: 3PM-11PM Th: 3PM-11PM F: 1130AM-12AM SAT: 1130AM-12AM  SUN: 1130-10PM '
+WHERE brewery_id = 4;
+UPDATE brewery SET hours = 'M: 4PM-11PM T: 4PM-11PM W: 4PM-11PM Th: 4PM-12AM F: 2PM-12AM SAT: 12PM-12AM SUN: 12PM-9PM'
+WHERE brewery_id = 5;
+UPDATE brewery SET hours = 'M: CLOSED T: 1130AM-9PM W: 1130AM-9PM Th: 1130AM-9PM F: 1130AM-930PM SAT: 430PM-930PM SUN: CLOSED'
+WHERE brewery_id = 6;
+UPDATE brewery SET hours = 'M: 3PM-11PM T: 3PM-11PM W: 3PM-11PM Th: 3PM-11PM F: 3PM-1AM SAT: 12PM-1AM SUN: 11AM-9PM'
+WHERE brewery_id = 7;
+UPDATE brewery SET hours = 'M: 11AM-10PM T: 11AM-11PM W: 11AM-11PM Th: 11AM-11PM F: 11AM-11PM SAT: 11AM-12PM SUN: 11AM-10PM'
+WHERE brewery_id = 8;
+UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: CLOSED Th: CLOSED F: 4PM-10PM SAT: 12PM-10PM SUN: 12PM-7PM'
+WHERE brewery_id = 9;
+UPDATE brewery SET hours = 'M: 4PM-11PM T: 3PM-11PM W: 3PM-11PM Th: 3PM-12AM F: 3PM-1AM SAT: 10AM-1AM SUN: 10AM-10PM'
+WHERE brewery_id = 10;
+UPDATE brewery SET hours = 'M: 3PM-10PM T: 3PM-10PM  W: 3PM-10PM  Th: 11AM-12AM F: 11AM-1AM SAT: 11AM-1AM SUN: 11AM-10PM'
+WHERE brewery_id = 11;
+UPDATE brewery SET hours = 'M: 2PM-10PM T: 2PM-10PM W: 2PM-10PM Th: 2PM-10PM F: 12PM-12AM SAT: 12PM-12AM SUN: 12PM-10PM'
+WHERE brewery_id = 12;
+UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: CLOSED Th: CLOSED F: 5PM-10PM SAT: 1PM-10PM SUN: 1PM-6PM'
+WHERE brewery_id = 13;
+UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: 4PM-10PM Th: 4PM-10PM F: 4PM-11PM SAT: 12PM-11PM SUN: 1PM-7PM'
+WHERE brewery_id = 14;
+UPDATE brewery SET hours = 'M: 330PM-11PM T: 330PM-11PM W: 330PM-11PM Th: 330PM-12AM F: 11AM-2AM SAT: 11AM-2AM SUN: 11AM-11PM'
+WHERE brewery_id = 15;
+UPDATE brewery SET hours = 'M: CLOSED T: CLOSED W: 4PM-9PM Th: 4PM-9PM F: 4PM-10PM SAT: 1PM-10PM SUN: 1PM-7PM'
+WHERE brewery_id = 16;
+UPDATE brewery SET hours = 'M: CLOSED T: 11AM-8PM W: 11AM-8PM Th: 11AM-8PM F: 11AM-9PM SAT: 12PM-9PM SUN: 12PM-8PM'
+WHERE brewery_id = 17;
+UPDATE brewery SET hours = 'M: CLOSED T: 3PM-10PM W: 3PM-10PM Th: 3PM-10PM F: 3PM-11PM SAT: 12PM-11PM SUN: 12PM-8PM'
+WHERE brewery_id = 18;
+UPDATE brewery SET hours = 'M: CLOSED T: 3PM-11PM W: 1130AM-11PM Th: 1130AM-12AM F: 1130AM-12AM SAT: 10AM-12AM SUN: 10AM-10PM'
+WHERE brewery_id = 19;
+UPDATE brewery SET hours = 'M: 3PM-9PM T: 3PM-9PM W: 3PM-9PM Th: 3PM-9AM F: 3PM-10PM SAT: 11AM-10PM SUN: 1PM-7PM'
+WHERE brewery_id = 20;
 
 INSERT INTO address_info (address, phone_number, latitude, longitude)
 VALUES('714 S High St', '614-725-2070', 39.9476, -82.99774);

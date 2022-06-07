@@ -23,7 +23,7 @@ public class BreweryDaoJdbc implements BreweryDao{
     @Override
     public List<Brewery> listAll() {
         List<Brewery> breweriesList = new ArrayList<>();
-        String sql = "SELECT brewery.brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
+        String sql = "SELECT brewery.brewery_id, name, hours, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
                 "FROM brewery " +
                 "JOIN brewery_address_info bai on brewery.brewery_id = bai.brewery_id " +
                 "JOIN address_info ai on ai.address_id = bai.address_id";
@@ -39,7 +39,7 @@ public class BreweryDaoJdbc implements BreweryDao{
     @Override
     public Brewery getBreweryById(int breweryId) {
         Brewery brewery = null;
-        String sql = "SELECT brewery.brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
+        String sql = "SELECT brewery.brewery_id, name, hours, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
                 " FROM brewery " +
                 "JOIN brewery_address_info bai on brewery.brewery_id = bai.brewery_id " +
                 "JOIN address_info ai on ai.address_id = bai.address_id " +
@@ -54,7 +54,7 @@ public class BreweryDaoJdbc implements BreweryDao{
     @Override
     public Brewery getBreweryByBrewerId(int brewerId) {
         Brewery brewery = null;
-        String sql = "SELECT brewery.brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
+        String sql = "SELECT brewery.brewery_id, name, hours, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
                 " FROM brewery " +
                 "JOIN brewery_address_info bai on brewery.brewery_id = bai.brewery_id " +
                 "JOIN address_info ai on ai.address_id = bai.address_id " +
@@ -69,7 +69,7 @@ public class BreweryDaoJdbc implements BreweryDao{
     @Override
     public Brewery getBreweryByName(String name) {
         Brewery brewery = null;
-        String sql = "SELECT brewery.brewery_id, name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
+        String sql = "SELECT brewery.brewery_id, name, hours, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id, bai.address_id, phone_number, latitude, longitude " +
                 " FROM brewery " +
                 "JOIN brewery_address_info bai on brewery.brewery_id = bai.brewery_id " +
                 "JOIN address_info ai on ai.address_id = bai.address_id " +
@@ -83,10 +83,10 @@ public class BreweryDaoJdbc implements BreweryDao{
 
     @Override
     public boolean addBrewery(Brewery brewery, Principal principal) {
-        String sql = "INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, brewer_id) " +
+        String sql = "INSERT INTO brewery (name, description, outdoor_seating, pet_friendly, serves_food, on_site_brewing, hours, brewer_id) " +
                 "VALUES (?,?,?,?,?,?,?) ";
         return  jdbcTemplate.update(sql,brewery.getBreweryName(), brewery.getDescription(), brewery.isHasOutDoorSeating(),
-                brewery.isPetFriendly(), brewery.isHasFood(), brewery.isHasOnSiteBrewing(), userDao.currentUser(principal).getId()) == 0;
+                brewery.isPetFriendly(), brewery.isHasFood(), brewery.isHasOnSiteBrewing(), brewery.getHours(), userDao.currentUser(principal).getId()) == 0;
     }
 
     @Override
@@ -98,11 +98,11 @@ public class BreweryDaoJdbc implements BreweryDao{
 
     @Override
     public boolean updateBrewery(Brewery brewery) {
-        String sql = "UPDATE brewery SET name = ?, description = ?, outdoor_seating = ?, pet_friendly = ?, serves_food = ?, on_site_brewing = ?" +
+        String sql = "UPDATE brewery SET name = ?, description = ?, outdoor_seating = ?, pet_friendly = ?, serves_food = ?, on_site_brewing = ?, hours = ?" +
                 ", brewer_id = ? WHERE brewery_id = ?" ;
 
         return jdbcTemplate.update(sql, brewery.getBreweryName(), brewery.getDescription(), brewery.isHasOutDoorSeating(),
-                brewery.isPetFriendly(), brewery.isHasFood(), brewery.isHasOnSiteBrewing(), brewery.getBrewerId() , brewery.getBreweryId()) == 0;
+                brewery.isPetFriendly(), brewery.isHasFood(), brewery.isHasOnSiteBrewing(), brewery.getHours(), brewery.getBrewerId() , brewery.getBreweryId()) == 0;
     }
 
     @Override
@@ -127,6 +127,7 @@ public class BreweryDaoJdbc implements BreweryDao{
         brewery.setPhoneNumber(sqlRowSet.getString("phone_number"));
         brewery.setLatitude(sqlRowSet.getDouble("latitude"));
         brewery.setLongitude(sqlRowSet.getDouble("longitude"));
+        brewery.setHours(sqlRowSet.getString("hours"));
         return brewery;
     }
 
