@@ -26,9 +26,9 @@
         <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template #button-content>
-                <em>User</em>
+                <b-avatar variant="primary"></b-avatar>
             </template>
-            <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+            <b-dropdown-item><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></b-dropdown-item>
             </b-nav-item-dropdown>
         </b-navbar-nav>
         </b-collapse>
