@@ -219,6 +219,8 @@ ALTER TABLE beverage
 ALTER COLUMN beverage_type TYPE varchar(75);
 ALTER TABLE beverage
 ALTER COLUMN beverage_name TYPE varchar(75);
+
+
 --THIS IS THE BEVERAGE LIST--
 --IPA--
 INSERT INTO beverage (beverage_name, description, image_url, abv, beverage_type, ibu, availability) VALUES ('Sobayu', 'Sour Ale brewed w/ buckwheat. Moderately sour.', 'https://untappd.akamaized.net/photos/2022_05_29/fd3eaf9e82e5e0c5e8b07ea3422e35d9_raw.jpg', 6.70, 'IPA', 0, true);
@@ -486,22 +488,217 @@ INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (75, 20);
 INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (41, 20);
 INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (55, 20);
 INSERT INTO brewery_beverage (beverage_id, brewery_id) VALUES (31, 20);
+--Run before adding ratings
 
---Test Ratings - Beverage
+--Rating for each beverage
 INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
-VALUES ('Pretty Decent OK', 3, '2022-06-05', 'beverage', 1, 2);
+VALUES ('Best Beer', 5, '2022-06-04', 'beverage', 1, 2);
 INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
-VALUES ('Better Than Decent', 4, '2022-06-05', 'beverage', 1, 2);
+VALUES ('Pretty Decent OK', 3, '2022-06-05', 'beverage', 2, 2);
 INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
-VALUES ('The best I have ever had', 5, '2022-06-05', 'beverage', 1, 2);
+VALUES ('This beer is awesome!', 5, '2022-06-05', 'beverage', 3, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This is one of the most unique beers I have had, it tastes great too', 5, '2022-06-05', 'beverage', 4, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Mediocre beer...', 3, '2022-06-05', 'beverage', 5, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, terrible beer though', 1, '2022-06-05', 'beverage', 6, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Excellent Brew', 4, '2022-06-05', 'beverage', 7, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Average Not my style', 3, '2022-06-05', 'beverage', 8, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, but clowns are terrible, not as terrible as this beer though', 1, '2022-06-05', 'beverage', 9, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Buy This! Excellent Brew', 3, '2022-06-05', 'beverage', 10, 2);
 
---Test Ratings - Brewery
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Best Beer', 5, '2022-06-04', 'beverage', 11, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Best Beer', 5, '2022-06-03', 'beverage', 12, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Pretty Decent OK', 3, '2022-06-05', 'beverage', 13, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This beer is awesome!', 5, '2022-06-05', 'beverage', 14, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This is one of the most unique beers I have had, it tastes great too', 5, '2022-06-05', 'beverage', 15, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Mediocre beer...', 3, '2022-06-05', 'beverage', 16, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, terrible beer though', 1, '2022-06-05', 'beverage', 17, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Excellent Brew', 4, '2022-06-05', 'beverage', 18, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Average Not my style', 3, '2022-06-05', 'beverage', 19, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, but clowns are terrible, not as terrible as this beer though', 1, '2022-06-05', 'beverage', 20, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Buy This! Excellent Brew', 3, '2022-06-05', 'beverage', 21, 2);
+
+VALUES ('This beer is awesome!', 5, '2022-06-05', 'beverage', 22, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This is one of the most unique beers I have had, it tastes great too', 5, '2022-06-05', 'beverage', 23, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Mediocre beer...', 3, '2022-06-05', 'beverage', 24, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, terrible beer though', 1, '2022-06-05', 'beverage', 25, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Excellent Brew', 4, '2022-06-05', 'beverage', 26, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Average Not my style', 3, '2022-06-05', 'beverage', 27, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, but clowns are terrible, not as terrible as this beer though', 1, '2022-06-05', 'beverage', 28, 2);
+
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, terrible beer though', 1, '2022-06-05', 'beverage', 29, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Excellent Brew', 4, '2022-06-05', 'beverage', 30, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Average Not my style', 3, '2022-06-05', 'beverage', 31, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, but clowns are terrible, not as terrible as this beer though', 1, '2022-06-05', 'beverage', 32, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Buy This! Excellent Brew', 3, '2022-06-05', 'beverage', 33, 2);
+
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Best Beer', 5, '2022-06-01', 'beverage', 34, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Best Beer', 5, '2022-06-02', 'beverage', 35, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Pretty Decent OK', 3, '2022-06-05', 'beverage', 36, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This beer is awesome!', 5, '2022-06-05', 'beverage', 37, 2);
+
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Best Beer', 5, '2022-06-04', 'beverage', 38, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Pretty Decent OK', 3, '2022-06-05', 'beverage', 39, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This beer is awesome!', 5, '2022-06-05', 'beverage',40, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This is one of the most unique beers I have had, it tastes great too', 5, '2022-06-05', 'beverage', 41, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Mediocre beer...', 3, '2022-06-05', 'beverage', 42, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, terrible beer though', 1, '2022-06-05', 'beverage', 43, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Excellent Brew', 4, '2022-06-05', 'beverage', 44, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Average Not my style', 3, '2022-06-05', 'beverage', 45, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, but clowns are terrible, not as terrible as this beer though', 1, '2022-06-05', 'beverage', 46, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Buy This! Excellent Brew', 3, '2022-06-05', 'beverage', 47, 2);
+
+VALUES ('This beer is awesome!', 5, '2022-06-05', 'beverage', 45, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This is one of the most unique beers I have had, it tastes great too', 5, '2022-06-05', 'beverage', 49, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Mediocre beer...', 3, '2022-06-05', 'beverage', 50, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, terrible beer though', 1, '2022-06-05', 'beverage', 51, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Excellent Brew', 4, '2022-06-05', 'beverage', 52, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Average Not my style', 3, '2022-06-05', 'beverage', 53, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, but clowns are terrible, not as terrible as this beer though', 1, '2022-06-05', 'beverage', 54, 2);
+
+VALUES ('This beer is awesome!', 5, '2022-06-05', 'beverage', 55, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This is one of the most unique beers I have had, it tastes great too', 5, '2022-06-05', 'beverage', 56, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Mediocre beer...', 3, '2022-06-05', 'beverage', 57, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, terrible beer though', 1, '2022-06-05', 'beverage', 58, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Excellent Brew', 4, '2022-06-05', 'beverage', 59, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Average Not my style', 3, '2022-06-05', 'beverage', 60, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, but clowns are terrible, not as terrible as this beer though', 1, '2022-06-05', 'beverage', 61, 2);
+
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This is one of the most unique beers I have had, it tastes great too', 5, '2022-06-05', 'beverage', 62, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Mediocre beer...', 3, '2022-06-05', 'beverage', 63, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, terrible beer though', 1, '2022-06-05', 'beverage', 64, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Excellent Brew', 4, '2022-06-05', 'beverage', 65, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Average Not my style', 3, '2022-06-05', 'beverage', 66, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, but clowns are terrible, not as terrible as this beer though', 1, '2022-06-05', 'beverage', 67, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Buy This! Excellent Brew', 3, '2022-06-05', 'beverage', 68, 2);
+
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Best Beer', 5, '2022-06-07', 'beverage', 69, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Pretty Decent OK', 3, '2022-06-05', 'beverage', 70, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This beer is awesome!', 5, '2022-06-05', 'beverage', 71, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('This is one of the most unique beers I have had it tastes great too', 5, '2022-06-05', 'beverage', 4, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Mediocre beer...', 3, '2022-06-05', 'beverage', 73, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, terrible beer though', 1, '2022-06-05', 'beverage', 74, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Excellent Brew', 4, '2022-06-05', 'beverage', 75, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Average Not my style', 3, '2022-06-05', 'beverage', 76, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Great can, but clowns are terrible, not as terrible as this beer though', 1, '2022-06-05', 'beverage', 77, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Buy This! Excellent Brew', 3, '2022-06-05', 'beverage', 78, 2);
+VALUES ('Great can, terrible beer though', 1, '2022-06-05', 'beverage', 79, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Excellent Brew', 4, '2022-06-05', 'beverage', 80, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, beverage_id, reviewer_id)
+VALUES ('Average Not my style', 3, '2022-06-05', 'beverage', 81, 2);
+--1 Rating for each Brewery
 INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
-VALUES ('This is a crappy place', 1, '2022-06-05', 'brewery', 1, 2);
+VALUES ('Awesome Vibe', 5, '2022-05-05', 'brewery', 1, 2);
 INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
-VALUES ('Slightly better than crappy', 2, '2022-06-05', 'brewery', 1, 2);
+VALUES ('Great Setting', 4, '2022-05-28', 'brewery', 2, 2);
 INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
-VALUES ('Mediocre at best', 3, '2022-06-05', 'brewery', 1, 2);
+VALUES ('Worst Bartender ever', 2, '2022-04-15', 'brewery', 3, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Great Location!', 4, '2022-03-20', 'brewery', 4, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Great selection of beers', 4, '2022-02-14', 'brewery', 5, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Service is impeccable', 5, '2022-04-05', 'brewery', 6, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Seen a rat', 1, '2022-03-25', 'brewery', 7, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Horrible food', 1, '2022-02-26', 'brewery', 8, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Not much to say about this place', 3, '2022-01-05', 'brewery', 9, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Couldve been a bit better service', 3, '2022-04-05', 'brewery', 10, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Always crowded with no seating', 3, '2021-08-05', 'brewery', 11, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Fantastic service', 4, '2021-12-05', 'brewery', 12, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('The bartender was drunk', 2, '2021-12-31', 'brewery', 13, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Awesome late night stop', 5, '2022-02-15', 'brewery', 14, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Mediocre at best', 3, '2022-06-05', 'brewery', 15, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Cool place to hangout', 4, '2022-04-21', 'brewery', 16, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Very interesting place', 3, '2022-03-14', 'brewery', 17, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('This place does it right', 5, '2022-02-18', 'brewery', 18, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('Kinda maybe sorta okay', 3, '2022-01-14', 'brewery', 19, 2);
+INSERT INTO rating (rating_text, rating, rating_date, rating_type, brewery_id, reviewer_id)
+VALUES ('This place is a joke', 1, '2022-05-22', 'brewery', 20, 2);
 
 
 
