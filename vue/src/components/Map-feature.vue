@@ -128,7 +128,7 @@ export default({
 }
 
 .filter {
-    background-color: #8ca4b8;
+    background-color: #f3bc23;
     border-bottom-right-radius: 25px;
     border-bottom-left-radius: 25px;
     border: solid black 1px;

@@ -44,7 +44,7 @@ html {
   margin-left: 5%;
   margin-right: 5%;
   /*background-image: url(https://wallpaperboat.com/wp-content/uploads/2020/10/30/58635/beer-04.jpg);*/
-  background-color: rgb(233, 204, 110);
+  background-color: #8ca4b8;
   /*background-position: center;*/
   /*background-position-y: 0px;*/
 }
@@ -61,7 +61,7 @@ body {
 }
 
 #app{
-  background-color: rgb(233, 204, 110);
+  background-color: #8ca4b8;;
 }
 
 #vertical{

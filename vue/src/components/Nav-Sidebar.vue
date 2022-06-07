@@ -1,6 +1,6 @@
 <template>
     <div>
-    <b-navbar toggleable="lg" type="dark" variant="info">
+    <b-navbar toggleable="lg" type="dark" variant="warning">
         <router-link class="home" v-bind:to="{ name: 'home' }"><h1>Home</h1></router-link>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
