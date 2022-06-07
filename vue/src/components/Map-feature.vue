@@ -9,6 +9,18 @@
             :center="center"
             style= "width:100%; height: 600px;"
         >
+
+            <gmap-marker
+            :position="this.center"
+            :icon= youAreHereIcon
+            :clickable="true"
+             @click="toggleIconWindow"
+            >
+            </gmap-marker>
+
+            <gmap-info-window :options="iconInfoOptions" :position="this.center" :opened="iconInfoWinOpen" @closeclick="iconInfoWinOpen=false">
+            </gmap-info-window>
+
           <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
           </gmap-info-window>
 
@@ -31,6 +43,7 @@
 </template>
 
 <script>
+import starIcon from '../starIcon-small.png'
 
 export default({
     setup() {},
@@ -56,6 +69,11 @@ export default({
               width: 0,
               height: -35
             }
+          },
+          youAreHereIcon: starIcon,
+          iconInfoWinOpen: false,
+          iconInfoOptions: {
+              content: 'You Are Here',
           }
 
         };
@@ -111,6 +129,9 @@ export default({
           this.infoWinOpen = true;
           this.currentMidx = idx;
         }
+      },
+      toggleIconWindow(){
+          this.iconInfoWinOpen = !this.iconInfoWinOpen;
       },
       getAddressByBreweryId(addressId){
         let correctAddress = this.$store.state.addressList.filter((address) =>
