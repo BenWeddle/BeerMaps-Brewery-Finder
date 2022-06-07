@@ -9,19 +9,7 @@
             :center="center"
             style= "width:100%; height: 600px;"
         >
-
-            <gmap-marker
-            :position="this.center"
-            :icon= youAreHereIcon
-            :clickable="true"
-             @click="toggleIconWindow"
-            >
-            </gmap-marker>
-
-            <gmap-info-window :options="iconInfoOptions" :position="this.center" :opened="iconInfoWinOpen" @closeclick="iconInfoWinOpen=false">
-            </gmap-info-window>
-
-          <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
+            <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
           </gmap-info-window>
 
            <gmap-marker
@@ -31,6 +19,15 @@
                :clickable="true"
                @click="toggleInfoWindow(m,index)"
            ></gmap-marker>
+
+           <!-- Adds you are here star and info window -->
+           <gmap-info-window :options="iconInfoOptions" :position="this.center" :opened="iconInfoWinOpen" @closeclick="iconInfoWinOpen=false"></gmap-info-window>
+            <gmap-marker
+            :position="this.center"
+            :icon= youAreHereIcon
+            :clickable="true"
+             @click="toggleIconWindow"
+            ></gmap-marker>
 
         </gmap-map>
         <div class="filter">
@@ -43,7 +40,7 @@
 </template>
 
 <script>
-import starIcon from '../starIcon-small.png'
+import starIcon from '../images/starIcon-small.png'
 
 export default({
     setup() {},
