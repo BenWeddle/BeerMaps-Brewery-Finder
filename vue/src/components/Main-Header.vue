@@ -1,7 +1,6 @@
 <template>
     <div id="header">
         <h1>BeerMaps</h1>
-        <!-- <img :src="image"/> -->
     </div>
 </template>
 

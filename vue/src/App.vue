@@ -7,19 +7,18 @@
 
     <main-header></main-header>
     <div :id="vertical">
-      <nav-sidebar v-show="!isLoginPage"></nav-sidebar>
+      <nav-top-bar v-show="!isLoginPage"></nav-top-bar>
       <router-view />
     </div>
   </div>
 </template>
 <script>
 
-import NavSidebar from "@/components/Nav-Sidebar.vue"
+import NavTopBar from "@/components/Nav-Top-Bar.vue"
 
 export default ({
   components: {
-    
-    NavSidebar,
+    NavTopBar
   },
   computed: {
     isLoginPage(){

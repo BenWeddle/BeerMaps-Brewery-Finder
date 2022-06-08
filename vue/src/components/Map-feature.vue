@@ -15,8 +15,8 @@
             :center="center"
             style= "width:100%; height: 600px;"
         >
-            <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
-          </gmap-info-window>
+          <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false"></gmap-info-window>
+          <gmap-info-window :options="iconInfoOptions" :position="this.center" :opened="iconInfoWinOpen" @closeclick="iconInfoWinOpen=false"></gmap-info-window>
 
            <gmap-marker
                :key="index"
@@ -27,7 +27,7 @@
            ></gmap-marker>
 
            <!-- Adds you are here star and info window -->
-           <gmap-info-window :options="iconInfoOptions" :position="this.center" :opened="iconInfoWinOpen" @closeclick="iconInfoWinOpen=false"></gmap-info-window>
+
             <gmap-marker
             :position="this.center"
             :icon= youAreHereIcon

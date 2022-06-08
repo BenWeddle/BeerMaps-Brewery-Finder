@@ -67,7 +67,7 @@
 import ViewGlobalBeverages from "./ViewGlobalBeverages";
 import AddBeerForm from "./Add-Beer-Form";
 export default({
-    name: "nav-sidebar",
+    name: "nav-top-bar",
     components: {
     ViewGlobalBeverages,
     AddBeerForm
@@ -124,7 +124,7 @@ div {
   align-items: center;
   justify-content: space-around;
   position: fixed;
-  width: 108rem;
+  width: 90%;
   margin-bottom: 100;
   transform: translateZ(0);
   z-index: 500;

@@ -151,7 +151,7 @@ export default {
             .includes(this.breweryName.toLowerCase())
         );
       }
-      if (this.asFood === true){
+      if (this.hasFood === true){
         filteredBreweries = filteredBreweries.filter((brewery) =>
             brewery.hasFood === true
         );

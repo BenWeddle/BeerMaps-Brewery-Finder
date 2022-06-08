@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <nav-sidebar></nav-sidebar>
+    <nav-top-bar></nav-top-bar>
     <div id="spacer">
       
     </div>
@@ -17,14 +17,14 @@ import BreweryService from "../services/BreweryService";
 import UserBrewerySearch from "../components/UserBrewerySearch";
 import AddressService from "../services/AddressService";
 import UserService from "../services/UserService";
-import NavSidebar from '../components/Nav-Sidebar.vue';
+import NavTopBar from '../components/Nav-Top-Bar.vue';
 export default {
   name: "home",
   components: {
     AddGoogleMap,
     WelcomeMessage,
     UserBrewerySearch,
-    NavSidebar
+    NavTopBar
   },
   data(){
     return {
