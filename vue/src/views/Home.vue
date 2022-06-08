@@ -5,7 +5,7 @@
       
     </div>
     <welcome-message id="message"></welcome-message>
-    <AddGoogleMap v-if="isMounted" id="map"></AddGoogleMap>
+    <AddGoogleMap id="map"></AddGoogleMap>
     <UserBrewerySearch id="brewery-search"></UserBrewerySearch>
   </div>
 </template>
