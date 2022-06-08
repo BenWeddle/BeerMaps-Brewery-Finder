@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import starIcon from '../images/starIcon-small.png'
+import starIcon from '../assets/starIcon-small.png'
 export default({
     setup() {},
     name: 'map-area',

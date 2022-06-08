@@ -1,5 +1,13 @@
 <template>
   <div id="login" class="login-div">
+
+    <div class="video-wrapper">
+      <video autoplay muted loop id="backgroundVideo">
+        <source src="vue/src/assets/Pouring.mp4" type="video/mp4">
+      </video>
+    </div>
+
+
     <form class="form-signin" @submit.prevent="login">
       <h1 class="login-header">Welcome To BeerMaps</h1>
       <h2 class="login-quote">Find your next destination today!</h2>
@@ -36,7 +44,6 @@
       <router-link class="need-an-account" :to="{ name: 'register' }">Need an account?</router-link>
       <b-button variant="primary" id="sign-in-button" type="submit">Sign in</b-button>
     </form>
-    <image id="background-image" src="https://heltonbrewing.com/wp-content/uploads/2015/07/Brewery.jpg"></image>
   </div>
 </template>
 
@@ -79,6 +86,7 @@ export default {
 </script>
 
 <style scoped>
+
 .form-control-login {
   display: flex;
   align-items: center;
@@ -138,26 +146,6 @@ label.sr-only {
   align-items: center;
   justify-content: center;
   margin-left: 250px;
-}
-
-html {
- 
-  margin-left: 500px;
-  margin-right: 500px;
-  background-position: center;
-  background-position-y: 0px;
-}
-
-body {
-  background-color:rgb(240, 185, 130);
-  border-radius: 70px;
-  opacity: .9;
-  
-}
-
-.home {
-  margin-left: 50px;
- 
 }
 
 #sign-in-button{
