@@ -6,7 +6,8 @@
     </video>
 
     <form class="form-signin" @submit.prevent="login">
-      <h1 class="login-header">Welcome To BeerMaps</h1>
+<!--      <h1 class="login-header">Welcome To BeerMaps</h1>-->
+      <img id="logo" src="../../public/BEER MAPS.png" />
       <h2 class="login-quote">Find your next destination today!</h2>
       <h2 class="login-header-2">Please Sign In</h2>
       <div
@@ -39,7 +40,7 @@
         required
       />
       <router-link class="need-an-account" :to="{ name: 'register' }">Need an account?</router-link>
-      <b-button variant="primary" id="sign-in-button" type="submit">Sign in</b-button>
+      <b-button id="sign-in-button" type="submit">Sign in</b-button>
     </form>
   </div>
 </template>
@@ -91,7 +92,7 @@ export default {
   justify-content: center;
   padding-left: 5px;
   padding-right: 0px;
-  margin-left: 190px;
+  margin-left: 37%;
 }
 
 #login {
@@ -131,7 +132,8 @@ export default {
 label.sr-only {
   display: flex;
   align-items: center;
-  justify-content: center;
+  /*justify-content: center;*/
+  margin-left: 37%;
   color:  aliceblue;
 }
 
@@ -145,7 +147,11 @@ label.sr-only {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 250px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: 40%;
+  background-color: orange;
+  color: black;
 }
 
 #sign-in-button{
@@ -159,6 +165,10 @@ label.sr-only {
 /*  min-width: 100%;*/
 /*  min-height: 100%;*/
 /*}*/
+
+#logo{
+  padding: -500px;
+}
 
 #myVideo {
   width: 100vw;
