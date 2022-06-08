@@ -19,17 +19,11 @@
 export default {
   name: 'brewery-card-list',
   props: ['breweries'],
-  data() {
-    return {
-    };
-  },
   computed: {
     getBrewerID() {
       return this.$store.state.user.id
     }
-  },
-  created() {
-  },
+  }
 };
 </script>
 

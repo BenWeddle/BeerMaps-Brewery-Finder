@@ -4,6 +4,7 @@
   <b-alert v-model="displayAlert" variant="success" dismissible>
     Successfully Deleted!
   </b-alert>
+
   <b-table :items="beverages" :fields="fields" striped responsive="sm">
     <template #cell(show_details)="row">
       <b-button size="sm" @click="row.toggleDetails" class="mr-2">
@@ -61,7 +62,6 @@
             <b-button class="mt-3 finish-button" variant="outline-danger"  @click="showUpdate = false">Exit</b-button>
           </div>
         </b-modal>
-
 
       </b-card>
     </template>

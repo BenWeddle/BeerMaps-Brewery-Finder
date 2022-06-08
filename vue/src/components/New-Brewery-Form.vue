@@ -60,21 +60,6 @@
             unchecked-value="false"
           >Does it have onsite brewing?</b-form-checkbox>
 
-
-
-
-            <!-- <input v-model="brewery.outdoorSeating" v-bind:value="true" type="checkbox" id="outdoorSeating" />
-            <label  for="outdoorSeating">Does it have outdoor seating? </label>
-            
-            <input v-model="brewery.allowsPets" v-bind:value="true" type="checkbox" id="allowsPets" />
-            <label for="allowsPets">Does it allow pets? </label>
-
-            <input v-model="brewery.hasFood" v-bind:value="true" type="checkbox" id="hasFood" />
-            <label for="hasFood">Does it serve food? </label>
-
-            <input v-model="brewery.onSiteBrewing" v-bind:value="true" type="checkbox" id="onSiteBrewing" />
-            <label for="onSiteBrewing">Does it have on-site brewing? </label> -->
-
             <b-button v-on:click="addNewBrewery" variant="primary" id="breweryFormSubmit" type="submit">Submit Brewery</b-button>
 
         </b-form>

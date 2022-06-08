@@ -3,7 +3,7 @@
         <b-form id="NewbeverageForm">
           <b-form-group
             id="beverageName"
-            label="Enter Name of beverage:"
+            label="Enter Name of Beverage:"
             label-for="name"
           >
           <b-form-input
@@ -17,7 +17,7 @@
 
           <b-form-group
             id="beverageDescription"
-            label="Enter a description of the beverage"
+            label="Enter a description of the Beverage"
             label-for="description"
           >
           <b-form-textarea
@@ -58,7 +58,7 @@
           <div id="check-and-option">
             <b-form-group
                 id="type"
-                label="Enter the type of beverage: "
+                label="Enter the type of Beverage: "
                 label-for="type"
             >
               <b-form-select v-model="beverage.beverageType" :options="options"></b-form-select>
@@ -72,10 +72,6 @@
                 size="lg"
             >Check if product is currently available</b-form-checkbox>
           </div>
-
-            <!-- image upload doesnt work, havent decided yet
-            <label for="img">Select image:</label>
-            <input  type="file" id="img" name="img" accept="image/*"> -->
 
             <b-button variant="primary" v-on:click.prevent="addNewbeverage" id="beverageFormSubmit" type="submit">Add Beverage</b-button>
 
@@ -141,6 +137,7 @@ div {
   align-items: center;
   justify-content: center;
 }
+
 #beverageFormSubmit{
   margin-top: 10px;
 }
