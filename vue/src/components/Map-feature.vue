@@ -4,6 +4,14 @@
         <label>
       </label>
 
+      
+          <div class="filter">
+            <h4>Please select a location</h4>
+            <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
+            <button @click="addLocationMarker">Add</button>
+            <br />
+        </div>
+        
         <gmap-map
             :zoom="11"
             :center="center"
@@ -30,12 +38,6 @@
             ></gmap-marker>
 
         </gmap-map>
-        <div class="filter">
-            <h4>Please select a location</h4>
-            <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
-            <button @click="addLocationMarker">Add</button>
-            <br />
-        </div>
     </div>
 </template>
 
@@ -137,19 +139,7 @@ export default({
 
 <style scoped>
 
-.filter {
-    background-color: #f3bc23;
-    border-bottom-right-radius: 25px;
-    border-bottom-left-radius: 25px;
-    border: solid black 1px;
-    padding: 5px;
-    padding-left: 15px;
-    font-style: italic;
-}
-
-h4 {
-    font-size: large;
-}
-
+#brewery-map {
+background-image: linear-gradient(to top right, rgb(247, 223, 195), rgb(255, 145, 0));}
     
 </style>

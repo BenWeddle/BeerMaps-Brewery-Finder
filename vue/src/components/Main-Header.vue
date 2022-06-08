@@ -6,14 +6,7 @@
 </template>
 
 <script>
-// import image from "../src/beer_PNG2382"
-// export default({
-//     data: function() {
-//         return {
-//             image: image
-//         }
-//     },
-// })
+
 </script>
 
 <style scoped>

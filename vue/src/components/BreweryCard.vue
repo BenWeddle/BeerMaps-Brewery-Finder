@@ -1,5 +1,5 @@
 <template>
-  <div id="card-container">
+  <div id="card-container" class="card">
     <h1 class="text-center">{{ brewery.breweryName }}</h1>
     <div id="description">
       <p>{{ brewery.description }}</p>
@@ -67,9 +67,6 @@ export default {
   font-size: larger;
 }
 
-#card-container {
-  
-}
 
 
 </style>

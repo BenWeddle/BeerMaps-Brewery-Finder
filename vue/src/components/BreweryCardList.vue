@@ -1,6 +1,6 @@
 <template>
   <div id="card-container">
-    <div class="card" v-for="brewery in breweries" v-bind:key="brewery.id">
+    <div class="card" v-for="brewery in breweries" v-bind:key="brewery.id" style="width: 60rem">
       <h1 class="text-center">{{ brewery.breweryName }}</h1>
       <div id="description">
       <p>{{ brewery.description }}</p>
@@ -37,7 +37,7 @@ export default {
 <style scoped>
 
 .card {
-  background-color: #8ca4b8;
+  background-color: #f3bc23;
   border-radius: 25px;
   font-family: tangerine;
   font-style: italic;
@@ -60,4 +60,9 @@ export default {
   font-style: italic;
 }
 
+#card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 </style>
