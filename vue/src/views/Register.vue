@@ -1,5 +1,10 @@
 <template>
   <div id="register" class="text-center">
+
+    <video autoplay muted loop id="myVideo">
+      <source src="../../public/BubbleMug.mp4" type="video/mp4">
+    </video>
+
     <form class="form-register" @submit.prevent="register">
       <h1 class="register-header">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -210,10 +215,19 @@ export default {
 }
 
 .have-account-link {
-  
   margin-left: 100px;
+}
 
-
+#myVideo {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 </style>
