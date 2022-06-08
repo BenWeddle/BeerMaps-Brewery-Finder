@@ -38,18 +38,18 @@ export default ({
 
 <style>
 
-/*html {*/
-/* */
-/*  margin-left: 5%;*/
-/*  margin-right: 5%;*/
-/*  background-image: linear-gradient(to top right, rgb(218, 230, 57), rgb(255, 60, 0));*/
-/*}*/
+html {
+  font-family: tangerine;
+  font-style: italic;
+}
 
-body {
+/* body {
   border-radius: 70px;
 }
 
-
+.home {
+  margin-left: 10px;
+} */
 
 /*#app{*/
 /*  background-image: linear-gradient(to top left,  rgb(218, 230, 57), rgb(255, 60, 0));*/

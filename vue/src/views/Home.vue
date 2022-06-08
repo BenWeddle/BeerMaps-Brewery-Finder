@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <nav-top-bar></nav-top-bar>
-    <div id="spacer">
+  
+    <!-- <div id="spacer"> -->
       
-    </div>
+    <!-- </div> -->
     <welcome-message id="message"></welcome-message>
     <AddGoogleMap id="map"></AddGoogleMap>
     <UserBrewerySearch id="brewery-search"></UserBrewerySearch>
@@ -17,14 +17,13 @@ import BreweryService from "../services/BreweryService";
 import UserBrewerySearch from "../components/UserBrewerySearch";
 import AddressService from "../services/AddressService";
 import UserService from "../services/UserService";
-import NavTopBar from '../components/Nav-Top-Bar.vue';
+
 export default {
   name: "home",
   components: {
     AddGoogleMap,
     WelcomeMessage,
     UserBrewerySearch,
-    NavTopBar
   },
   data(){
     return {
@@ -71,10 +70,10 @@ export default {
 </script>
 
 <style scoped>
-#spacer {
-  height: 5rem;
+/* #spacer {
+  height: 10rem;
   grid-area: spacer;
-}
+} */
 
 #message {
   grid-area: message;
@@ -101,7 +100,7 @@ export default {
 
 .home {
   display: grid;
-
+  margin-top: 100px;
   grid-template-columns: 1fr 1fr;
 
   grid-template-areas: 

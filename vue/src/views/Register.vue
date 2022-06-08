@@ -1,12 +1,19 @@
 <template>
   <div id="register" class="text-center">
+
+    <video autoplay muted loop id="myVideo">
+      <source src="../../public/BubbleMug.mp4" type="video/mp4">
+    </video>
+
     <form class="form-register" @submit.prevent="register">
+      <img id="logo" src="../../public/BEER MAPS.png" />
       <h1 class="register-header">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
-      <label for="username" class="sr-only">Username</label>
-      <input
+      <div class="row">
+        <label for="username" class="sr-only">Username</label>
+        <input
         type="text"
         id="username"
         class="form-control-register"
@@ -14,49 +21,56 @@
         v-model="user.username"
         required
         autofocus
-      />
+        />
+      </div>
+      <div class="row">
       <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control-register"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control-register"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      />
-      <input
-      v-on:change="changeBrewerMethod"
-      type="checkbox"
-      id="brewerCheckbox"/>
-      <label for="brewerCheckbox">Are you a brewer?</label>
-
-      <b-form-group
-        label="Select your Brewery"
-        v-if="this.user.role === 'brewer'"
-      >
-        <b-form-select
-            id="brewery-select"
-            v-model="selected"
-            :options="brewerySelectOptions"
-            class="mb-3"
-            value-field="value"
-            text-field="text"
-            disabled-field="notEnabled"
-        ></b-form-select>
-      </b-form-group>
-
-      <button class="create-account-button" type="submit">
-        Create Account
-      </button>
-      <router-link class="have-account-link" :to="{ name: 'login' }">Have an account?</router-link>
+        <input
+          type="password"
+          id="password"
+          class="form-control-register"
+          placeholder="Password"
+          v-model="user.password"
+          required
+        />
+        <input
+          type="password"
+          id="confirmPassword"
+          class="form-control-register"
+          placeholder="Confirm Password"
+          v-model="user.confirmPassword"
+          required
+        />
+      </div>
+      
+        <input
+        v-on:change="changeBrewerMethod"
+        type="checkbox"
+        id="brewerCheckbox"
+        class="brewer-checkbox"/>
+        <label for="brewerCheckbox" class="brewer-checkbox">Are you a brewer?</label>
+      <div class="row">
+        <b-form-group
+          class="select-group"
+          label="Select your Brewery"
+          v-if="this.user.role === 'brewer'"
+        >
+          <b-form-select
+              id="brewery-select"
+              v-model="selected"
+              :options="brewerySelectOptions"
+              class="mb-3"
+              value-field="value"
+              text-field="text"
+              disabled-field="notEnabled"
+          ></b-form-select>
+        </b-form-group>
+        </div>
+        
+      <div class="row">
+        <b-button id="create-account-button" class="create-account-button" type="submit">Create Account</b-button>
+        <router-link class="have-account-link" :to="{ name: 'login' }">Have an account?</router-link>
+      </div>
     </form>
   </div>
 </template>
@@ -177,43 +191,74 @@ export default {
 
 <style scoped>
 .register-header{
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 50px;
   margin-top: 0%;
-  color: rgb(0, 0, 0);
+  color: aliceblue;
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  
 }
 
 #register {
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .form-control-register {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 5px;
-  padding-right: 0px;
-  margin-left: 70px;
+  flex-direction: column;
 }
 
 .create-account-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 105px;
+  background-color: orange;
+  color: black;
 }
 
 .have-account-link {
-  
-  margin-left: 100px;
+  text-decoration: none;
+  color: orange;
+  font-size: 24px;
+}
+.have-account-link:hover {
+  text-decoration: underline;
+}
 
+#myVideo {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
 
+.sr-only {
+  color: aliceblue;
+}
+
+.form-register {
+  margin-top: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left:45%;
+  margin-right: 45%;
+  padding: 10px;
+}
+.brewer-checkbox {
+  color: aliceblue;
+  padding: 10px;
+}
+.select-group {
+  color: aliceblue;
+  margin-left: -10%;
 }
 
 </style>
