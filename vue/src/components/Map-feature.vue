@@ -4,6 +4,14 @@
         <label>
       </label>
 
+      
+          <div class="filter">
+            <h4>Please select a location</h4>
+            <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
+            <button @click="addLocationMarker">Add</button>
+            <br />
+        </div>
+        
         <gmap-map
             :zoom="11"
             :center="center"
@@ -152,5 +160,7 @@ export default({
 
 <style scoped>
 
+#brewery-map {
+background-image: linear-gradient(to top right, rgb(247, 223, 195), rgb(255, 145, 0));}
     
 </style>

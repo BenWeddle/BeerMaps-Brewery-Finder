@@ -238,12 +238,13 @@ export default {
   justify-content: space-evenly;
 }
 div {
-  background-color: #f3bc23;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   font-family: tangerine;
   font-style: italic;
   font-weight: bold;
-
+ background-image: linear-gradient(to top right, rgb(247, 223, 195), rgb(255, 145, 0));
 }
+
+  
 </style>
