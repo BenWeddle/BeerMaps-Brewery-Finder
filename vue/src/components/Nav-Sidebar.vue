@@ -124,10 +124,11 @@ div {
   align-items: center;
   justify-content: space-around;
   position: fixed;
-  width: 108rem;
+  width: 100%;
   margin-bottom: 100;
   transform: translateZ(0);
   z-index: 500;
+  
 }
 
 #header {

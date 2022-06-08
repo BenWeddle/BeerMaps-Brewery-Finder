@@ -14,8 +14,7 @@
 </template>
 <script>
 
-import NavSidebar from "@/components/Nav-Sidebar.vue"
-
+import NavSidebar from "@/components/Nav-Sidebar.vue";
 export default ({
   components: {
     
@@ -40,9 +39,8 @@ export default ({
 
 <style>
 html {
- 
-  margin-left: 5%;
-  margin-right: 5%;
+
+  
   background-image: linear-gradient(to top right, rgb(218, 230, 57), rgb(255, 60, 0));
 }
 
@@ -50,9 +48,7 @@ body {
   border-radius: 70px;
 }
 
-.home {
-  margin-left: 10px;
-}
+
 
 #app{
   background-image: linear-gradient(to top left,  rgb(218, 230, 57), rgb(255, 60, 0));
