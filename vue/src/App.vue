@@ -41,6 +41,7 @@ export default ({
 html {
   font-family: tangerine;
   font-style: italic;
+  background-color: rgb(89, 94, 94);
 }
 
 /* body {
@@ -51,9 +52,9 @@ html {
   margin-left: 10px;
 } */
 
-/*#app{*/
-/*  background-image: linear-gradient(to top left,  rgb(218, 230, 57), rgb(255, 60, 0));*/
-/*}*/
+#app {
+  background-color: rgb(89, 94, 94);
+}
 
 #vertical{
   display: grid;

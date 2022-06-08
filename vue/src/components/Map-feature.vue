@@ -138,7 +138,7 @@ export default({
 <style scoped>
 
 #brewery-map {
-background-image: linear-gradient(to top right, rgb(247, 223, 195), rgb(255, 145, 0));
+/* background-image: linear-gradient(to top right, rgb(247, 223, 195), rgb(255, 145, 0)); */
 } 
 
 .filter {
