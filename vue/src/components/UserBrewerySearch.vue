@@ -108,7 +108,7 @@
   >
     <leave-a-brewery-rating-form></leave-a-brewery-rating-form>
     <div class="finish-button-container">
-      <b-button class="mt-3" variant="outline-danger"  @click="leaveRating = false">Finish</b-button>
+      <b-button class="mt-3 finish-button" variant="outline-danger"  @click="leaveRating = false">Exit</b-button>
     </div>
   </b-modal>
 

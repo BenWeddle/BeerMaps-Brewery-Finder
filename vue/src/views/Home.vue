@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <welcome-message></welcome-message>
-    <AddGoogleMap v-if="isMounted"></AddGoogleMap>
+    <AddGoogleMap></AddGoogleMap>
     <UserBrewerySearch></UserBrewerySearch>
   </div>
 </template>
@@ -23,7 +23,6 @@ export default {
   data(){
     return {
       listOfBreweries: [],
-      isMounted: false
     }
   },
   methods: {
@@ -50,32 +49,11 @@ export default {
       })
     }
   },
-  beforeCreate() {
-    // this.getAllBreweriesAddToStore();
-    // this.setStoreBreweryId();
-    // this.setStoreAddressList();
-    // this.setUsernameList();
-    BreweryService.getBreweries().then(response => {
-      this.$store.commit("LIST_OF_BREWERIES", response.data)
-    }).catch(error => {
-      alert(error + "There was an error getting breweries")
-    }),
-
-    BreweryService.getBreweryByBrewerId(this.$store.state.user.id).then(response => {
-      this.$store.commit('SET_BREWERY_ID_FROM_BREWER', response.data.breweryId)
-    }),
-
-        AddressService.getAllAddresses().then(response => {
-          this.$store.commit('SET_ADDRESS_LIST', response.data);
-        }),
-
-    UserService.getAllUsernames().then(response => {
-      this.$store.commit('SET_USERNAME_LIST', response.data)
-    })
-
-  },
-  mounted() {
-    this.isMounted = true;
+  created() {
+    this.getAllBreweriesAddToStore();
+    this.setStoreBreweryId();
+    this.setStoreAddressList();
+    this.setUsernameList();
   },
   computed: {
     getBrewerID() {

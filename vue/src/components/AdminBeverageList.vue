@@ -34,11 +34,13 @@
         </b-row>
 
         <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
+        <b-button size ="sm" variant ="danger" id="delete-button" @click="confirmDelete">Delete</b-button>
+        <b-button size ="sm" variant ="success" id="update-button" @click="setActiveBeverageToUpdate(row.item.beverageId)">Update</b-button>
 
         <b-modal ref="confirm-delete"
                  hide-footer centered
                  title="Are you sure?"
-                 >
+        >
           <div class="d-block text-center">
             <h3>Are you sure you want to remove this beverage?</h3>
           </div>
@@ -48,7 +50,19 @@
           </div>
         </b-modal>
 
-        <b-button size ="sm" variant ="danger" id="delete-button" @click="confirmDelete">Delete</b-button>
+        <b-modal id="update-popup"
+                 v-model="showUpdate"
+                 title="Update Beverage"
+                 hide-footer centered
+                 size="xl"
+        >
+          <update-beverage-form></update-beverage-form>
+          <div class="finish-button-container">
+            <b-button class="mt-3 finish-button" variant="outline-danger"  @click="showUpdate = false">Exit</b-button>
+          </div>
+        </b-modal>
+
+
       </b-card>
     </template>
   </b-table>
@@ -58,15 +72,18 @@
 
 <script>
 import BeverageService from "../services/BeverageService";
+import UpdateBeverageForm from "./UpdateBeverageForm";
 export default {
   name: "AdminBeverageList",
   components: {
+    UpdateBeverageForm
   },
   data() {
     return {
       fields: ['beverageName', 'beverageType', 'show_details'],
       beverages: [],
-      displayAlert: false
+      displayAlert: false,
+      showUpdate: false
     }
   },
   computed: {},
@@ -78,7 +95,6 @@ export default {
       BeverageService.deletebeverage(beverageId);
       this.exitDeleteConfirmation();
       this.displayAlert = true;
-      // this.confirmationToast();
     },
     confirmDelete() {
       this.$refs['confirm-delete'].show()
@@ -91,11 +107,9 @@ export default {
         this.beverages = response.data;
       })
     },
-    confirmationToast(){
-      this.$root.$bvToast.toast('Beverage has been successfully deleted', {
-        title: 'Confirmation',
-        noAutoHide: true
-      })
+    setActiveBeverageToUpdate(beverageId){
+      this.$store.commit('SET_SELECTED_BEVERAGE_TO_UPDATE', beverageId)
+      this.showUpdate = true
     }
   }
 }

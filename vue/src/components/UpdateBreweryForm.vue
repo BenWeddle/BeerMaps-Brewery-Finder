@@ -104,7 +104,7 @@ export default {
   methods: {
     updateBrewery(){
       BreweryService.updateBrewery(this.brewery).then(response => {
-        if(response.status == 201){
+        if(response.status == 202){
           alert("Brewery Updated");
         }
       })

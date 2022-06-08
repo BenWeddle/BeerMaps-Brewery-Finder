@@ -27,6 +27,8 @@ export default new Vuex.Store({
     listOfBreweries: [],
     selectedBreweryMenu: '',
     selectedBreweryRatings: '',
+    selectedBeverageRating: '',
+    selectedBeverageToUpdate: '',
     addressList: [],
     usernameList: []
   },
@@ -69,6 +71,12 @@ export default new Vuex.Store({
     },
     SET_USERNAME_LIST(state, list){
       state.usernameList = list;
+    },
+    SET_SELECTED_BEVERAGE_RATING(state, beverageId){
+      state.selectedBeverageRating = beverageId;
+    },
+    SET_SELECTED_BEVERAGE_TO_UPDATE(state, beverageId){
+      state.selectedBeverageToUpdate = beverageId;
     }
   }
 })

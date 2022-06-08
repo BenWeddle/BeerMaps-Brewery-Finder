@@ -18,8 +18,8 @@ export default {
         return axios.post(`/beverage/brewery/add/${beverageId}`)
     },
 
-    updatebeverage(id) {
-        return axios.put('/beverage', id)
+    updateBeverage(beverage) {
+        return axios.put('/beverage/update', beverage)
     },
 
     deletebeverage(beverageId) {

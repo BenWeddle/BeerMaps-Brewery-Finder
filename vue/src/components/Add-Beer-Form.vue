@@ -124,22 +124,7 @@ export default({
           alert("beverage was not added")
         })
       }
-    },
-      updatebeverage() {
-        beverageService.updatebeverage(this.beverage).then(response => {
-          if(response.status == 201) {
-            alert("beverage successfully updated")
-          }
-        }) 
-      },
-
-      deletebeverage() {
-        beverageService.deletebeverage(this.beverage).then(response => {
-          if(response.status == 201) {
-            alert("beverage Deleted")
-          }
-        })
-      },
+    }
 });
 
 
