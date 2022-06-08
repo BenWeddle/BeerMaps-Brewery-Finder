@@ -2,7 +2,7 @@
   <div id="login" class="login-div">
 
     <video autoplay muted loop id="myVideo">
-      <source src="../../public/Pouring.mp4" type="video/mp4">
+      <source src="../../public/BeerPour.mp4" type="video/mp4">
     </video>
 
     <form class="form-signin" @submit.prevent="login">
