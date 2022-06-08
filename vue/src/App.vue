@@ -5,7 +5,6 @@
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
     </div>
 
-    <main-header></main-header>
     <div :id="vertical">
       <nav-top-bar v-show="!isLoginPage"></nav-top-bar>
       <router-view />
