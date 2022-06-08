@@ -68,7 +68,7 @@
 
           <b-button size ="sm" variant ="outline-success" id="view-menu" @click="showBreweryMenu(row.item.breweryId)">View Offerings</b-button>
 
-          <b-button size ="sm" variant ="outline-warning" id="view-ratings" @click="showBreweryRatings(row.item.breweryId)">Ratings</b-button>
+          <b-button size ="sm" variant ="outline-info" id="view-ratings" @click="showBreweryRatings(row.item.breweryId)">Ratings</b-button>
         </div>
 
       </b-card>
@@ -95,9 +95,23 @@
   >
   <view-brewery-ratings></view-brewery-ratings>
     <div class="finish-button-container">
-      <b-button class="mt-3" variant="outline-danger"  @click="showRatings = false">Finish</b-button>
+      <b-button class="mt-2 finish-button" variant ="outline-success" id="leave-rating-button" @click="leaveAReview" >Leave A Review</b-button>
+      <b-button class="mt-2 finish-button" variant="outline-danger" @click="showRatings = false">Finish</b-button>
     </div>
   </b-modal>
+
+  <b-modal id="leave-rating-popup"
+           v-model="leaveRating"
+           title="Leave A Rating"
+           hide-footer centered
+           size="xl"
+  >
+    <leave-a-brewery-rating-form></leave-a-brewery-rating-form>
+    <div class="finish-button-container">
+      <b-button class="mt-3" variant="outline-danger"  @click="leaveRating = false">Finish</b-button>
+    </div>
+  </b-modal>
+
 </div>
 </template>
 
@@ -105,11 +119,13 @@
 import BreweryService from "../services/BreweryService";
 import BeverageListByBreweryId from "./BeverageListByBreweryId";
 import ViewBreweryRatings from "./ViewBreweryRatings";
+import LeaveABreweryRatingForm from "./LeaveABreweryRatingForm";
 export default {
   name: "UserBrewerySearch",
   components: {
     BeverageListByBreweryId,
-    ViewBreweryRatings
+    ViewBreweryRatings,
+    LeaveABreweryRatingForm
   },
   data() {
     return {
@@ -117,6 +133,7 @@ export default {
       fields: ['breweryName', 'hasOnSiteBrewing', 'hasOutDoorSeating', 'hasFood', 'petFriendly', 'description', 'show_details'],
       showMenu: false,
       showRatings: false,
+      leaveRating: false,
       breweryName: '',
       hasFood: '',
       petFriendly: '',
@@ -206,6 +223,10 @@ export default {
           address.addressId === addressId
       );
       return correctAddress[0].address;
+    },
+    leaveAReview(){
+      this.showRatings = false;
+      this.leaveRating = true;
     }
   },
   created() {
@@ -231,7 +252,17 @@ export default {
 .finish-button-container{
   display: flex;
   justify-content: end;
+  border-radius: 0px;
 }
+
+#leave-rating-button{
+  margin-right: 100px;
+}
+
+.finish-button{
+  margin-right: 20px;
+}
+
 .detail-option-buttons{
   display: flex;
   justify-content: space-evenly;

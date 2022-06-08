@@ -20,8 +20,6 @@
         </b-row>
 
         <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
-
-        <b-button size ="sm" variant ="outline-success" id="view-menu" >Leave A Review</b-button>
       </b-card>
     </template>
   </b-table>
@@ -39,7 +37,7 @@ export default {
       filter: {
         rating: '',
         ratingDate: ''
-      }
+      },
     };
   },
   computed: {

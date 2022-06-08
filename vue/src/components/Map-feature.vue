@@ -41,7 +41,6 @@
 
 <script>
 import starIcon from '../images/starIcon-small.png'
-
 export default({
     setup() {},
     name: 'map-area',
@@ -58,8 +57,6 @@ export default({
             infoWindowPos: null,
             infoWinOpen: false,
             currentMidx: null,
-            parseAddressId: 0,
-            continuePlot: false,
             infoOptions: {
             content: '',
             //optional: offset infowindow so it visually sits nicely on top of our marker
@@ -111,45 +108,27 @@ export default({
       this.iconInfoWinOpen = !this.iconInfoWinOpen;
     }
   },
-  watch:{
-    parseAddressId(value){
-      console.log(value)
-      this.continuePlot = true;
-    }
-  },
     computed: {
-        storeListOfBreweries(){
-          return this.$store.state.listOfBreweries
-        },
-        dropPinsForBreweries() {
+      storeListOfBreweries() {
+        return this.$store.state.listOfBreweries
+      },
+      dropPinsForBreweries() {
         let locations = []
-        this.storeListOfBreweries.forEach((brewery) => {
+        this.storeListOfBreweries.forEach((brewery) =>  {
           const marker = {
             lat: brewery.latitude,
             lng: brewery.longitude
           }
-          // console.log(this.$store.state.addressList)
-          // console.log(brewery.addressId)
-          // console.log(this.getAddressByAddressId(1))
-          this.parseAddressId = brewery.addressId;
-          console.log(this.parseAddressId)
-          console.log(this.getAddressByAddressId)
-          if(this.continuePlot)
-          locations.push(
-              {position: marker,
-                infoText: '<h4>' + `${brewery.breweryName}` + '</h4>' +
-                    '<h6> Phone Number: ' + `${brewery.phoneNumber}`+'</h6>'
-                       // + '<h6> Address: '+ `${this.getAddressByAddressId}`+'</h6>'
-              })
+            locations.push(
+                {
+                  position: marker,
+                  infoText: '<h4>' + `${brewery.breweryName}` + '</h4>' +
+                      '<h6> Phone Number: ' + `${brewery.phoneNumber}` + '</h6>'
+                  + '<h6> Latitude: '+ `${brewery.latitude}`+'</h6>'
+                      + '<h6> Longitude: '+ `${brewery.longitude}`+'</h6>'
+                })
         })
         return locations;
-      },
-      getAddressByAddressId(){
-        let correctAddress = []
-        correctAddress = this.$store.state.addressList.filter((object) =>
-            object.addressId === this.parseAddressId
-        );
-        return correctAddress.address;
       }
     }
 })
@@ -157,9 +136,6 @@ export default({
 </script>
 
 <style scoped>
-#map{
-    display: flex;
-}
 
 .filter {
     background-color: #f3bc23;
