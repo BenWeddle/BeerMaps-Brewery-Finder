@@ -1,12 +1,9 @@
 <template>
   <div id="login" class="login-div">
 
-    <div class="video-wrapper">
-      <video autoplay muted loop id="backgroundVideo">
-        <source src="vue/src/assets/Pouring.mp4" type="video/mp4">
-      </video>
-    </div>
-
+    <video autoplay muted loop id="myVideo">
+      <source src="../../public/Pouring.mp4" type="video/mp4">
+    </video>
 
     <form class="form-signin" @submit.prevent="login">
       <h1 class="login-header">Welcome To BeerMaps</h1>
@@ -51,7 +48,8 @@
 import authService from "../services/AuthService";
 export default {
   name: "login",
-  components: {},
+  components: {
+  },
   data() {
     return {
       user: {
@@ -110,7 +108,7 @@ export default {
   font-size: 60px;
   margin-top: 0%;
   padding-bottom: 0px;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   
 }
@@ -119,7 +117,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  color:  aliceblue;
 }
 
 .login-header-2 {
@@ -127,12 +125,14 @@ export default {
   align-items: center;
   justify-content: center;
   padding-top: 20px;
+  color:  aliceblue;
 }
 
 label.sr-only {
   display: flex;
   align-items: center;
   justify-content: center;
+  color:  aliceblue;
 }
 
 .need-an-account {
@@ -152,7 +152,28 @@ label.sr-only {
   margin-top: 10px;
 }
 
-div {
+/*#myVideo {*/
+/*  position: fixed;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  min-width: 100%;*/
+/*  min-height: 100%;*/
+/*}*/
+
+#myVideo {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.login-div {
+  margin-top: 15%;
   font-family: tangerine;
   font-style: italic;
 }
