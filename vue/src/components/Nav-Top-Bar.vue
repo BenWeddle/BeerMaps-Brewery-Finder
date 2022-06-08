@@ -1,42 +1,48 @@
 <template>
     <div id="main-nav">
     <b-navbar toggleable="lg" id="navbar">
-        <router-link v-bind:to="{ name: 'home' }" id="home"><h1>Home</h1></router-link>
+      
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-      <div id="header">
-          <h1>BeerMaps</h1>
-          <!-- <img :src="image"/> -->
-        </div>
-
     <b-collapse id="nav-collapse" is-nav>
-      <div id="manage">
-       <div id="admin-page-link">
-        <b-navbar-nav>
-         <b-button size="sm"><router-link to="/admin">Go to Admin Page</router-link></b-button>
-        </b-navbar-nav>
-       </div>
-       <div id="all-bevs-link">
-        <b-navbar-nav id="showbevs">
-            <b-button size="sm" @click="showGlobalBeverages">View All Beverages</b-button>
-        </b-navbar-nav>
+      <div class="left-side">
+        <!-- home button -->
+        <div class="home-icon">
+          <router-link v-bind:to="{ name: 'home' }" id="home"><img src="../../public/logosmall.png" class="icon" /></router-link>
         </div>
       </div>
+      <div class="middle">
+          <img class="logo" src="../../public/BEER MAPS.png" />
+        </div>
 
-      <!-- Right aligned nav items -->
+      <div class="right-side">
+        <div class="buttons">
+          <b-navbar-nav>
+            <b-button class="nav-button" size="sm" @click="toAdmin">Admin Page</b-button>
+          </b-navbar-nav>
+
+          <b-navbar-nav id="showbevs">
+              <b-button class="nav-button" size="sm" @click="showGlobalBeverages">View All Beverages</b-button>
+          </b-navbar-nav>
+        </div>
+
         <b-navbar-nav class="ml-auto">
-        <b-nav-item-dropdown right>
+          <b-nav-item-dropdown id="dropdown-right" right>
             <!-- Using 'button-content' slot -->
-            <template #button-content>
+            <template id="testing" #button-content>
                 <b-avatar variant="primary"></b-avatar>
             </template>
-            <b-dropdown-item @click="showAddBeverage">Add a Beverage</b-dropdown-item>
-            <b-dropdown-item @click="showGlobalBeverages">Manage Beverages</b-dropdown-item>
-            <b-dropdown-item><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></b-dropdown-item>
+              <b-dropdown-item @click="showAddBeverage">Add a Beverage</b-dropdown-item>
+              <b-dropdown-item @click="showGlobalBeverages">Manage Beverages</b-dropdown-item>
+              <b-dropdown-item><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></b-dropdown-item>
             </b-nav-item-dropdown>
         </b-navbar-nav>
+      
+      </div>
     </b-collapse>
-        </b-navbar>
+  </b-navbar>
+
+
         <b-modal id="global-beverage"
              v-model="showGlobal"
              title="All Our Beverages"
@@ -84,6 +90,9 @@ export default({
     },
     showAddBeverage(){
       this.showAdd = true;
+    },
+    toAdmin() {
+      this.$router.push('/admin');
     }
   }
 })
@@ -91,14 +100,6 @@ export default({
 </script>
 
 <style scoped>
-div {
-    
-    align-items: center;
-    justify-content: space-between;
-    font-family: tangerine;
-    font-style: italic;
-}
-
 #home {
     padding-right: 38%;
     padding-left: 30px;
@@ -110,9 +111,7 @@ div {
 }
 
 #navbar {
-  background-image: linear-gradient(to bottom right, rgb(247, 223, 195), rgb(247, 153, 30));
-  border-bottom-right-radius: 25px;
-  border-bottom-left-radius: 25px;
+  background-image: linear-gradient(to bottom right, rgb(41, 41, 41), rgb(112, 112, 112));
 }
 
 #manage {
@@ -120,25 +119,59 @@ div {
   
 }
 
-#main-nav {
-  align-items: center;
-  justify-content: space-around;
-  position: fixed;
-  width: 90%;
-  margin-bottom: 100;
-  transform: translateZ(0);
-  z-index: 500;
+.buttons {
+  display: flex;
+  gap: 5px;
+  margin-right: 10%;
+  
 }
 
-#header {
-  padding-right: 20%;
-  font-family: tangerine;
-  font-style: italic;
-  font-weight: bolder;
+#nav-collapse{
+  display: flex;
+  justify-content: space-between;
+  
 }
+.middle {
+  margin-left: 200px;
+}
+.left-side {
+  display: flex;
+  align-items: center;
+}
+.right-side {
+  display: flex;
+  align-items: center;
+  margin-right: 100px;
+}
+#navbar {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  z-index: 500;
+
+}
+
+ .logo {
+   width: 300px;
+ }
 
 #admin-page-link {
   padding-right: 20px;
+}
+
+.icon {
+  height: 30%;
+  width: 30%;
+}
+.icon:hover {
+  height: 40%;
+  width: 40%;
+  cursor: pointer;
+}
+.nav-button {
+  background-color: orange;
+  height: 50px;
+  color: black;
 }
 
 </style>

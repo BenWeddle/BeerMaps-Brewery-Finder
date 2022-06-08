@@ -141,6 +141,11 @@ label.sr-only {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  color: orange;
+}
+.need-an-account:hover {
+  text-decoration: underline;
 }
 
 #sign-in-button {
