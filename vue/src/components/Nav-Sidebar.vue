@@ -1,17 +1,22 @@
 <template>
-    <div>
+    <div id="main-nav">
     <b-navbar toggleable="lg" id="navbar">
         <router-link v-bind:to="{ name: 'home' }" id="home"><h1>Home</h1></router-link>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
+      <div id="header">
+          <h1>BeerMaps</h1>
+          <!-- <img :src="image"/> -->
+        </div>
+
     <b-collapse id="nav-collapse" is-nav>
       <div id="manage">
-       <div>
+       <div id="admin-page-link">
         <b-navbar-nav>
          <b-button size="sm"><router-link to="/admin">Go to Admin Page</router-link></b-button>
         </b-navbar-nav>
        </div>
-       <div>
+       <div id="all-bevs-link">
         <b-navbar-nav id="showbevs">
             <b-button size="sm" @click="showGlobalBeverages">View All Beverages</b-button>
         </b-navbar-nav>
@@ -30,9 +35,9 @@
             <b-dropdown-item><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></b-dropdown-item>
             </b-nav-item-dropdown>
         </b-navbar-nav>
-        </b-collapse>
-    </b-navbar>
-    <b-modal id="global-beverage"
+    </b-collapse>
+        </b-navbar>
+        <b-modal id="global-beverage"
              v-model="showGlobal"
              title="All Our Beverages"
              size="xl"
@@ -95,7 +100,7 @@ div {
 }
 
 #home {
-    padding-right: 200px;
+    padding-right: 38%;
     padding-left: 30px;
     color: red;
 }
@@ -106,7 +111,8 @@ div {
 
 #navbar {
   background-image: linear-gradient(to bottom right, rgb(247, 223, 195), rgb(247, 153, 30));
-  border-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-bottom-left-radius: 25px;
 }
 
 #manage {
@@ -114,8 +120,25 @@ div {
   
 }
 
-#showbevs {
-  color: red;
+#main-nav {
+  align-items: center;
+  justify-content: space-around;
+  position: fixed;
+  width: 108rem;
+  margin-bottom: 100;
+  transform: translateZ(0);
+  z-index: 500;
+}
+
+#header {
+  padding-right: 20%;
+  font-family: tangerine;
+  font-style: italic;
+  font-weight: bolder;
+}
+
+#admin-page-link {
+  padding-right: 20px;
 }
 
 </style>
