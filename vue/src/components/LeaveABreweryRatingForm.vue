@@ -32,7 +32,7 @@ export default {
         ratingType: 'brewery',
         breweryId: '',
         reviewerId: '',
-        ratingDate: date()
+        ratingDate: ''
     }
   };
   }

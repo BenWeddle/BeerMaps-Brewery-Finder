@@ -37,7 +37,7 @@ export default {
 <style scoped>
 
 .card {
-  background-color: #f3bc23;
+  background-image: linear-gradient(orange,rgb(243, 176, 131));
   border-radius: 25px;
   font-family: tangerine;
   font-style: italic;

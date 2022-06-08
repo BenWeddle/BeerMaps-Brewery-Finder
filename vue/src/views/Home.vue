@@ -1,8 +1,12 @@
 <template>
   <div class="home">
-    <welcome-message></welcome-message>
-    <AddGoogleMap v-if="isMounted"></AddGoogleMap>
-    <UserBrewerySearch></UserBrewerySearch>
+    <nav-sidebar></nav-sidebar>
+    <div id="spacer">
+      
+    </div>
+    <welcome-message id="message"></welcome-message>
+    <AddGoogleMap v-if="isMounted" id="map"></AddGoogleMap>
+    <UserBrewerySearch id="brewery-search"></UserBrewerySearch>
   </div>
 </template>
 
@@ -13,12 +17,14 @@ import BreweryService from "../services/BreweryService";
 import UserBrewerySearch from "../components/UserBrewerySearch";
 import AddressService from "../services/AddressService";
 import UserService from "../services/UserService";
+import NavSidebar from '../components/Nav-Sidebar.vue';
 export default {
   name: "home",
   components: {
     AddGoogleMap,
     WelcomeMessage,
-    UserBrewerySearch
+    UserBrewerySearch,
+    NavSidebar
   },
   data(){
     return {
@@ -87,11 +93,44 @@ export default {
 </script>
 
 <style scoped>
-
-#content {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+#spacer {
+  height: 5rem;
+  grid-area: spacer;
 }
 
+#message {
+  grid-area: message;
+  display: flex;
+    border: solid black 1px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    padding: 5px;
+    background-image: linear-gradient(to bottom right, rgb(247, 223, 195), rgb(255, 145, 0));
+    align-items: center;
+    justify-content: center;
+    font-family: tangerine;
+    font-style: italic;
+}
+
+#map {
+  grid-area: map;
+  background-image: linear-gradient(to top right, rgb(247, 223, 195), rgb(255, 145, 0));
+}
+
+#brewery-search {
+  grid-area: search
+}
+
+.home {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  grid-template-areas: 
+  "spacer spacer"
+  "message message"
+  "map map"
+  "search search"
+  ;
+}
 </style>

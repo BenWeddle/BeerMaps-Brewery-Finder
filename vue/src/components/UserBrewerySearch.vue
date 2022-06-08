@@ -244,10 +244,9 @@ export default {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   margin-top: 20px;
-
 }
 #checkbox-row{
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .finish-button-container{
@@ -274,7 +273,7 @@ div {
   font-family: tangerine;
   font-style: italic;
   font-weight: bold;
- background-image: linear-gradient(to top right, rgb(247, 223, 195), rgb(255, 145, 0));
+  background-image: linear-gradient(to right, rgb(69, 175, 69), orange);
 }
 
   

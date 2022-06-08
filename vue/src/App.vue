@@ -13,12 +13,12 @@
   </div>
 </template>
 <script>
-import MainHeader from "@/components/Main-Header.vue"
+
 import NavSidebar from "@/components/Nav-Sidebar.vue"
 
 export default ({
   components: {
-    MainHeader,
+    
     NavSidebar,
   },
   computed: {

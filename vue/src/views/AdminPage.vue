@@ -1,5 +1,9 @@
 <template>
   <div id="page-container">
+    <nav-sidebar id="nav-bar"></nav-sidebar>
+    <div id="spacer">
+      
+    </div>
     <brewery-card id="brew"></brewery-card>
     <admin-beverage-list id="bev-list"></admin-beverage-list>
     <ViewAllBreweries id="all-breweries"></ViewAllBreweries>
@@ -42,6 +46,10 @@ export default {
   grid-area: beverage;
 }
 
+#nav-bar {
+  grid-area: nav;
+}
+
 #bev-list{
   grid-area: bevlist;
   border: 1px solid black;
@@ -53,20 +61,9 @@ export default {
   background-color: #51c556;
 }
 
-#nav{
-  grid-area: right;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #f3bc23;
-  border-radius: 25px;
-  font-family: tangerine;
-  font-style: italic;
-  padding-top: 40px;
-  padding-bottom: 100px;
-  
+#spacer {
+  grid-area: spacer;
+  height: 4rem;
 }
 
 #page-container{
@@ -74,6 +71,8 @@ export default {
   grid-template-columns: 1fr 1fr;
 
   grid-template-areas:
+  "nav nav"
+  "spacer spacer"
   "brewery bevlist"
   "all-breweries all-breweries"
   ;
