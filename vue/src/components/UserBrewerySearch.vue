@@ -269,7 +269,7 @@ export default {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   margin-top: 20px;
-  background-image: linear-gradient(to top left, rgb(83, 77, 77, .33), rgb(235, 150, 48, .33));
+  background-image: linear-gradient(to top left, rgb(83, 77, 77), rgb(235, 150, 48));
   border-radius: 25px;
   font-size: medium;
   font-weight: bold;
