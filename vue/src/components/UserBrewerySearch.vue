@@ -267,6 +267,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
 }
+
 div {
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
