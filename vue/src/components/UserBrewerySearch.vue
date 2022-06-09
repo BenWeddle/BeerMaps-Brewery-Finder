@@ -33,6 +33,8 @@
   :total-rows="rowsLength"
   :per-page="perPage"
   aria-controls="search-table"
+  pills
+  class="custom-pagination"
   ></b-pagination>
 
   <b-table :per-page="perPage" :current-page="currentPage" :items="filteredList" :fields="fields" striped responsive="sm" id="search-table" class="table-rows">
@@ -312,6 +314,10 @@ border-radius: 25px;
 
 #pagination {
   padding-top: 13px;
+}
+
+::v-deep .custom-pagination ::v-deep li ::v-deep a  {
+  background-color: green;
 }
 
 #filter-container{
