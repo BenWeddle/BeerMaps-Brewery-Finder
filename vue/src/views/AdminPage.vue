@@ -69,7 +69,9 @@ export default {
 #page-container{
   display: grid;
   grid-template-columns: 1fr 1fr;
-
+  margin-left: 3%;
+  margin-right: 3%;
+  
   grid-template-areas:
   "nav nav"
   "spacer spacer"

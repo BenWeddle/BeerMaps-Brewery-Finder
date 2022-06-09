@@ -99,6 +99,8 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+  position: relative;
   
 }
 
@@ -191,6 +193,7 @@ label.sr-only {
   margin-top: 15%;
   font-family: tangerine;
   font-style: italic;
+  background-color: transparent;
 }
 
 </style>

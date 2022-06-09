@@ -6,7 +6,9 @@
     <!-- </div> -->
     <welcome-message id="message"></welcome-message>
     <AddGoogleMap id="map"></AddGoogleMap>
+    <img src="../../public/re.png" id="top-filler-photo"/>
     <UserBrewerySearch id="brewery-search"></UserBrewerySearch>
+    <img src="../../public/brewww.png" id="bottom-filler-photo"/>
   </div>
 </template>
 
@@ -70,10 +72,6 @@ export default {
 </script>
 
 <style scoped>
-/* #spacer {
-  height: 10rem;
-  grid-area: spacer;
-} */
 
 #message {
   grid-area: message;
@@ -91,23 +89,42 @@ export default {
 
 #map {
   grid-area: map;
-  background-image: linear-gradient(to top right, rgb(247, 223, 195), rgb(255, 145, 0));
+  /* background-image: linear-gradient(to top right, rgb(247, 223, 195), rgb(255, 145, 0)); */
 }
 
 #brewery-search {
-  grid-area: search
+  grid-area: search;
+  max-height: 500px;
 }
+
+#top-filler-photo {
+  grid-area: t-photo;
+  /* width: 150%;
+  height: 70%; */
+}
+
+#bottom-filler-photo {
+  grid-area: b-photo;
+  /* width: 150%;
+  height: 70%; */
+}
+
 
 .home {
   display: grid;
   margin-top: 100px;
-  grid-template-columns: 1fr 1fr;
-
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 15px;
+  margin-left: 3%;
+  margin-right: 3%;
+  
   grid-template-areas: 
-  "spacer spacer"
-  "message message"
-  "map map"
-  "search search"
+  "message message message message message message"
+  "map map map . t-photo t-photo"
+  "map map map . t-photo t-photo"
+  "map map map search search search"
+  "b-photo b-photo . search search search"
+  "b-photo b-photo . search search search"
   ;
 }
 </style>

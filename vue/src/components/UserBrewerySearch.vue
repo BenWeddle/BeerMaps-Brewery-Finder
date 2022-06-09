@@ -1,5 +1,5 @@
 <template>
-<div id="filter-container">
+<div id="filter-container" class="full-table">
   <b-container id="filter-input" fluid>
     <b-row>
       <b-col sm="2">
@@ -25,15 +25,27 @@
     </b-row>
   </b-container>
 
-  <b-table :items="filteredList" :fields="fields" striped responsive="sm">
+  <b-pagination
+  align="center" 
+  size="lg"
+  id="pagination"
+  v-model="currentPage"
+  :total-rows="rowsLength"
+  :per-page="perPage"
+  aria-controls="search-table"
+  pills
+  class="custom-pagination"
+  ></b-pagination>
+
+  <b-table :per-page="perPage" :current-page="currentPage" :items="filteredList" :fields="fields" striped responsive="sm" id="search-table" class="table-rows">
     <template #cell(show_details)="row">
       <b-button size="sm" @click="row.toggleDetails" class="mr-2">
         {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
       </b-button>
     </template>
 
-    <template #row-details="row">
-      <b-card>
+    <template #row-details="row" >
+      <b-card class="detail-card">
         <b-row class="mb-2">
           <b-col sm="3" class="text-sm-right"><b>Address: </b></b-col>
           <b-col>{{getAddressByAddressId(row.item.addressId)}}</b-col>
@@ -66,9 +78,9 @@
         <div class="detail-option-buttons">
           <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
 
-          <b-button size ="sm" variant ="outline-success" id="view-menu" @click="showBreweryMenu(row.item.breweryId)">View Offerings</b-button>
+          <b-button size ="sm" id="view-menu" @click="showBreweryMenu(row.item.breweryId)">View Offerings</b-button>
 
-          <b-button size ="sm" variant ="outline-info" id="view-ratings" @click="showBreweryRatings(row.item.breweryId)">Ratings</b-button>
+          <b-button size ="sm" id="view-ratings" @click="showBreweryRatings(row.item.breweryId)">Ratings</b-button>
         </div>
 
       </b-card>
@@ -138,10 +150,16 @@ export default {
       hasFood: '',
       petFriendly: '',
       hasOutDoorSeating: '',
-      hasOnSiteBrewing: ''
+      hasOnSiteBrewing: '',
+      currentPage: 1,
+      perPage: 5
     };
   },
   computed: {
+    rowsLength() {
+      return this.filteredList.length;
+    },
+
     filteredList(){
       let filteredBreweries = this.breweries;
       if (this.breweryName != ""){
@@ -244,7 +262,10 @@ export default {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   margin-top: 20px;
-}
+  background-image: linear-gradient(to top left, rgb(247, 223, 195), rgb(255, 145, 0));
+  border-radius: 25px;
+  }
+
 #checkbox-row{
   margin-top: 5px;
 }
@@ -268,13 +289,44 @@ export default {
   justify-content: space-evenly;
 }
 
-div {
+.table-rows {
+background-image: linear-gradient(to bottom right, rgb(247, 223, 195), rgb(255, 145, 0));
+border-radius: 25px;
+}
+
+.detail-card {
+  background-color: rgb(128, 128, 128, .33);
+}
+
+#view-ratings {
+  background-color: #FFCA4B;
+  color: black;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+#view-menu {
+  background-color: orange;
+  color: black;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+#pagination {
+  padding-top: 13px;
+}
+
+::v-deep .custom-pagination ::v-deep li ::v-deep a  {
+  background-color: green;
+}
+
+#filter-container{
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   font-family: tangerine;
   font-style: italic;
   font-weight: bold;
-  background-image: linear-gradient(to right, rgb(69, 175, 69), orange);
+
 }
 
   
