@@ -12,15 +12,17 @@
 
     <div id="brewery-search">
       <UserBrewerySearch ></UserBrewerySearch>
-    </div>
-    <div id="bottom-photo">
+   </div> 
+   <!-- <about-us id="about-us"></about-us> -->
+    
+    <!-- <div id="bottom-photo">
       <img src="../../public/brewww.png" id="bottom-filler-photo"/>
       <div id="inner-bottom-photo">
         <img src="../../public/re.png" id="small-beer-photo"/>
         <img src="../../public/Guy.jpg" id="guy"/>
-      </div>
-    </div>
+      </div> --> -->
   </div>
+  
 </template>
 
 <script>
@@ -30,12 +32,14 @@ import BreweryService from "../services/BreweryService";
 import UserBrewerySearch from "../components/UserBrewerySearch";
 import AddressService from "../services/AddressService";
 import UserService from "../services/UserService";
+
 export default {
   name: "home",
   components: {
     AddGoogleMap,
     WelcomeMessage,
-    UserBrewerySearch
+    UserBrewerySearch,
+    
   },
   data(){
     return {
@@ -107,7 +111,11 @@ export default {
   overflow: auto;
 }
 
-.top-photos {
+#about-us {
+  grid-area: about-us
+}
+
+/* .top-photos {
   height: 350px;
   width: 500px;
   grid-area: t-photo;
@@ -124,9 +132,9 @@ export default {
   max-width: 300px;
   max-height: 300px;
   grid-area: top-left;
-}
+} */
 
-#inner-bottom-photo{
+/* #inner-bottom-photo{
   display: grid;
   span: 3;
   grid-template-columns: 1fr 1fr;
@@ -134,7 +142,7 @@ export default {
   "top-left ."
   ". bottom-right"
   ;
-}
+} */
 
 #bottom-photo{
   display: flex;
@@ -176,8 +184,8 @@ export default {
   "map map map t-photo t-photo t-photo"
   "map map map t-photo t-photo t-photo"
   "map map map search search search"
-  "b-photo b-photo b-photo search search search"
-  "b-photo b-photo b-photo search search search"
+  "about-us about-us about-us search search search"
+  "about-us about-us about-us search search search"
   ;
 }
 </style>
