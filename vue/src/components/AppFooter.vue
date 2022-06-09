@@ -4,12 +4,12 @@
 
   <div class="team-info">
     <p>Created By: The Brew-Tang Clan &copy;</p>
-    <p>Members: Tyler Werth, Ben Weddle, Luke Bartley, Jose Rubino, Justin Hulett</p>
+    <p>Members: Luke Bartley, Justin Hulett, Jose Rubino, Ben Weddle, Tyler Werth</p>
   </div>
 
   <div class="social-column">
     <img src="../../public/social-media-icons.png" class="social-icons"/>
-    <h4>(Comming Soon!)</h4>
+    <h4>(Coming Soon!)</h4>
   </div>
 
   <img src="../../public/Beer-Mug.png" class="flip-image"/>
