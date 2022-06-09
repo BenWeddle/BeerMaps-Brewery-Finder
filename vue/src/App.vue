@@ -5,18 +5,19 @@
       <div id="content">
         <router-view/>
       </div>
-<!--      <app-footer v-show="!isLoginPage" id="page-footer"></app-footer>-->
+     <app-footer v-show="!isLoginPage" class="footer"></app-footer>
     </div>
   </div>
 </template>
 <script>
 
 import NavTopBar from "@/components/Nav-Top-Bar.vue";
-// import AppFooter from "./components/AppFooter";
+import AppFooter from "./components/AppFooter";
+
 export default ({
   components: {
-    NavTopBar
-    // AppFooter
+    NavTopBar,
+    AppFooter
   },
   computed: {
     isLoginPage(){
@@ -43,12 +44,17 @@ html {
   background-color: rgb(89, 94, 94);
 }
 
+.footer {
+  background-color: red;
+  height: 200px;
+}
+
 #app {
   background-color: rgb(89, 94, 94);
   background-image: url("../public/TapStill.jpg");
+  background-attachment: fixed;
   background-size: cover;
 }
-
 
 
 
