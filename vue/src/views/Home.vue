@@ -13,6 +13,7 @@
     <div id="brewery-search">
       <UserBrewerySearch ></UserBrewerySearch>
    </div> 
+   
    <!-- <about-us id="about-us"></about-us> -->
     
     <!-- <div id="bottom-photo">
