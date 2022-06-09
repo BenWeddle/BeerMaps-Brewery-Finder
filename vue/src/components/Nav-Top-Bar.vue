@@ -18,7 +18,7 @@
       <div class="right-side">
         <div class="buttons">
           <b-navbar-nav>
-            <b-button class="nav-button" size="sm" @click="toAdmin">Admin Page</b-button>
+            <b-button v-if="this.isUserAdmin" class="nav-button" size="sm" @click="toAdmin">Admin Page</b-button>
           </b-navbar-nav>
 
           <b-navbar-nav id="showbevs">
@@ -32,7 +32,7 @@
             <template id="testing" #button-content>
                 <b-avatar variant="primary"></b-avatar>
             </template>
-              <b-dropdown-item @click="showAddBeverage">Add a Beverage</b-dropdown-item>
+              <b-dropdown-item v-show="isUserAdmin" @click="showAddBeverage">Add a Beverage</b-dropdown-item>
               <b-dropdown-item @click="showGlobalBeverages">Manage Beverages</b-dropdown-item>
               <b-dropdown-item><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></b-dropdown-item>
             </b-nav-item-dropdown>
@@ -51,7 +51,7 @@
     >
         <view-global-beverages></view-global-beverages>
              <div class="finish-button-container">
-        <b-button class="mt-3" variant="outline-primary"  @click="showGlobal = false">Finish</b-button>
+        <b-button class="mt-3 finish" variant="outline-danger"  @click="showGlobal = false">Finish</b-button>
             </div>
         </b-modal>
 
@@ -62,7 +62,7 @@
     >
         <add-beer-form></add-beer-form>
             <div class="finish-button-container">
-        <b-button class="mt-3" variant="outline-primary"  @click="showAdd = false">Finish</b-button>
+        <b-button class="mt-3 finish" variant="outline-danger"  @click="showAdd = false">Finish</b-button>
       </div>
     </b-modal>
 
@@ -83,6 +83,15 @@ export default({
       showGlobal: false,
       showAdd: false
     };
+  },
+  computed: {
+    isUserAdmin() {
+      if (this.$store.state.currentUserRole != 'ROLE_USER') {
+        return true
+      } 
+      else
+          return false
+    }
   },
   methods: {
     showGlobalBeverages(){
@@ -172,6 +181,11 @@ export default({
   background-color: orange;
   height: 50px;
   color: black;
+}
+
+.finish-button-container {
+  display: flex;
+  justify-content: flex-end;
 }
 
 </style>

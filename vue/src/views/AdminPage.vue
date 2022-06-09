@@ -23,15 +23,23 @@ export default {
   },
   name: "AdminPage",
   created(){
-    RatingService.getBreweryRatingsById(this.getBreweryId).then((response) => {
-      this.$store.commit('SET_CURRENT_USERS_BREWERY_RATINGS', response.data)
-    })
+    // RatingService.getBreweryRatingsById(this.getBreweryId).then((response) => {
+    //   this.$store.commit('SET_CURRENT_USERS_BREWERY_RATINGS', response.data)
+    // })
+    this.populateRatings()
   },
   computed: {
     getBreweryId(){
       return this.$store.state.breweryIdFromBrewer
     }
-  }
+  },
+  methods: {
+    populateRatings() {
+      RatingService.getBreweryRatingsById(this.getBreweryId).then((response) => {
+      this.$store.commit('SET_CURRENT_USERS_BREWERY_RATINGS', response.data)
+    })
+    }
+  },
 };
 </script>
 

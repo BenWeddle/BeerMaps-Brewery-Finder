@@ -1,27 +1,17 @@
 <template>
   <div class="home">
 
-<!--    <video autoplay muted loop id="myVideo">-->
-<!--      <source src="../../public/Tap.mp4" type="video/mp4">-->
-<!--    </video>-->
     <welcome-message id="message"></welcome-message>
+
     <AddGoogleMap id="map"></AddGoogleMap>
 
-    <div class="top-photos">
-    </div>
+    <UserBrewerySearch id="brewery-search"></UserBrewerySearch>
 
-    <div id="brewery-search">
-      <UserBrewerySearch ></UserBrewerySearch>
-   </div> 
+    <div class="spacer">
+    </div>
+   
    <about-section id="about-section"></about-section>
-   <!-- <about-us id="about-us"></about-us> -->
-    
-    <!-- <div id="bottom-photo">
-      <img src="../../public/brewww.png" id="bottom-filler-photo"/>
-      <div id="inner-bottom-photo">
-        <img src="../../public/re.png" id="small-beer-photo"/>
-        <img src="../../public/Guy.jpg" id="guy"/>
-      </div> --> -->
+
   </div>
   
 </template>
@@ -109,46 +99,25 @@ export default {
 #brewery-search {
   grid-area: search;
   opacity: .9;
-  /* overflow: auto; */
+  /* overflow: auto;
+  max-height: 60%; */
 }
 
 #about-section {
   grid-area: about-section;
-  margin-top: -600px;
+  margin-top: -200px;
+  padding: 25px;
+  grid-row-start: row1-start;
+  align-self: start;
   /* background-color: #eb9630; */
-  
-
 }
 
 .top-photos {
-  height: 350px;
+  height: 200px;
   width: 500px;
   grid-area: t-photo;
 
 }
-
-/* #guy{
-  border-radius: 50%;
-  max-width: 300px;
-  max-height: 300px;
-  grid-area: bottom-right;
-}
-#small-beer-photo{
-  border-radius: 50%;
-  max-width: 300px;
-  max-height: 300px;
-  grid-area: top-left;
-} */ 
-
-/* #inner-bottom-photo{
-  display: grid;
-  span: 3;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas:
-  "top-left ."
-  ". bottom-right"
-  ;
-} */
 
 #bottom-photo{
   display: flex;
@@ -175,11 +144,17 @@ export default {
   max-height: 20em;
 }
 
+.spacer {
+  height: 200px;
+  
+}
+
 .home {
   display: grid;
   margin-top: 100px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 15px;
+  grid-template-rows: 50px 3fr 1fr 2fr;
+  gap: 25px;
   margin-left: 3%;
   margin-right: 3%;
   z-index: 1;
@@ -187,11 +162,9 @@ export default {
   
   grid-template-areas: 
   "message message message message message message"
-  "map map map t-photo t-photo t-photo"
-  "map map map t-photo t-photo t-photo"
   "map map map search search search"
   "about-section about-section about-section search search search"
-  "about-section about-section about-section search search search"
+  ". . . search search search"
   ;
 }
 </style>

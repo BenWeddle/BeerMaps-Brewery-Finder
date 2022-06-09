@@ -73,7 +73,7 @@
             >Check if product is currently available</b-form-checkbox>
           </div>
 
-            <b-button variant="primary" v-on:click.prevent="addNewbeverage" id="beverageFormSubmit" type="submit">Add Beverage</b-button>
+            <b-button class="button" v-on:click.prevent="addNewbeverage" id="beverageFormSubmit" type="submit">Add Beverage</b-button>
 
         </b-form>
     </div>
@@ -140,6 +140,11 @@ div {
 
 #beverageFormSubmit{
   margin-top: 10px;
+}
+
+.button {
+  background-color: #eb9630;
+  color: black;
 }
 
 </style>

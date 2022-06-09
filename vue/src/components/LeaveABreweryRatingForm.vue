@@ -2,6 +2,10 @@
 <div>
   <b-form id="leave-rating-form">
 
+    <b-alert v-model="addedSuccess" variant="success" dismissible>
+        Successfully Added!
+      </b-alert>
+
       <b-form-rating id="rating-number" v-model="rating.rating" variant="primary"></b-form-rating>
 
     <b-form-group
@@ -34,7 +38,8 @@ export default {
         id: '',
         reviewerId: '',
         date: ''
-    }
+    },
+    addedSuccess: false
   };
   },
   created() {
@@ -51,8 +56,8 @@ export default {
   methods: {
     leaveRating(){
       RatingService.addRating(this.rating).then((response) => {
-        if(response.status == 202){
-          alert("Rating Added");
+        if(response.status == 201){
+          this.addedSuccess = true;
         }
       })
           .catch(error => {

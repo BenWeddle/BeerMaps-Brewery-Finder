@@ -57,8 +57,8 @@
 
         <div id="add-delete-hide">
           <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
-          <b-button size ="sm" variant ="danger" id="delete-button" @click="confirmDelete">Delete</b-button>
-          <b-button size ="sm" variant ="outline-success" id="add-button" @click="confirmAdd">Add to Brewery Menu</b-button>
+          <b-button v-show="isUserAdmin" size ="sm" variant ="danger" id="delete-button" @click="confirmDelete">Delete</b-button>
+          <b-button v-show="isUserAdmin" size ="sm" variant ="outline-success" id="add-button" @click="confirmAdd">Add to Brewery Menu</b-button>
         </div>
 
       </b-card>
@@ -78,6 +78,15 @@ export default {
       beverages: [],
       displayAlert: false,
       displayAddAlert: false
+    }
+  },
+  computed: {
+    isUserAdmin() {
+      if (this.$store.state.currentUserRole != 'ROLE_USER') {
+        return true
+      } 
+      else
+          return false
     }
   },
   created(){

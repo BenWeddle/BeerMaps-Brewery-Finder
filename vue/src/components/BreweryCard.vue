@@ -35,7 +35,7 @@ export default {
     },
   },
   created() {
-    BreweryService.getBreweryById(this.getBrewerID).then(response => {
+    BreweryService.getBreweryByBrewerId(this.getBrewerID).then(response => {
         this.brewery = response.data;
       }
     );
