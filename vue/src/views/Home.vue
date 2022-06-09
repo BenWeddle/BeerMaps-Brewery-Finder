@@ -13,7 +13,7 @@
     <div id="brewery-search">
       <UserBrewerySearch ></UserBrewerySearch>
    </div> 
-   
+   <about-section id="about-section"></about-section>
    <!-- <about-us id="about-us"></about-us> -->
     
     <!-- <div id="bottom-photo">
@@ -33,14 +33,14 @@ import BreweryService from "../services/BreweryService";
 import UserBrewerySearch from "../components/UserBrewerySearch";
 import AddressService from "../services/AddressService";
 import UserService from "../services/UserService";
-
+import AboutSection from "../components/About-Section.vue"
 export default {
   name: "home",
   components: {
     AddGoogleMap,
     WelcomeMessage,
     UserBrewerySearch,
-    
+    AboutSection
   },
   data(){
     return {
@@ -109,20 +109,25 @@ export default {
 #brewery-search {
   grid-area: search;
   opacity: .9;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
-#about-us {
-  grid-area: about-us
+#about-section {
+  grid-area: about-section;
+  margin-top: -600px;
+  /* background-color: #eb9630; */
+  
+
 }
 
-/* .top-photos {
+.top-photos {
   height: 350px;
   width: 500px;
   grid-area: t-photo;
 
 }
-#guy{
+
+/* #guy{
   border-radius: 50%;
   max-width: 300px;
   max-height: 300px;
@@ -133,7 +138,7 @@ export default {
   max-width: 300px;
   max-height: 300px;
   grid-area: top-left;
-} */
+} */ 
 
 /* #inner-bottom-photo{
   display: grid;
@@ -185,8 +190,8 @@ export default {
   "map map map t-photo t-photo t-photo"
   "map map map t-photo t-photo t-photo"
   "map map map search search search"
-  "about-us about-us about-us search search search"
-  "about-us about-us about-us search search search"
+  "about-section about-section about-section search search search"
+  "about-section about-section about-section search search search"
   ;
 }
 </style>
