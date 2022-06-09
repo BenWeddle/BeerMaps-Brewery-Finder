@@ -245,6 +245,13 @@ export default {
     leaveAReview(){
       this.showRatings = false;
       this.leaveRating = true;
+    },
+    convertFromBoolean(value){
+      if(value === true){
+        return 'Yes'
+      } else {
+        return'No'
+      }
     }
   },
   created() {
@@ -262,8 +269,10 @@ export default {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   margin-top: 20px;
-  background-image: linear-gradient(to top left, rgb(247, 223, 195), rgb(255, 145, 0));
+  background-image: linear-gradient(to top left, #534d4d, #eb9630);
   border-radius: 25px;
+  font-size: medium;
+  font-weight: bold;
   }
 
 #checkbox-row{
@@ -290,8 +299,10 @@ export default {
 }
 
 .table-rows {
-background-image: linear-gradient(to bottom right, rgb(247, 223, 195), rgb(255, 145, 0));
-border-radius: 25px;
+  font-size: large;
+  font-weight: bold;
+ background-image: linear-gradient(to bottom right, #534d4d, #eb9630);
+ border-radius: 25px;
 }
 
 .detail-card {

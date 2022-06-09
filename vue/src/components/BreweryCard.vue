@@ -5,10 +5,10 @@
       <p>{{ brewery.description }}</p>
     </div>
     <div id="attributes">
-      <p>Outdoor Seating {{ brewery.hasOutDoorSeating }}</p>
-      <p>Food Menu {{ brewery.hasFood }}</p>
-      <p>On-Site Brewing {{ brewery.hasOnSiteBrewing }}</p>
-      <p>Pet Friendly {{ brewery.petFriendly }}</p>
+      <p>Outdoor Seating: {{ convertFromBoolean(brewery.hasOutDoorSeating) }}</p>
+      <p>Food Menu: {{ convertFromBoolean(brewery.hasFood) }}</p>
+      <p>On-Site Brewing: {{ convertFromBoolean(brewery.hasOnSiteBrewing) }}</p>
+      <p>Pet Friendly: {{ convertFromBoolean(brewery.petFriendly) }}</p>
     </div>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
   computed: {
     getBrewerID() {
         return this.$store.state.user.id
-    }
+    },
   },
   created() {
     BreweryService.getBreweryById(this.getBrewerID).then(response => {
@@ -40,6 +40,15 @@ export default {
       }
     );
   },
+  methods: {
+    convertFromBoolean(value){
+      if(value === true){
+        return 'Yes'
+      } else {
+        return'No'
+      }
+    }
+  }
 };
 </script>
 
@@ -48,6 +57,10 @@ export default {
 .text-center {
   font-family: tangerine;
   font-style: italic;
+  font-weight: bold;
+}
+
+#card-container{
 }
 
 #attributes {
@@ -57,6 +70,8 @@ export default {
   justify-content: center;
   font-family: tangerine;
   font-style: italic;
+  font-size: large;
+  font-weight: bold;
 }
 
 #description {

@@ -15,7 +15,7 @@
             type= "text-area"
             placeholder= "Leave a Review"
         ></b-form-textarea>
-        <b-button id="submit-rating" class="mt-3" variant="outline-success"  @click="leaveRating">Submit</b-button>
+        <b-button id="submit-rating" class="mt-3" @click="leaveRating">Submit</b-button>
       </b-form-group>
     </b-form>
   </div>
@@ -72,5 +72,16 @@ export default {
 </script>
 
 <style scoped>
-
+#submit-rating{
+  margin-left: 25px;
+  padding-left: 35px;
+  padding-right: 35px;
+  background-color: #eb9630;
+  color: black;
+}
+#leave-rating-form{
+  font-size: large;
+  font-weight: bold;
+  background-image: linear-gradient( #eb9630, #7e7676);
+}
 </style>

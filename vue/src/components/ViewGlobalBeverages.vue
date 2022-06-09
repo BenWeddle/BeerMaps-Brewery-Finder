@@ -9,7 +9,7 @@
     Successfully Added!
   </b-alert>
 
-  <b-table :items="beverages" :fields="fields" striped responsive="sm">
+  <b-table :items="beverages" :fields="fields" striped responsive="sm" class="table-rows">
     <template #cell(details_and_options)="row">
       <b-button size="sm" @click="row.toggleDetails" class="mr-2">
         {{ row.detailsShowing ? 'Hide' : 'Show'}} Details and Options
@@ -17,7 +17,7 @@
     </template>
 
     <template #row-details="row">
-      <b-card>
+      <b-card class="detail-card">
         <b-row class="mb-2">
           <b-col sm="3" class="text-sm-right"><b>Available:</b></b-col>
           <b-col>{{ row.item.available }}</b-col>
@@ -27,8 +27,6 @@
           <b-col sm="3" class="text-sm-right"><b>Description:</b></b-col>
           <b-col>{{ row.item.description }}</b-col>
         </b-row>
-
-        <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
 
         <b-modal ref="confirm-delete"
                  hide-footer centered
@@ -57,10 +55,12 @@
           </div>
         </b-modal>
 
+        <div id="add-delete-hide">
+          <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
+          <b-button size ="sm" variant ="danger" id="delete-button" @click="confirmDelete">Delete</b-button>
+          <b-button size ="sm" variant ="outline-success" id="add-button" @click="confirmAdd">Add to Brewery Menu</b-button>
+        </div>
 
-
-        <b-button size ="sm" variant ="danger" id="delete-button" @click="confirmDelete">Delete</b-button>
-        <b-button size ="sm" variant ="outline-success" id="add-button" @click="confirmAdd">Add to Brewery Menu</b-button>
       </b-card>
     </template>
   </b-table>
@@ -116,6 +116,25 @@ export default {
 </script>
 
 <style scoped>
+
+.table-rows{
+  font-size: large;
+  font-weight: bold;
+  background-image: linear-gradient( #eb9630, #7e7676);
+}
+
+.set-text{
+  color: white;
+}
+
+#add-delete-hide{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.detail-card {
+  background-color: rgb(128, 128, 128, .33);
+}
 
 .popup-buttons{
   display: flex;

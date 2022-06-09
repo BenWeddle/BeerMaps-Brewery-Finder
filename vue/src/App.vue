@@ -1,23 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <!-- <router-link class="home" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
-    </div>
-
     <div :id="vertical">
-      <nav-top-bar v-show="!isLoginPage"></nav-top-bar>
-      <router-view />
+      <nav-top-bar id="nav-bar" v-show="!isLoginPage"></nav-top-bar>
+      <div id="content">
+        <router-view/>
+      </div>
+<!--      <app-footer v-show="!isLoginPage" id="page-footer"></app-footer>-->
     </div>
   </div>
 </template>
 <script>
 
-import NavTopBar from "@/components/Nav-Top-Bar.vue"
-
+import NavTopBar from "@/components/Nav-Top-Bar.vue";
+// import AppFooter from "./components/AppFooter";
 export default ({
   components: {
     NavTopBar
+    // AppFooter
   },
   computed: {
     isLoginPage(){
@@ -44,17 +43,14 @@ html {
   background-color: rgb(89, 94, 94);
 }
 
-/* body {
-  border-radius: 70px;
-}
-
-.home {
-  margin-left: 10px;
-} */
-
 #app {
   background-color: rgb(89, 94, 94);
+  background-image: url("../public/TapStill.jpg");
+  background-size: cover;
 }
+
+
+
 
 #vertical{
   display: grid;

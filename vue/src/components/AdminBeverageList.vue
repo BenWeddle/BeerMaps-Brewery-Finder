@@ -13,7 +13,7 @@
     </template>
 
     <template #row-details="row">
-      <b-card>
+      <b-card class="detail-card">
         <b-row class="mb-2">
           <b-col sm="3" class="text-sm-right"><b>Abv: </b></b-col>
           <b-col>{{ row.item.abv }}</b-col>
@@ -34,9 +34,11 @@
           <b-col>{{ row.item.description }}</b-col>
         </b-row>
 
-        <b-button size="sm" @click="row.toggleDetails">Hide Details</b-button>
-        <b-button size ="sm" variant ="danger" id="delete-button" @click="confirmDelete">Delete</b-button>
-        <b-button size ="sm" variant ="success" id="update-button" @click="setActiveBeverageToUpdate(row.item.beverageId)">Update</b-button>
+        <div class="hide-delete-update">
+          <b-button class="hdu-button" size="sm" @click="row.toggleDetails">Hide Details</b-button>
+          <b-button class="hdu-button" size ="sm" variant ="danger" id="delete-button" @click="confirmDelete">Delete</b-button>
+          <b-button class="hdu-button" size ="sm" variant ="success" id="update-button" @click="setActiveBeverageToUpdate(row.item.beverageId)">Update</b-button>
+        </div>
 
         <b-modal ref="confirm-delete"
                  hide-footer centered
@@ -117,6 +119,21 @@ export default {
 </script>
 
 <style scoped>
+
+.detail-card {
+  background-color: rgb(128, 128, 128, .33);
+  opacity: .9;
+}
+
+.hdu-button{
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+.hide-delete-update{
+  display: flex;
+  justify-content: space-evenly;
+}
 
 #popup-buttons{
   display: flex;

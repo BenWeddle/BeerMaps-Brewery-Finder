@@ -30,7 +30,8 @@ export default new Vuex.Store({
     selectedBeverageRating: '',
     selectedBeverageToUpdate: '',
     addressList: [],
-    usernameList: []
+    usernameList: [],
+    loggedInBreweryRatings: []
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -77,6 +78,9 @@ export default new Vuex.Store({
     },
     SET_SELECTED_BEVERAGE_TO_UPDATE(state, beverageId){
       state.selectedBeverageToUpdate = beverageId;
+    },
+    SET_CURRENT_USERS_BREWERY_RATINGS(state, list){
+      state.loggedInBreweryRatings = list;
     }
   }
 })

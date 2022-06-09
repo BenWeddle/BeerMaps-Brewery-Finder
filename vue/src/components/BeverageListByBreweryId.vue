@@ -1,7 +1,7 @@
 <template>
 <div id="beverage-menu">
 
-  <b-table :items="beverages" :fields="fields" striped responsive="sm">
+  <b-table :items="beverages" :fields="fields" striped responsive="sm" class="table-rows">
     <template #cell(leave_review)="row">
       <b-button size="sm" @click="loadBeverageRating(row.item.beverageId)">
        Leave Review
@@ -86,6 +86,12 @@ export default {
   display: flex;
   justify-content: end;
   border-radius: 0px;
+}
+
+.table-rows{
+  font-size: large;
+  font-weight: bold;
+  background-image: linear-gradient( #eb9630, #7e7676);
 }
 
 .finish-button{

@@ -1,14 +1,25 @@
 <template>
   <div class="home">
-  
-    <!-- <div id="spacer"> -->
-      
-    <!-- </div> -->
+
+<!--    <video autoplay muted loop id="myVideo">-->
+<!--      <source src="../../public/Tap.mp4" type="video/mp4">-->
+<!--    </video>-->
     <welcome-message id="message"></welcome-message>
     <AddGoogleMap id="map"></AddGoogleMap>
-    <img src="../../public/re.png" id="top-filler-photo"/>
-    <UserBrewerySearch id="brewery-search"></UserBrewerySearch>
-    <img src="../../public/brewww.png" id="bottom-filler-photo"/>
+
+    <div class="top-photos">
+    </div>
+
+    <div id="brewery-search">
+      <UserBrewerySearch ></UserBrewerySearch>
+    </div>
+    <div id="bottom-photo">
+      <img src="../../public/brewww.png" id="bottom-filler-photo"/>
+      <div id="inner-bottom-photo">
+        <img src="../../public/re.png" id="small-beer-photo"/>
+        <img src="../../public/Guy.jpg" id="guy"/>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -19,13 +30,12 @@ import BreweryService from "../services/BreweryService";
 import UserBrewerySearch from "../components/UserBrewerySearch";
 import AddressService from "../services/AddressService";
 import UserService from "../services/UserService";
-
 export default {
   name: "home",
   components: {
     AddGoogleMap,
     WelcomeMessage,
-    UserBrewerySearch,
+    UserBrewerySearch
   },
   data(){
     return {
@@ -80,7 +90,7 @@ export default {
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     padding: 5px;
-    background-image: linear-gradient(to bottom right, rgb(247, 223, 195), rgb(255, 145, 0));
+    background-image: linear-gradient(to bottom right, rgb(247, 223, 195), #eb9630);
     align-items: center;
     justify-content: center;
     font-family: tangerine;
@@ -89,26 +99,67 @@ export default {
 
 #map {
   grid-area: map;
-  /* background-image: linear-gradient(to top right, rgb(247, 223, 195), rgb(255, 145, 0)); */
 }
 
 #brewery-search {
   grid-area: search;
-  max-height: 500px;
+  opacity: .9;
+  overflow: auto;
 }
 
-#top-filler-photo {
+.top-photos {
+  height: 350px;
+  width: 500px;
   grid-area: t-photo;
-  /* width: 150%;
-  height: 70%; */
+
+}
+#guy{
+  border-radius: 50%;
+  max-width: 300px;
+  max-height: 300px;
+  grid-area: bottom-right;
+}
+#small-beer-photo{
+  border-radius: 50%;
+  max-width: 300px;
+  max-height: 300px;
+  grid-area: top-left;
+}
+
+#inner-bottom-photo{
+  display: grid;
+  span: 3;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+  "top-left ."
+  ". bottom-right"
+  ;
+}
+
+#bottom-photo{
+  display: flex;
+  grid-area: b-photo;
+  opacity: .6;
+}
+
+#myVideo {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 #bottom-filler-photo {
-  grid-area: b-photo;
-  /* width: 150%;
-  height: 70%; */
+  margin-top: 20%;
+  border-radius: 50%;
+  width: 25em;
+  max-height: 20em;
 }
-
 
 .home {
   display: grid;
@@ -117,14 +168,16 @@ export default {
   gap: 15px;
   margin-left: 3%;
   margin-right: 3%;
+  z-index: 1;
+  position: relative;
   
   grid-template-areas: 
   "message message message message message message"
-  "map map map . t-photo t-photo"
-  "map map map . t-photo t-photo"
+  "map map map t-photo t-photo t-photo"
+  "map map map t-photo t-photo t-photo"
   "map map map search search search"
-  "b-photo b-photo . search search search"
-  "b-photo b-photo . search search search"
+  "b-photo b-photo b-photo search search search"
+  "b-photo b-photo b-photo search search search"
   ;
 }
 </style>

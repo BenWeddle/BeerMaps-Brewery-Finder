@@ -1,13 +1,13 @@
 <template>
   <div id="review-container">
-    <b-table :items="filteredList" :fields="fields" striped responsive="sm">
+    <b-table :items="filteredList" :fields="fields" striped responsive="sm" class="table-rows">
       <template #cell(show_details)="row">
         <b-button size="sm" @click="row.toggleDetails" class="mr-2">
           {{ row.detailsShowing ? 'Hide' : 'Show'}} Details
         </b-button>
       </template>
       <template #row-details="row">
-        <b-card>
+        <b-card class="detail-card">
 
           <b-row class="mb-2">
             <b-col sm="3" class="text-sm-right"><b>User: </b></b-col>
@@ -67,5 +67,13 @@ export default {
 </script>
 
 <style scoped>
+
+.detail-card {
+  background-color: rgb(128, 128, 128, .33);
+}
+
+.table-rows{
+  background-image: linear-gradient(to top left, #534d4d, #eb9630);
+}
 
 </style>
