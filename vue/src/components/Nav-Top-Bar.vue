@@ -34,7 +34,7 @@
             </template>
               <b-dropdown-item v-show="isUserAdmin" @click="showAddBeverage">Add a Beverage</b-dropdown-item>
               <b-dropdown-item @click="showGlobalBeverages">Manage Beverages</b-dropdown-item>
-            <b-dropdown-item @click="showUpdateBrewery">Update Brewery</b-dropdown-item>
+            <b-dropdown-item v-show="isUserAdmin" @click="showUpdateBrewery">Update Brewery</b-dropdown-item>
               <b-dropdown-item><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></b-dropdown-item>
             </b-nav-item-dropdown>
         </b-navbar-nav>
