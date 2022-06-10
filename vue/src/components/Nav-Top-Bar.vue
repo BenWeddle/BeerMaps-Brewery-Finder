@@ -34,6 +34,7 @@
             </template>
               <b-dropdown-item v-show="isUserAdmin" @click="showAddBeverage">Add a Beverage</b-dropdown-item>
               <b-dropdown-item @click="showGlobalBeverages">Manage Beverages</b-dropdown-item>
+            <b-dropdown-item @click="showUpdateBrewery">Update Brewery</b-dropdown-item>
               <b-dropdown-item><router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link></b-dropdown-item>
             </b-nav-item-dropdown>
         </b-navbar-nav>
@@ -41,6 +42,18 @@
       </div>
     </b-collapse>
   </b-navbar>
+
+      <b-modal id="update-brewery"
+               v-model="updateBrewery"
+               title="Update Brewery Information"
+               size="xl"
+               hide-footer centered
+      >
+        <update-brewery-form></update-brewery-form>
+        <div class="finish-button-container">
+          <b-button class="mt-3 finish" variant="outline-danger"  @click="updateBrewery = false">Finish</b-button>
+        </div>
+      </b-modal>
 
 
         <b-modal id="global-beverage"
@@ -72,16 +85,19 @@
 <script>
 import ViewGlobalBeverages from "./ViewGlobalBeverages";
 import AddBeerForm from "./Add-Beer-Form";
+import updateBreweryForm from "./UpdateBreweryForm";
 export default({
     name: "nav-top-bar",
     components: {
     ViewGlobalBeverages,
-    AddBeerForm
+    AddBeerForm,
+      updateBreweryForm
   },
   data(){
     return {
       showGlobal: false,
-      showAdd: false
+      showAdd: false,
+      updateBrewery: false
     };
   },
   computed: {
@@ -96,6 +112,9 @@ export default({
   methods: {
     showGlobalBeverages(){
       this.showGlobal = true;
+    },
+    showUpdateBrewery(){
+      this.updateBrewery = true;
     },
     showAddBeverage(){
       this.showAdd = true;

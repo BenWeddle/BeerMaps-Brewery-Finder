@@ -1,6 +1,9 @@
 <template>
   <div>
     <b-form id="updateForm">
+      <b-alert v-model="displayUpdateAlert" variant="success" dismissible>
+        Successfully Updated!
+      </b-alert>
       <b-form-group
           id="breweryName"
           label="Enter Name of Brewery:"
@@ -92,8 +95,9 @@ export default {
         hasOutDoorSeating: false,
         hasFood: false,
         hasOnSiteBrewing: false,
-        isPetFriendly: false
-      }
+        isPetFriendly: false,
+      },
+      displayUpdateAlert: false
     }
   },
   computed: {
@@ -105,7 +109,7 @@ export default {
     updateBrewery(){
       BreweryService.updateBrewery(this.brewery).then(response => {
         if(response.status == 202){
-          alert("Brewery Updated");
+          this.displayUpdateAlert = true;
         }
       })
           .catch(error => {
@@ -115,7 +119,7 @@ export default {
     }
   },
   created() {
-    BreweryService.getBreweryById(this.getBrewerID).then(response => {
+    BreweryService.getBreweryByBrewerId(this.getBrewerID).then(response => {
           this.brewery = response.data;
         }
     );
