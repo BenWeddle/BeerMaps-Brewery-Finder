@@ -85,11 +85,12 @@ export default {
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     padding: 5px;
-    background-image: linear-gradient(to bottom right, rgb(247, 223, 195), #eb9630);
+    background-image: linear-gradient(#534d4d, #eb9630);
     align-items: center;
     justify-content: center;
     font-family: tangerine;
     font-style: italic;
+    font-weight: bold;
 }
 
 #map {

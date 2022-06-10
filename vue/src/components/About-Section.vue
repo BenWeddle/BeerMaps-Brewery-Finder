@@ -30,11 +30,10 @@ export default {
 
 <style scoped>
 #about-us {
-    background-color: #eb9630;
     font-weight: bolder;
 }
 
 .paragraph {
-    background-color: #eb9630;
+
 }
 </style>

@@ -24,7 +24,6 @@ export default({
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     padding: 5px;
-    background-image: linear-gradient(to bottom right, rgb(247, 223, 195), rgb(255, 145, 0));
     align-items: center;
     justify-content: center;
     font-family: tangerine;
