@@ -4,7 +4,7 @@
         <label>
       </label>
           <div class="filter">
-            <h4>Please select a location</h4>
+            <h4>Please select a location:</h4>
             <gmap-autocomplete @place_changed="initMarker"></gmap-autocomplete>
             <button @click="addLocationMarker">Add</button>
             <br />
@@ -145,8 +145,15 @@ export default({
  display: flex;
  align-items: center;
  justify-content: flex-end;
- padding-right: 10px;
- padding-bottom: 5px;
+ padding: 5px;
+ padding-right: 40px;
+ background-color: #eb9630;
+ opacity: .8;
+ font-size: large;
+ font-weight: bold;
+ border-top-left-radius: 25px;
+ border-top-right-radius: 25px;
+
 }
 
 h4 {

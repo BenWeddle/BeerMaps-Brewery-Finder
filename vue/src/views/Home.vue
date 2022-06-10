@@ -85,7 +85,7 @@ export default {
     border-top-right-radius: 25px;
     border-top-left-radius: 25px;
     padding: 5px;
-    background-image: linear-gradient(#534d4d, #eb9630);
+    background-image: linear-gradient( #534d4d, #eb9630);
     align-items: center;
     justify-content: center;
     font-family: tangerine;
@@ -99,7 +99,7 @@ export default {
 
 #brewery-search {
   grid-area: search;
-  opacity: .9;
+  /* opacity: .9; */
   /* overflow: auto;
   max-height: 60%; */
 }
@@ -110,7 +110,7 @@ export default {
   padding: 25px;
   grid-row-start: row1-start;
   align-self: start;
-  /* background-color: #eb9630; */
+  
 }
 
 .top-photos {

@@ -1,5 +1,5 @@
 <template>
-  <div id="about-us">
+  <div id="about-us" class="about-us">
       <h1>About Us</h1>
       <h3>Craft Beer Near Me</h3>
       <p class="paragraph">
@@ -29,11 +29,15 @@ export default {
 </script>
 
 <style scoped>
-#about-us {
-    font-weight: bolder;
+.about-us > p {
+    font-weight: bolder !important;
+    font-size: 20px !important;
+    z-index: 100 !important;
+}
+.about-us {
+    background-color: rgb(211, 211, 211, 0.4);
+    border-radius: 25px;
+    padding: 25px;
 }
 
-.paragraph {
-
-}
 </style>

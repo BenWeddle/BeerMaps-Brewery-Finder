@@ -269,7 +269,7 @@ export default {
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
   margin-top: 20px;
-  background-image: linear-gradient(to top left, #534d4d, #eb9630);
+  background-image: linear-gradient(to top left, rgb(83, 77, 77), rgb(235, 150, 48));
   border-radius: 25px;
   font-size: medium;
   font-weight: bold;
@@ -338,6 +338,11 @@ export default {
   font-style: italic;
   font-weight: bold;
 
+}
+.filter-container > b-table{
+    font-weight: bolder !important;
+    font-size: 20px !important;
+    z-index: 100 !important;
 }
 
   
