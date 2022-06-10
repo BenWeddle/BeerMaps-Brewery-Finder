@@ -107,11 +107,12 @@ public class BeverageDaoJdbc implements BeverageDao{
     @Override
     public boolean deleteBeverageGlobally(int beverageId) {
         String sql = "BEGIN TRANSACTION; " +
+                "DELETE FROM rating WHERE beverage_id = ?;" +
                 "DELETE FROM brewery_beverage WHERE beverage_id = ?; " +
                 "DELETE FROM beverage WHERE beverage_id = ?; " +
                 "COMMIT;";
 
-        return jdbcTemplate.update(sql, beverageId, beverageId) == 0;
+        return jdbcTemplate.update(sql, beverageId, beverageId, beverageId) == 0;
     }
 
     @Override
